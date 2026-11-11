@@ -1,0 +1,33 @@
+{
+  "name": "seed-model-in-gbc1-model",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Coupled 164-seed cellular digital twin of community growth in the LEAF GBC1 spaceflight plant growth chamber (32 B. rapa + 100 Arabidopsis + 32 B. rapa).",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "ledger": "python3 scripts/build_ledger.py",
+    "gates": "esbuild validation/gates.ts --bundle --format=esm --platform=node --loader:.json=json --loader:.csv=text --outfile=validation/gates.mjs && node validation/gates.mjs",
+    "export": "esbuild scripts/export_community_runs.ts --bundle --format=esm --platform=node --loader:.json=json --loader:.csv=text --outfile=scripts/export_community_runs.mjs && node scripts/export_community_runs.mjs",
+    "figures": "python3 python/make_community_figures.py"
+  },
+  "dependencies": {
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "esbuild": "^0.25.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.3"
+  }
+}

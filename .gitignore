@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.mjs
+.DS_Store
+__pycache__/
+.pytest_cache/

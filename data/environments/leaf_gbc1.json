@@ -1,0 +1,192 @@
+{
+ "id": "leaf_gbc1",
+ "label": "LEAF GBC1 (lunar surface, pumped)",
+ "hardware": "LEAF Growth Chamber 1",
+ "description": "LEAF (Artemis III) growth chamber 1: 54.05 cm3 headspace flushed by a pump across 3 partitioned compartments (32 B. rapa + 100 Arabidopsis + 32 B. rapa = 164 seeds).",
+ "fields": {
+  "gravity_g": {
+   "value": 0.1651940265024244,
+   "unit": "g",
+   "source": "nasa_moon_factsheet",
+   "tier": "standard",
+   "note": "lunar surface gravity 1.62 m/s2"
+  },
+  "p_total_kpa": {
+   "value": 101.325,
+   "unit": "kPa",
+   "source": "definition",
+   "tier": "standard",
+   "note": "1 standard atmosphere = 101.325 kPa (exact by definition)"
+  },
+  "o2_frac": {
+   "value": 0.2095,
+   "unit": "fraction",
+   "source": "",
+   "tier": "assumed",
+   "note": "conventional dry-air O2 mole fraction (~20.95 %)"
+  },
+  "co2_ppm": {
+   "value": 420.0,
+   "unit": "ppm",
+   "source": "",
+   "tier": "assumed",
+   "note": "present-day ambient CO2"
+  },
+  "temp_c": {
+   "value": 22.0,
+   "unit": "degC",
+   "source": "repo:LEAF_GBC2_pot_model/README.md@26d3db6",
+   "tier": "assumed",
+   "note": "nominal GBC1 chamber air temperature"
+  },
+  "light_umol": {
+   "value": 150.0,
+   "unit": "umol m-2 s-1",
+   "source": "",
+   "tier": "assumed",
+   "note": "nominal photosynthetic LED array PAR during 16h photoperiod"
+  },
+  "light_h_per_cycle": {
+   "value": 16.0,
+   "unit": "h",
+   "source": "repo:LEAF_GBC2_pot_model/README.md",
+   "tier": "assumed",
+   "note": "16h day / 8h night photoperiod after initial 18h dark imbibition"
+  },
+  "cycle_h": {
+   "value": 24.0,
+   "unit": "h",
+   "source": "",
+   "tier": "assumed",
+   "note": "24h diurnal cycle"
+  },
+  "headspace_ml": {
+   "value": 54.05,
+   "unit": "mL",
+   "source": "repo:LEAF_GBC2_pot_model/README.md@26d3db6#headspace",
+   "tier": "derived",
+   "note": "from the GBC1 CAD (M09024F pot + M09025F lid)"
+  },
+  "seeds": {
+   "value": 164.0,
+   "unit": "seeds",
+   "source": "repo:LEAF_GBC2_pot_model/README.md@26d3db6",
+   "tier": "derived",
+   "note": "32 B. rapa (Ch1) + 100 A. thaliana (Ch2) + 32 B. rapa (Ch3)"
+  },
+  "vent_ach": {
+   "value": 555.0,
+   "unit": "1/h",
+   "source": "repo:LEAF_GBC2_pot_model/README.md@26d3db6#pump",
+   "tier": "derived",
+   "note": "0.50 L/min nominal flow through 54.05 mL headspace = 555 ACH"
+  },
+  "eth_scrub_per_h": {
+   "value": 0.0,
+   "unit": "1/h",
+   "source": "",
+   "tier": "assumed",
+   "note": "no internal scrubber; flushed by pump flow Q"
+  },
+  "eth_inlet_ppm": {
+   "value": 0.0,
+   "unit": "ppm",
+   "source": "",
+   "tier": "assumed",
+   "note": "conditioned inlet air"
+  },
+  "substrate_psi_mpa": {
+   "value": -0.01,
+   "unit": "MPa",
+   "source": "",
+   "tier": "assumed",
+   "note": "hydrated porous foam + 35 um Nytex capillary interface"
+  },
+  "wetted_frac_1g": {
+   "value": 0.35,
+   "unit": "fraction",
+   "source": "",
+   "tier": "assumed",
+   "note": "seed on Nytex capillary film at 1g"
+  },
+  "wetted_frac_0g": {
+   "value": 0.45,
+   "unit": "fraction",
+   "source": "",
+   "tier": "assumed",
+   "note": "capillary meniscus creeps higher in microgravity/lunar g"
+  },
+  "film_um_1g": {
+   "value": 10.0,
+   "unit": "um",
+   "source": "",
+   "tier": "assumed",
+   "note": ""
+  },
+  "film_um_0g": {
+   "value": 20.0,
+   "unit": "um",
+   "source": "",
+   "tier": "assumed",
+   "note": ""
+  },
+  "substrate_scale_mm": {
+   "value": 5.0,
+   "unit": "mm",
+   "source": "",
+   "tier": "assumed",
+   "note": "length scale of capillary water on Nytex"
+  },
+  "dose_mgy_d": {
+   "value": 0.317,
+   "unit": "mGy/d",
+   "source": "zhang2020",
+   "tier": "derived",
+   "note": "lunar surface charged-particle dose 13.2 uGy/h x 24 h (Chang'e-4 LND, Zhang et al. 2020)"
+  },
+  "spe_dose_mgy": {
+   "value": 0.0,
+   "unit": "mGy",
+   "source": "",
+   "tier": "assumed",
+   "note": ""
+  },
+  "spe_start_h": {
+   "value": 24.0,
+   "unit": "h",
+   "source": "",
+   "tier": "assumed",
+   "note": ""
+  },
+  "spe_dur_h": {
+   "value": 2.0,
+   "unit": "h",
+   "source": "",
+   "tier": "assumed",
+   "note": ""
+  }
+ },
+ "air_speed_by_g": [
+  {
+   "g": 0.0,
+   "u_m_s": 0.015,
+   "source": "repo:LEAF_GBC2_pot_model/README.md",
+   "tier": "derived",
+   "note": "canopy/seed-bed forced convection speed at Q=0.50 L/min"
+  },
+  {
+   "g": 0.165,
+   "u_m_s": 0.018,
+   "source": "repo:LEAF_GBC2_pot_model/README.md",
+   "tier": "derived",
+   "note": "canopy/seed-bed forced + lunar buoyant speed at Q=0.50 L/min"
+  },
+  {
+   "g": 1.0,
+   "u_m_s": 0.024,
+   "source": "repo:LEAF_GBC2_pot_model/README.md",
+   "tier": "derived",
+   "note": "canopy/seed-bed forced + 1g buoyant speed at Q=0.50 L/min"
+  }
+ ]
+}
