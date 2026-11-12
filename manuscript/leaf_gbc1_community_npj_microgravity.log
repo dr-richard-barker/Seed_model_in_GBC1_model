@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  12 NOV 2026 11:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  12 NOV 2026 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1256,18 +1256,18 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 .fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<fig6_seed_phenotypic_variation.png, id=54, 520.344pt x 520.344pt>
-File: fig6_seed_phenotypic_variation.png Graphic file (type png)
-<use fig6_seed_phenotypic_variation.png>
-Package pdftex.def Info: fig6_seed_phenotypic_variation.png  used on input line
+<fig2_seed_phenotypic_variation.png, id=54, 542.025pt x 679.338pt>
+File: fig2_seed_phenotypic_variation.png Graphic file (type png)
+<use fig2_seed_phenotypic_variation.png>
+Package pdftex.def Info: fig2_seed_phenotypic_variation.png  used on input line
  180.
-(pdftex.def)             Requested size: 493.38708pt x 493.38708pt.
+(pdftex.def)             Requested size: 393.64865pt x 493.37299pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
  [2 <./fig1_gbc1_sowing_and_microclimate.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3 <./fig6_seed_phenotypic_variation.png>]
+ [3 <./fig2_seed_phenotypic_variation.png>]
 <fig2_community_germination_and_morphometrics.png, id=78, 542.025pt x 607.068pt
 >
 File: fig2_community_germination_and_morphometrics.png Graphic file (type png)
@@ -1359,7 +1359,7 @@ s not changed.
 Here is how much of TeX's memory you used:
  33736 strings out of 467525
  693348 string characters out of 5408440
- 1101640 words of memory out of 5000000
+ 1101642 words of memory out of 5000000
  61349 multiletter control sequences out of 15000+600000
  792739 words of font info for 757 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1385,7 +1385,7 @@ rew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
 /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on leaf_gbc1_community_npj_microgravity.pdf (9 pages, 3573084 by
+Output written on leaf_gbc1_community_npj_microgravity.pdf (9 pages, 3548549 by
 tes).
 PDF statistics:
  248 PDF objects out of 1000 (max. 8388607)
