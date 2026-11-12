@@ -963,7 +963,32 @@ export function App() {
               </section>
 
               <section style={{ marginBottom: 20 }}>
-                <h3 style={{ color: "#5ec962", marginBottom: 6, fontSize: 14 }}>2. Three-Compartment Flight Sowing Architecture &amp; 3D Cellular Progression</h3>
+                <h3 style={{ color: "#00d4ff", marginBottom: 6, fontSize: 14 }}>2. 3D Cellular Seedling Phenotypic Plasticity (Figure 2 in Manuscript)</h3>
+                <p>
+                  Coupled cellular simulations from the <strong>Seed_Model</strong> (incorporating authentic 3D cellular cross-sections from <em>deepspace-seed-twin</em>) resolve morphological plasticity across spaceflight environmental, atmospheric, radiation, and hardware vectors:
+                </p>
+                <div style={{ textAlign: "center", margin: "10px 0" }}>
+                  <img
+                    src="fig2_seed_phenotypic_variation.png"
+                    alt="Figure 2: 3D Seed Model Phenotypic Variation Atlas"
+                    style={{ maxWidth: "100%", maxHeight: 360, borderRadius: 6, border: "1px solid #1f2f3d" }}
+                  />
+                  <div style={{ fontSize: 11, color: "#8fa6bc", marginTop: 4 }}>
+                    Figure 2: Predicted 3D cellular seedling phenotypic variation across spaceflight environmental, atmospheric, radiation, and hardware vectors
+                  </div>
+                </div>
+                <ul style={{ paddingLeft: 20, marginTop: 6, fontSize: 12 }}>
+                  <li><strong>Hardware (35 µm Nytex Screen):</strong> 100% root exclusion above Y = 14.77 mm with 90&deg; tangential gliding preserving fixative perfusion safety (&Delta;P = 1.75 kPa &lt;&lt; 8.04 kPa).</li>
+                  <li><strong>Gravity (1.0g vs 0.166g vs 0g):</strong> Amyloplast statolith sedimentation velocity &prop; g, driving vertical downward descent (1.0g) vs 18.4&deg; dispersion (0.166g Moon) vs autotropic/hydrotropic wandering (0g microgravity).</li>
+                  <li><strong>Atmospheric Chemistry:</strong> Normoxia vs hypoxic stunting (&lt; 5 kPa O2) vs phytotoxic ethylene (&gt; 50 ppb C2H4) triggering the <em>triple response</em> (+85% radial hypocotyl swelling and apical hook tightening).</li>
+                  <li><strong>Convective Airflow:</strong> Forced sweep (g_bl = 13.4 mm/s) vs stagnant fluid envelope (g_bl &lt; 3 mm/s) trapping respiratory heat and ethylene.</li>
+                  <li><strong>Cosmic Radiation:</strong> High-LET heavy ions (⁵⁶Fe) inducing meristematic DNA double-strand breaks and G2/M cell-cycle checkpoint arrest.</li>
+                  <li><strong>Light &amp; Crowding:</strong> Far-red depletion driving shade avoidance syndrome (SAS, +38% elongation) and 3D phototropic lean away from neighbors.</li>
+                </ul>
+              </section>
+
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#5ec962", marginBottom: 6, fontSize: 14 }}>3. Three-Compartment Sowing Architecture &amp; Community Kinetics (Figure 3 in Manuscript)</h3>
                 <p>
                   GBC1 houses <strong>164 individual seeds</strong> on top of a <strong>35 µm Nytex monofilament root barrier</strong> at elevation Y = 14.77 mm above three porous phenolic foam cassettes (Y in [7.62, 14.62] mm), partitioned by solid internal baffles at Z = &plusmn;8.5 mm:
                 </p>
@@ -975,17 +1000,17 @@ export function App() {
                 <div style={{ textAlign: "center", margin: "10px 0" }}>
                   <img
                     src="fig2_community_germination_and_morphometrics.png"
-                    alt="3D Cellular Progression and Community Kinetics"
-                    style={{ maxWidth: "100%", maxHeight: 300, borderRadius: 6, border: "1px solid #1f2f3d" }}
+                    alt="Figure 3: 3D Cellular Progression and Community Kinetics"
+                    style={{ maxWidth: "100%", maxHeight: 340, borderRadius: 6, border: "1px solid #1f2f3d" }}
                   />
                   <div style={{ fontSize: 11, color: "#8fa6bc", marginTop: 4 }}>
-                    Figure 2: 3D cellular developmental progression (deepspace-seed-twin midplane cellular anatomy) &amp; community kinetics
+                    Figure 3: 3D cellular developmental progression (deepspace-seed-twin midplane cellular anatomy) &amp; community kinetics
                   </div>
                 </div>
               </section>
 
               <section style={{ marginBottom: 20 }}>
-                <h3 style={{ color: "#f5a623", marginBottom: 6, fontSize: 14 }}>3. Multiscale Physical &amp; Biological Couplings</h3>
+                <h3 style={{ color: "#f5a623", marginBottom: 6, fontSize: 14 }}>4. Multiscale Physical &amp; Biological Couplings</h3>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 8 }}>
                   <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 10 }}>
                     <strong style={{ color: "#00d4ff" }}>3D CFD Airflow &amp; Microclimate</strong>
@@ -1012,28 +1037,6 @@ export function App() {
                     </p>
                   </div>
                 </div>
-              </section>
-
-              <section style={{ marginBottom: 20 }}>
-                <h3 style={{ color: "#00d4ff", marginBottom: 6, fontSize: 14 }}>4. 3D Seed_Model Phenotypic Plasticity Across Spaceflight Vectors</h3>
-                <p>
-                  Coupled cellular simulations from the <strong>Seed_Model</strong> capture morphological divergence across environmental, hardware, and atmospheric regimes (Figure 6 in manuscript):
-                </p>
-                <div style={{ textAlign: "center", margin: "10px 0" }}>
-                  <img
-                    src="fig6_seed_phenotypic_variation.png"
-                    alt="3D Seed Model Phenotypic Variation"
-                    style={{ maxWidth: "100%", maxHeight: 300, borderRadius: 6, border: "1px solid #1f2f3d" }}
-                  />
-                </div>
-                <ul style={{ paddingLeft: 20, marginTop: 6, fontSize: 12 }}>
-                  <li><strong>Hardware (Nytex Screen):</strong> 100% root exclusion with 90&deg; tangential root deflection preserving RNAlater perfusion (&Delta;P = 1.75 kPa).</li>
-                  <li><strong>Gravity (1g vs 0.166g vs 0g):</strong> Amyloplast statolith sedimentation rate &prop; g, driving straight descent (1g) vs dispersed descent (0.166g) vs autotropic/hydrotropic wandering (0g).</li>
-                  <li><strong>Atmosphere &amp; Ethylene:</strong> Hypoxia (&lt; 5 kPa O2) stunting vs phytotoxic ethylene (&gt; 50 ppb C2H4) triggering the <em>triple response</em> (+85% hypocotyl radial swelling).</li>
-                  <li><strong>Airflow &amp; Boundary Layer:</strong> Forced ventilation (g_bl = 13.4 mm/s) vs stagnant envelope (g_bl &lt; 3 mm/s) trapping respiratory heat and ethylene.</li>
-                  <li><strong>Cosmic Radiation:</strong> GCR/SPE ionizing heavy ions triggering G2/M meristematic cell-cycle checkpoint arrest.</li>
-                  <li><strong>Light &amp; Crowding:</strong> Red:Far-Red depletion in Chamber 2 driving +38% SAS hypocotyl elongation and 3D phototropic lean away from neighbors.</li>
-                </ul>
               </section>
 
               <section style={{ marginBottom: 20 }}>
@@ -1075,6 +1078,10 @@ export function App() {
                   <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 8 }}>
                     <strong>Fig. S4: Sowing Density Sweeps</strong>
                     <div style={{ color: "#8fa6bc", fontSize: 11, marginTop: 2 }}>0.25&times; to 2.0&times; crown closure, Beer–Lambert mutual shading, &amp; 3D phototropic lean.</div>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 8, gridColumn: "span 2" }}>
+                    <strong>Fig. S5: Deep-Space Cosmic Radiation &amp; High-LET Heavy-Ion Matrix</strong>
+                    <div style={{ color: "#8fa6bc", fontSize: 11, marginTop: 2 }}>GCR/SPE dosimetry, ⁵⁶Fe Bragg peak track structure, DNA double-strand breaks, G2/M arrest, and 8-scenario radar matrix.</div>
                   </div>
                 </div>
               </section>
