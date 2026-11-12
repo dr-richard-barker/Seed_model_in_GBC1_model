@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  12 NOV 2026 09:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  12 NOV 2026 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1268,13 +1268,13 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./fig6_seed_phenotypic_variation.png>]
-<fig2_community_germination_and_morphometrics.png, id=78, 534.798pt x 520.344pt
+<fig2_community_germination_and_morphometrics.png, id=78, 542.025pt x 607.068pt
 >
 File: fig2_community_germination_and_morphometrics.png Graphic file (type png)
 <use fig2_community_germination_and_morphometrics.png>
 Package pdftex.def Info: fig2_community_germination_and_morphometrics.png  used
  on input line 192.
-(pdftex.def)             Requested size: 506.45908pt x 492.78366pt.
+(pdftex.def)             Requested size: 506.45908pt x 567.25371pt.
 <fig3_sowing_density_crowding_sweep.png, id=84, 876.1533pt x 630.9171pt>
 File: fig3_sowing_density_crowding_sweep.png Graphic file (type png)
 <use fig3_sowing_density_crowding_sweep.png>
@@ -1302,8 +1302,14 @@ t line 240.
  [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
  [5 <./fig2_community_germination_and_morphometrics.png>] [6 <./fig3_sowing_den
 sity_crowding_sweep.png>]
+Underfull \vbox (badness 2653) has occurred while \output is active []
+
+
 
 LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <7.52812> not available
 (Font)              size <8> substituted on input line 295.
@@ -1331,16 +1337,12 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <4.5169> not available
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-(./leaf_gbc1_community_npj_microgravity.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [7 <./fig4_headspace_gas_and_push_pull_cfd.png> <./fig5_scenario_comparison_ma
 trix.png>]
-[8 <./fig7_chamber_gravity_flow_morphology.png>]) [9
+(./leaf_gbc1_community_npj_microgravity.bbl [8 <./fig7_chamber_gravity_flow_mor
+phology.png>]) [9
 
-]
-(./leaf_gbc1_community_npj_microgravity.aux)
+] (./leaf_gbc1_community_npj_microgravity.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1361,7 +1363,7 @@ Here is how much of TeX's memory you used:
  61349 multiletter control sequences out of 15000+600000
  792739 words of font info for 757 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,15n,108p,2260b,1205s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,14n,108p,2260b,1193s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
 sfonts/cmextra/cmbsy9.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/2026
@@ -1383,7 +1385,7 @@ rew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
 /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on leaf_gbc1_community_npj_microgravity.pdf (9 pages, 3558972 by
+Output written on leaf_gbc1_community_npj_microgravity.pdf (9 pages, 3573084 by
 tes).
 PDF statistics:
  248 PDF objects out of 1000 (max. 8388607)

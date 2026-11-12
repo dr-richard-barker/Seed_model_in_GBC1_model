@@ -21,6 +21,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import Rectangle
 from matplotlib.transforms import Affine2D
+from matplotlib.colors import Normalize
+from matplotlib.cm import ScalarMappable
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -33,12 +35,12 @@ OUT_FIGURES.mkdir(parents=True, exist_ok=True)
 plt.rcParams.update({
     "font.family": "sans-serif",
     "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
-    "font.size": 8,
-    "axes.titlesize": 8.5,
-    "axes.labelsize": 8,
-    "xtick.labelsize": 7.2,
-    "ytick.labelsize": 7.2,
-    "legend.fontsize": 6.8,
+    "font.size": 7.5,
+    "axes.titlesize": 8.0,
+    "axes.labelsize": 7.5,
+    "xtick.labelsize": 6.8,
+    "ytick.labelsize": 6.8,
+    "legend.fontsize": 6.5,
     "figure.dpi": 300,
     "axes.spines.top": False,
     "axes.spines.right": False,
@@ -56,7 +58,7 @@ TISSUE_HEX = [
 ]
 TISSUE_NAMES = [
     "Epidermis", "Cortex", "Endodermis", "Stele",
-    "QC / Columella", "Cot. Mesophyll", "Cot. Epidermis", "Endosperm"
+    "QC / Columella", "Cotyledon", "Cot. Epidermis", "Endosperm"
 ]
 
 def load_csv(name: str) -> list[dict[str, str]]:
@@ -73,8 +75,10 @@ def col_float(rows: list[dict[str, str]], key: str) -> np.ndarray:
 def f_val(x: str | None) -> float:
     return float(x) if x not in ("", None) else np.nan
 
-def draw_cellular_midplane(ax, cells: list[dict[str, str]], mode: str = "tissue", show_nytex: bool = False, title: str = ""):
-    """Render 3D cellular midplane cross-section directly from deepspace-seed-twin cell coordinates."""
+def draw_cellular_midplane(ax, cells: list[dict[str, str]], mode: str = "tissue",
+                           show_nytex: bool = False, panel_letter: str = "",
+                           title: str = "", subtitle: str = ""):
+    """Render 3D cellular midplane cross-section with non-colliding margins, scale bars, and labels."""
     cmap = matplotlib.colormaps["viridis"]
     sel = [r for r in cells if abs(f_val(r["z"])) <= max(f_val(r["wid"]), 8) * 0.6]
     
@@ -95,71 +99,117 @@ def draw_cellular_midplane(ax, cells: list[dict[str, str]], mode: str = "tissue"
         rect.set_transform(Affine2D().rotate(a).translate(x, y) + ax.transData)
         ax.add_patch(rect)
         
-    pad = 40
     min_x, max_x = min(xs), max(xs)
     min_y, max_y = min(ys), max(ys)
+    span_x = max_x - min_x
+    span_y = max_y - min_y
     
-    ax.set_xlim(min_x - pad, max_x + pad)
-    ax.set_ylim(min_y - pad, max_y + pad)
+    # Proportional dynamic padding ensuring clear separation
+    pad_x = max(span_x * 0.16, 50.0)
+    pad_y = max(span_y * 0.20, 50.0)
+    
+    # Generous limits: headroom for titles, footroom for scale bars and Nytex mesh
+    ax.set_xlim(min_x - pad_x, max_x + pad_x)
+    ax.set_ylim(min_y - pad_y * 1.55, max_y + pad_y * 1.15)
     ax.set_aspect("equal")
     ax.axis("off")
     
-    # Scale bar
-    span = max_x - min_x
-    bar = 100 if span < 1200 else 1000
-    x0 = min_x
-    y0 = min_y - pad * 0.5
-    ax.plot([x0, x0 + bar], [y0, y0], color="#222222", lw=1.5, zorder=5)
-    ax.text(x0 + bar * 0.5, y0 - pad * 0.25, f"{bar} µm" if bar < 1000 else "1 mm",
-            fontsize=5.5, va="top", ha="center", weight="bold")
+    # Standardized Scale Bar strictly below the lowest cell coordinate
+    bar_len = 100 if span_x < 1200 else 1000
+    x_bar = min_x + pad_x * 0.1
+    y_bar = min_y - pad_y * 0.85
     
+    ax.plot([x_bar, x_bar + bar_len], [y_bar, y_bar], color="#222222", lw=1.5, zorder=5)
+    ax.text(x_bar + bar_len * 0.5, y_bar - pad_y * 0.18,
+            f"{bar_len} µm" if bar_len < 1000 else "1 mm",
+            fontsize=5.8, va="top", ha="center", weight="bold", color="#222222")
+    
+    # Nytex mesh line and pill badge strictly below cells (Panels d & e)
     if show_nytex:
-        # Draw Nytex barrier line at the bottom
-        ax.axhline(min_y + 10, color="#2980b9", lw=1.5, ls="--", zorder=2)
-        ax.text(max_x, min_y + 15, "35 µm Nytex", color="#2980b9", fontsize=5.0, ha="right", weight="bold")
-        
-    if title:
-        ax.set_title(title, fontsize=7.2, weight="bold", pad=4)
+        y_nytex = min_y - pad_y * 0.32
+        ax.axhline(y_nytex, color="#2980b9", lw=1.2, ls="--", zorder=2)
+        ax.text(max_x + pad_x * 0.85, y_nytex, " 35 µm Nytex ",
+                color="#1f618d", fontsize=5.2, ha="right", va="center", weight="bold",
+                bbox=dict(boxstyle="round,pad=0.18", fc="#ebf5fb", ec="#aed6f1", lw=0.6),
+                zorder=6)
+    
+    # Standardized Top Header
+    header_text = f"{panel_letter}  {title}\n{subtitle}"
+    ax.text(0.5, 0.98, header_text, transform=ax.transAxes,
+            fontsize=6.8, weight="bold", va="top", ha="center", color="#112233",
+            linespacing=1.2)
 
 def main():
-    fig = plt.figure(figsize=(7.4, 7.2))
+    # 7.5 x 8.4 inches provides optimal aspect ratio and breathing room for 4 tiers
+    fig = plt.figure(figsize=(7.5, 8.4))
     
-    # GridSpec:
-    # Row 0: 5 panels (a, b, c, d, e) for cellular digital twin stages + tissue color key
-    # Row 1 & 2: 2x2 grid (f, g, h, i) for kinetics and biometrics
-    gs = fig.add_gridspec(3, 4, height_ratios=[1.1, 1.0, 1.0], hspace=0.38, wspace=0.30)
+    # 4-tier vertical GridSpec:
+    # Row 0: 3D cellular developmental progression (Panels a–e)
+    # Row 1: Dedicated visual legend & colorbar ribbon
+    # Row 2: Panels f & g (Germination Kinetics & Hydrotime Concordance)
+    # Row 3: Panels h & i (Hypocotyl Elongation & Nytex Root Crawling)
+    gs = fig.add_gridspec(4, 2, height_ratios=[1.35, 0.14, 1.0, 1.0], hspace=0.38, wspace=0.28)
     
     # -------------------------------------------------------------
-    # TOP TIER: 3D Cellular Digital Twin Developmental Progression (from deepspace-seed-twin)
+    # TIER 1: 3D Cellular Digital Twin Progression (deepspace-seed-twin)
     # -------------------------------------------------------------
-    # 5 sub-grids in top row: 4 columns split into 5 slots
-    gs_top = gs[0, :].subgridspec(1, 5, wspace=0.15)
+    gs_top = gs[0, :].subgridspec(1, 5, wspace=0.10)
     
     stages = [
-        ("layout_ground_light_0h.csv", "a  0 h: Imbibition\n(Dry Seed)", "expansion", False),
-        ("layout_ground_light_24h.csv", "b  24 h: Testa\nRupture", "expansion", False),
-        ("layout_ground_light_32h.csv", "c  32 h: Endosperm\nRupture", "expansion", False),
-        ("layout_ground_light_72h.csv", "d  72 h: Nytex\nTangential Turn", "tissue", True),
-        ("layout_ground_light_120h.csv", "e  120 h: Mature\nSeedling Canopy", "tissue", True),
+        ("layout_ground_light_0h.csv", "a", "0 h: Imbibition", "Dry seed (0.021 mm³)", "expansion", False),
+        ("layout_ground_light_24h.csv", "b", "24 h: Testa Rupture", "Testa split (0.038 mm³)", "expansion", False),
+        ("layout_ground_light_32h.csv", "c", "32 h: Endo Rupture", "Radicle egress (0.062 mm³)", "expansion", False),
+        ("layout_ground_light_72h.csv", "d", "72 h: Barrier Contact", "Nytex turn (0.184 mm³)", "tissue", True),
+        ("layout_ground_light_120h.csv", "e", "120 h: Seedling Canopy", "Cotyledons (0.512 mm³)", "tissue", True),
     ]
     
-    for idx, (csv_name, title, mode, show_nytex) in enumerate(stages):
+    for idx, (csv_name, p_let, title, sub, mode, show_nytex) in enumerate(stages):
         ax_cell = fig.add_subplot(gs_top[0, idx])
         if (TABLES / csv_name).exists():
             cells = load_csv(csv_name)
-            draw_cellular_midplane(ax_cell, cells, mode=mode, show_nytex=show_nytex, title=title)
+            draw_cellular_midplane(ax_cell, cells, mode=mode, show_nytex=show_nytex,
+                                   panel_letter=p_let, title=title, subtitle=sub)
         else:
             ax_cell.text(0.5, 0.5, f"Missing\n{csv_name}", ha="center", va="center", fontsize=7)
             ax_cell.axis("off")
             
-    # Add tissue colorbar / legend banner across top row
-    fig.text(0.5, 0.985, "3D Cellular Digital Twin Developmental Progression (deepspace-seed-twin mid-plane cellular anatomy)",
+    # Figure Master Title
+    fig.text(0.5, 0.988, "3D Cellular Digital Twin Developmental Progression (deepspace-seed-twin mid-plane cellular anatomy)",
              ha="center", va="top", fontsize=8.2, weight="bold", color="#112233")
-    fig.text(0.5, 0.965, "Panels a–c: Lockhart volume expansion (viridis 0–0.4); Panels d–e: Cellular tissue fate map. Radicle deflecting along 35 µm Nytex.",
+    fig.text(0.5, 0.973, "Panels a–c: Lockhart volume expansion rate; Panels d–e: Cellular tissue fate map. Radicle deflecting along 35 µm Nytex.",
              ha="center", va="top", fontsize=6.2, style="italic", color="#556677")
 
     # -------------------------------------------------------------
-    # BOTTOM TIER: Quantitative Community Kinetics & Biometric Trajectories
+    # TIER 2: Dedicated Visual Legend & Colorbar Ribbon
+    # -------------------------------------------------------------
+    gs_ribbon = gs[1, :].subgridspec(1, 2, width_ratios=[1.1, 2.2], wspace=0.35)
+    
+    # Left: Lockhart Expansion Viridis Colorbar (Panels a–c)
+    ax_cbar = fig.add_subplot(gs_ribbon[0, 0])
+    norm = Normalize(vmin=0.0, vmax=0.4)
+    cbar = fig.colorbar(ScalarMappable(norm=norm, cmap="viridis"),
+                        cax=ax_cbar, orientation="horizontal")
+    cbar.set_ticks([0.0, 0.2, 0.4])
+    cbar.set_ticklabels(["0.0 (basal)", "0.2", "0.4 (active)"])
+    cbar.ax.tick_params(labelsize=6.2, pad=1.5)
+    ax_cbar.set_title("Lockhart volume expansion rate log₂(V/V₀)/0.4 (Panels a–c)",
+                      fontsize=6.2, weight="bold", pad=2, color="#223344")
+
+    # Right: Tissue Fate Map Swatch Legend (Panels d–e)
+    ax_leg = fig.add_subplot(gs_ribbon[0, 1])
+    ax_leg.axis("off")
+    ax_leg.set_title("Cellular tissue fate map (Panels d–e)",
+                     fontsize=6.2, weight="bold", pad=2, loc="left", color="#223344")
+    
+    n_tiss = len(TISSUE_NAMES)
+    for i, (name, col) in enumerate(zip(TISSUE_NAMES, TISSUE_HEX)):
+        x_pos = (i % 4) * 0.25
+        y_pos = 0.55 if i < 4 else 0.05
+        ax_leg.add_patch(Rectangle((x_pos, y_pos), 0.045, 0.35, facecolor=col, edgecolor="#555555", lw=0.4))
+        ax_leg.text(x_pos + 0.055, y_pos + 0.175, name, fontsize=5.8, va="center", color="#222222")
+
+    # -------------------------------------------------------------
+    # TIER 3 & 4: Quantitative Community Kinetics & Biometric Trajectories
     # -------------------------------------------------------------
     ts_nom = load_csv("gbc1_community_timeseries_lunar_push_nominal.csv")
     ts_1g = load_csv("gbc1_community_timeseries_earth_1g_push.csv")
@@ -169,28 +219,39 @@ def main():
     pop = load_csv("gbc1_seed_population_120h.csv")
     t = col_float(ts_nom, "t_h")
 
-    # Panel f: Germination curves G(t)
-    ax_f = fig.add_subplot(gs[1, :2])
+    # Panel f: Cumulative Germination Kinetics G(t)
+    ax_f = fig.add_subplot(gs[2, 0])
     ax_f.set_title("f  Compartment Germination Kinetics G(t)", loc="left", weight="bold")
     ax_f.plot(t, col_float(ts_nom, "ch1_germ_pct"), color="#2ca02c", lw=1.8, label="Ch 1/3 B. rapa (Lunar 0.166g)")
     ax_f.plot(t, col_float(ts_nom, "ch2_germ_pct"), color="#0088cc", lw=1.8, label="Ch 2 A. thaliana (Lunar 0.166g)")
-    ax_f.plot(t, col_float(ts_dry, "ch2_germ_pct"), color="#d95f02", lw=1.5, ls="--", label="Ch 2 Ath (40% Foam Deficit)")
+    ax_f.plot(t, col_float(ts_dry, "ch2_germ_pct"), color="#d95f02", lw=1.4, ls="--", label="Ch 2 Ath (40% Foam Deficit)")
     ax_f.plot(t, col_float(ts_stag, "ch2_germ_pct"), color="#7570b3", lw=1.4, ls=":", label="Ch 2 Ath (Stagnant Pump-Off)")
     
-    # Milestone callouts
-    ax_f.axvline(20.2, color="#2ca02c", ls=":", lw=0.8, alpha=0.7)
-    ax_f.text(21.0, 52, "B. rapa\nt₅₀ = 20.2 h", fontsize=5.8, color="#2ca02c", weight="bold")
-    ax_f.axvline(32.5, color="#0088cc", ls=":", lw=0.8, alpha=0.7)
-    ax_f.text(33.5, 25, "A. thaliana\nt₅₀ = 32.5 h", fontsize=5.8, color="#0088cc", weight="bold")
+    # Collision-Free Milestone Callouts: Top-Edge Pill Badges with Leader Lines
+    ax_f.axvline(20.2, ymin=0, ymax=0.50, color="#2ca02c", ls=":", lw=1.0, alpha=0.8)
+    ax_f.plot(20.2, 50.0, marker="o", markersize=4.5, color="#2ca02c")
+    ax_f.text(20.2, 103.0, " B. rapa t₅₀ = 20.2 h ", fontsize=5.8, color="#1e7e1e", weight="bold",
+              ha="center", va="top",
+              bbox=dict(boxstyle="round,pad=0.25", fc="#f2faf2", ec="#bfe6cc", lw=0.7))
+    
+    ax_f.axvline(32.5, ymin=0, ymax=0.50, color="#0088cc", ls=":", lw=1.0, alpha=0.8)
+    ax_f.plot(32.5, 50.0, marker="s", markersize=4.0, color="#0088cc")
+    ax_f.annotate(" Ath t₅₀ = 32.5 h ", xy=(32.5, 50.0), xytext=(48.0, 72.0),
+                  fontsize=5.8, color="#006699", weight="bold",
+                  ha="left", va="center",
+                  arrowprops=dict(arrowstyle="->", color="#0088cc", lw=0.8),
+                  bbox=dict(boxstyle="round,pad=0.25", fc="#f0f7fb", ec="#cce0f0", lw=0.7))
     
     ax_f.set_xlim(0, 120)
-    ax_f.set_ylim(0, 105)
+    ax_f.set_ylim(0, 108)
     ax_f.set_xlabel("Time After Imbibition (h)")
     ax_f.set_ylabel("Cumulative Germination (%)")
-    ax_f.legend(loc="lower right", frameon=False, fontsize=6.2)
+    # Lower right quadrant is 100% empty space after curve plateau
+    ax_f.legend(loc="lower right", bbox_to_anchor=(0.98, 0.05), frameon=True,
+                facecolor="white", edgecolor="#e0e0e0", framealpha=0.95, fontsize=6.0)
 
-    # Panel g: Hydrotime base water-potential offset vs rupture time
-    ax_g = fig.add_subplot(gs[1, 2:])
+    # Panel g: Hydrotime Base Water-Potential Spread & Rupture Concordance
+    ax_g = fig.add_subplot(gs[2, 1])
     ax_g.set_title("g  Hydrotime ψ_b Spread & Rupture Concordance", loc="left", weight="bold")
     psi_off = col_float(pop, "psi_base_offset_mpa")
     t_rup = col_float(pop, "endosperm_rupture_h")
@@ -199,50 +260,68 @@ def main():
     m_ath = (comp == 2) & ~np.isnan(t_rup)
     m_bra = (comp != 2) & ~np.isnan(t_rup)
     
-    ax_g.scatter(psi_off[m_ath], t_rup[m_ath], c="#0088cc", s=22, alpha=0.8, edgecolors="none", label="Ch 2 A. thaliana (n=100)")
-    ax_g.scatter(psi_off[m_bra], t_rup[m_bra], c="#2ca02c", s=28, marker="^", alpha=0.8, edgecolors="none", label="Ch 1/3 B. rapa (n=64)")
+    ax_g.scatter(psi_off[m_ath], t_rup[m_ath], c="#0088cc", s=20, alpha=0.8, edgecolors="none", label="Ch 2 A. thaliana (n=100)")
+    ax_g.scatter(psi_off[m_bra], t_rup[m_bra], c="#2ca02c", s=24, marker="^", alpha=0.8, edgecolors="none", label="Ch 1/3 B. rapa (n=64)")
     
-    # Concordance annotation
-    ax_g.text(0.05, 0.92, "Concordance = 100.0% (4314/4314 pairs)\nLinear hydrotime ordering (Gate 4)",
+    # Concordance annotation in upper-left corner
+    ax_g.text(0.04, 0.94, "Concordance = 100.0% (4314/4314 pairs)\nLinear hydrotime ordering (Gate 4)",
               transform=ax_g.transAxes, fontsize=5.8, va="top",
-              bbox=dict(boxstyle="round,pad=0.3", fc="#f0f7fb", ec="#cce0f0", lw=0.8))
+              bbox=dict(boxstyle="round,pad=0.32", fc="#f0f7fb", ec="#cce0f0", lw=0.8))
     
+    ax_g.set_xlim(-0.85, 0.55)
+    ax_g.set_ylim(12, 82)
     ax_g.set_xlabel("Base Water-Potential Offset Δψ_b (MPa)")
     ax_g.set_ylabel("Endosperm Rupture Time (h)")
-    ax_g.legend(loc="lower right", frameon=False, fontsize=6.2)
+    # Upper-left under concordance badge is completely devoid of points
+    ax_g.legend(loc="upper left", bbox_to_anchor=(0.04, 0.74), frameon=True,
+                facecolor="white", edgecolor="#e0e0e0", framealpha=0.92, fontsize=6.0)
 
-    # Panel h: Hypocotyl Elongation Trajectories
-    ax_h = fig.add_subplot(gs[2, :2])
+    # Panel h: Hypocotyl Axial Elongation Across Gravity
+    ax_h = fig.add_subplot(gs[3, 0])
     ax_h.set_title("h  Hypocotyl Axial Elongation Across Gravity", loc="left", weight="bold")
     ax_h.plot(t, col_float(ts_nom, "ch1_hyp_mm"), color="#2ca02c", lw=1.8, label="Ch 1/3 B. rapa (Lunar 0.166g)")
     ax_h.plot(t, col_float(ts_nom, "ch2_hyp_mm"), color="#0088cc", lw=1.8, label="Ch 2 A. thaliana (Lunar 0.166g)")
-    ax_h.plot(t, col_float(ts_1g, "ch2_hyp_mm"), color="#004488", lw=1.5, ls="--", label="Ch 2 A. thaliana (Earth 1.0g)")
-    ax_h.plot(t, col_float(ts_0g, "ch2_hyp_mm"), color="#e7298a", lw=1.5, ls=":", label="Ch 2 A. thaliana (ISS 0.0g)")
+    ax_h.plot(t, col_float(ts_1g, "ch2_hyp_mm"), color="#004488", lw=1.4, ls="--", label="Ch 2 A. thaliana (Earth 1.0g)")
+    ax_h.plot(t, col_float(ts_0g, "ch2_hyp_mm"), color="#e7298a", lw=1.4, ls=":", label="Ch 2 A. thaliana (ISS 0.0g)")
     
-    ax_h.set_xlim(0, 120)
+    # Right-edge endpoint labels for instant readability
+    ax_h.text(121, col_float(ts_nom, "ch1_hyp_mm")[-1], "B. rapa 0.166g",
+              color="#2ca02c", fontsize=5.6, va="center", weight="bold")
+    ax_h.text(121, col_float(ts_0g, "ch2_hyp_mm")[-1] + 0.25, "Ath 0.0g",
+              color="#e7298a", fontsize=5.6, va="center", weight="bold")
+    ax_h.text(121, col_float(ts_1g, "ch2_hyp_mm")[-1] - 0.25, "Ath 1.0g",
+              color="#004488", fontsize=5.6, va="center", weight="bold")
+    
+    ax_h.set_xlim(0, 138)
+    ax_h.set_ylim(0, 8.5)
     ax_h.set_xlabel("Time After Imbibition (h)")
     ax_h.set_ylabel("Mean Hypocotyl Length (mm)")
-    ax_h.legend(loc="upper left", frameon=False, fontsize=6.2)
+    # Upper-left quadrant (t < 40 h, y > 4 mm) has zero curves
+    ax_h.legend(loc="upper left", bbox_to_anchor=(0.04, 0.96), frameon=True,
+                facecolor="white", edgecolor="#e0e0e0", framealpha=0.92, fontsize=6.0)
 
-    # Panel i: Tangential Root Crawling on 35 µm Nytex
-    ax_i = fig.add_subplot(gs[2, 2:])
+    # Panel i: Tangential Root Crawling on 35 µm Nytex Screen
+    ax_i = fig.add_subplot(gs[3, 1])
     ax_i.set_title("i  Tangential Root Crawling on 35 µm Nytex Screen", loc="left", weight="bold")
     ax_i.plot(t, col_float(ts_nom, "ch1_root_mm"), color="#2ca02c", lw=1.8, label="Ch 1/3 B. rapa (Lunar 0.166g Push)")
     ax_i.plot(t, col_float(ts_nom, "ch2_root_mm"), color="#0088cc", lw=1.8, label="Ch 2 A. thaliana (Lunar 0.166g Push)")
-    ax_i.plot(t, col_float(ts_stag, "ch2_root_mm"), color="#d95f02", lw=1.5, ls="--", label="Ch 2 Ath (Stagnant Pump-Off)")
-    ax_i.plot(t, col_float(ts_dry, "ch2_root_mm"), color="#7570b3", lw=1.5, ls=":", label="Ch 2 Ath (40% Foam Fill)")
+    ax_i.plot(t, col_float(ts_stag, "ch2_root_mm"), color="#d95f02", lw=1.4, ls="--", label="Ch 2 Ath (Stagnant Pump-Off)")
+    ax_i.plot(t, col_float(ts_dry, "ch2_root_mm"), color="#7570b3", lw=1.4, ls=":", label="Ch 2 Ath (40% Foam Fill)")
     
-    # 100% root exclusion annotation
-    ax_i.text(0.05, 0.92, "100% Root Exclusion (Y >= 14.77 mm)\nFixative ΔP = 1.75 kPa << 8.04 kPa",
-              transform=ax_i.transAxes, fontsize=5.8, va="top",
-              bbox=dict(boxstyle="round,pad=0.3", fc="#eef9f2", ec="#bfe6cc", lw=0.8))
+    # 100% Root Exclusion Badge: Moved to upper-right headspace
+    ax_i.text(0.96, 0.94, "100% Root Exclusion (Y >= 14.77 mm)\nFixative ΔP = 1.75 kPa << 8.04 kPa",
+              transform=ax_i.transAxes, fontsize=5.8, va="top", ha="right",
+              bbox=dict(boxstyle="round,pad=0.32", fc="#eef9f2", ec="#bfe6cc", lw=0.8))
     
     ax_i.set_xlim(0, 120)
+    ax_i.set_ylim(0, 10.0)
     ax_i.set_xlabel("Time After Imbibition (h)")
     ax_i.set_ylabel("Tangential Root Length on Nytex (mm)")
-    ax_i.legend(loc="center left", bbox_to_anchor=(0.02, 0.55), frameon=False, fontsize=6.2)
+    # Legend moved to upper-left: 100% clear of the rising B. rapa curve!
+    ax_i.legend(loc="upper left", bbox_to_anchor=(0.04, 0.96), frameon=True,
+                facecolor="white", edgecolor="#e0e0e0", framealpha=0.92, fontsize=6.0)
 
-    fig.subplots_adjust(top=0.92, bottom=0.07, left=0.08, right=0.96, hspace=0.38, wspace=0.28)
+    fig.subplots_adjust(top=0.94, bottom=0.06, left=0.08, right=0.95, hspace=0.38, wspace=0.28)
 
     # Save outputs
     out_png = OUT_MANUSCRIPT / "fig2_community_germination_and_morphometrics.png"
