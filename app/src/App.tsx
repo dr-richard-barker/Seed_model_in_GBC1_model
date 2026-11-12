@@ -1000,8 +1000,30 @@ export function App() {
                 </div>
               </section>
 
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#00d4ff", marginBottom: 6, fontSize: 14 }}>4. 3D Seed_Model Phenotypic Plasticity Across Spaceflight Vectors</h3>
+                <p>
+                  Coupled cellular simulations from the <strong>Seed_Model</strong> capture morphological divergence across environmental, hardware, and atmospheric regimes (Figure 6 in manuscript):
+                </p>
+                <div style={{ textAlign: "center", margin: "10px 0" }}>
+                  <img
+                    src="fig6_seed_phenotypic_variation.png"
+                    alt="3D Seed Model Phenotypic Variation"
+                    style={{ maxWidth: "100%", maxHeight: 340, borderRadius: 6, border: "1px solid #1f2f3d" }}
+                  />
+                </div>
+                <ul style={{ paddingLeft: 20, marginTop: 6, fontSize: 12 }}>
+                  <li><strong>Hardware (Nytex Screen):</strong> 100% root exclusion with 90&deg; tangential root deflection preserving RNAlater perfusion (&Delta;P = 1.75 kPa).</li>
+                  <li><strong>Gravity (1g vs 0.166g vs 0g):</strong> Amyloplast statolith sedimentation rate &prop; g, driving straight descent (1g) vs dispersed descent (0.166g) vs autotropic/hydrotropic wandering (0g).</li>
+                  <li><strong>Atmosphere &amp; Ethylene:</strong> Hypoxia (&lt; 5 kPa O2) stunting vs phytotoxic ethylene (&gt; 50 ppb C2H4) triggering the <em>triple response</em> (+85% hypocotyl radial swelling).</li>
+                  <li><strong>Airflow &amp; Boundary Layer:</strong> Forced ventilation (g_bl = 13.4 mm/s) vs stagnant envelope (g_bl &lt; 3 mm/s) trapping respiratory heat and ethylene.</li>
+                  <li><strong>Cosmic Radiation:</strong> GCR/SPE ionizing heavy ions triggering G2/M meristematic cell-cycle checkpoint arrest.</li>
+                  <li><strong>Light &amp; Crowding:</strong> Red:Far-Red depletion in Chamber 2 driving +38% SAS hypocotyl elongation and 3D phototropic lean away from neighbors.</li>
+                </ul>
+              </section>
+
               <section style={{ borderTop: "1px solid #1f2f3d", paddingTop: 14 }}>
-                <h3 style={{ color: "#e8f0f7", marginBottom: 6, fontSize: 14 }}>4. Quick-Start Guide for Interactive Exploration</h3>
+                <h3 style={{ color: "#e8f0f7", marginBottom: 6, fontSize: 14 }}>5. Quick-Start Guide for Interactive Exploration</h3>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
                   <button className="btn" onClick={() => { setShowTour(false); chamberViewerRef.current?.setCameraPreset("iso"); }}>
                     🎥 3D Isometric View

@@ -31,6 +31,18 @@
 
 \providecommand{\bibcommenthead}{}
 
+% Float placement optimization
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setcounter{dbltopnumber}{3}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.75}
+\renewcommand{\dbltopfraction}{0.95}
+\renewcommand{\dblfloatpagefraction}{0.75}
+
 % Typography & Section Headings
 \titleformat{\section}
   {\fontsize{10.5bp}{12.5bp}\selectfont\sffamily\bfseries\color{npjdark}}
@@ -53,7 +65,7 @@
 % Running header and footer styles
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE]{\textsf{\footnotesize R. Barker \textit{et al.}}}
+\fancyhead[LE]{\textsf{\footnotesize R. Barker}}
 \fancyhead[RO]{\textsf{\footnotesize \textit{npj Microgravity} (2026) 12:48}}
 \fancyhead[RE,LO]{\textsf{\footnotesize \url{https://doi.org/10.1038/s41526-026-00482-x}}}
 \fancyfoot[LE,RO]{\textsf{\footnotesize \textbf{\thepage}}}
@@ -101,13 +113,12 @@
 
     % Authors
     \noindent
-    {\fontsize{10.5bp}{13bp}\selectfont\sffamily\bfseries Richard Barker\textsuperscript{1,2*}}\\[4pt]
+    {\fontsize{10.5bp}{13bp}\selectfont\sffamily\bfseries Richard Barker\textsuperscript{1*}}\\[4pt]
 
     % Affiliations
     \noindent
     {\fontsize{8.5bp}{11bp}\selectfont\sffamily\color{npjdark}
     \textsuperscript{1}Department of Agricultural and Biological Engineering, Purdue University, West Lafayette, IN 47907, USA.\\
-    \textsuperscript{2}Center for Plant Environmental Sensing, University of Wisconsin-Madison, Madison, WI 53706, USA.\\
     \textsuperscript{*}e-mail: \href{mailto:barkerrj@purdue.edu}{barkerrj@purdue.edu}}\\[6pt]
 
     % Timeline
@@ -163,6 +174,18 @@ The 164-seed flight layout (Fig.~\ref{fig:sowing}a) places seeds on the 35~$\mu$
 \end{itemize}
 
 Simulated van Genuchten capillary retention (Fig.~\ref{fig:sowing}b) maintains substrate matric water potential $\psi \approx -0.005\ \mathrm{MPa}$ at 100\% activation fill, transitioning to $-0.26\ \mathrm{MPa}$ under a 40\% moisture deficit fault. In Push mode ($Q = 25\ \mathrm{mL\,min^{-1}}$), air enters through Ports 1 and 3 ($Z = \pm 21.59\ \mathrm{mm}$), passes through $Z = \pm 8.5\ \mathrm{mm}$ baffle windows, and converges into Central Chamber 2 before exiting Port 2 (Fig.~\ref{fig:sowing}c). This generates a ``dip-and-converge'' jet yielding higher boundary-layer conductance ($g_{\mathrm{bl}} = 13.42\ \mathrm{mm\,s^{-1}}$) in Chamber 2 compared to Pull mode ($12.67\ \mathrm{mm\,s^{-1}}$), verifying Gate 6.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=0.68\textheight,keepaspectratio]{fig6_seed_phenotypic_variation.png}
+\caption{\textbf{Predicted 3D cellular seedling phenotypic variation across spaceflight environmental, atmospheric, radiation, and hardware vectors.} \textbf{a}, 3D cellular seed anatomy and 35~$\mu$m Nytex screen barrier deflection ($Y = 14.77\ \mathrm{mm}$), demonstrating 100\% exclusion from polyurethane foam pores and tangential radicle elongation with end-of-mission fixative perfusion safety ($\Delta P = 1.75\ \mathrm{kPa} \ll 8.04\ \mathrm{kPa}$ bubble point). \textbf{b}, Gravitational regimes: statolith amyloplast sedimentation driving downward gravitropic descent under terrestrial 1.0g, attenuated sedimentation and wider descent dispersion under lunar 0.166g, and wandering radicles governed by autotropism and hydrotropism in 0g microgravity. \textbf{c}, Atmospheric pressure and gas chemistry: normoxic development (21~$\mathrm{kPa}\ \mathrm{O}_2$) versus stunting under hypoxia ($< 5\ \mathrm{kPa}\ \mathrm{O}_2$) and classic ethylene triple response ($> 50\ \mathrm{ppb}\ \ce{C2H4}$) characterized by radial hypocotyl swelling, shortened axial extension, and exaggerated apical hook curvature. \textbf{d}, Convective airflow: thin boundary layer ($\delta_{\mathrm{bl}} \approx 0.8\ \mathrm{mm}$, $g_{\mathrm{bl}} = 13.4\ \mathrm{mm\,s^{-1}}$) in active sweep mode ($Q = 25\ \mathrm{mL\,min^{-1}}$) versus stagnant thermal and ethylene entrapment ($Q = 0$, $g_{\mathrm{bl}} < 3\ \mathrm{mm\,s^{-1}}$). \textbf{e}, Cosmic radiation: ionizing high-LET heavy ions (e.g., $^{56}\mathrm{Fe}$) and solar particle events (SPE) inducing DNA double-strand breaks, G2/M cell-cycle checkpoint arrest in root apical meristems, and organ dwarfism. \textbf{f}, Canopy light quality and neighbor crowding: solitary open stand (high red:far-red ratio, compact rosette) versus dense lawn shade avoidance (low red:far-red ratio, SAS hypocotyl elongation, and 3D phototropic lean away from neighbor crowns). \textbf{g}, Quantitative multi-vector phenotypic response comparison matrix at 120~h normalized against terrestrial 1g control.}\label{fig:phenotypes}
+\end{figure*}
+
+\subsection*{Cellular 3D Phenotypic Plasticity Across Spaceflight Vectors}\label{sec:res_pheno}
+
+The cellular Seed\_Model resolves organ-level morphological plasticity across the multiscale physical environment of the LEAF GBC1 flight chamber (Fig.~\ref{fig:phenotypes}). Mechanically, the 35~$\mu$m Nytex screen acts as an impenetrable barrier ($Y = 14.77\ \mathrm{mm}$) that redirects emerging radicles tangentially ($90^\circ$ turn, $> 10\times$ axial extension along the liquid nutrient boundary layer) without permitting root penetration into the polyurethane foam pores (Fig.~\ref{fig:phenotypes}a). This mechanical exclusion prevents pore clogging, preserving a low Darcy pressure drop ($\Delta P = 1.75\ \mathrm{kPa}$) well below the screen capillary bubble point ($8.04\ \mathrm{kPa}$) during autonomous terminal RNAlater fixative perfusion.
+
+Gravitational sensitivity is driven by amyloplast statolith sedimentation in columella cells: while terrestrial 1g drives sharp downward gravitropism, lunar gravity ($0.166g$) attenuates the buoyant driving force on amyloplasts by 83.4\%, resulting in broader dispersion angles and delayed reorientation ($35^\circ$ deflection), whereas microgravity ($0g$) yields wandering radicle trajectories governed solely by autotropism and moisture hydrotropism (Fig.~\ref{fig:phenotypes}b). In the gas phase, localized hypoxia ($< 5\ \mathrm{kPa}\ \mathrm{O}_2$) stunts root elongation by 66\%, whereas trace respiratory ethylene accumulation ($> 50\ \mathrm{ppb}$) triggers the diagnostic triple response---inducing an 85\% increase in hypocotyl radial thickness, severe axial stunting, and exaggerated apical hook curvature (Fig.~\ref{fig:phenotypes}c). Active chamber airflow ($Q = 25\ \mathrm{mL\,min^{-1}}$) maintains a thin boundary layer ($\delta_{\mathrm{bl}} \approx 0.8\ \mathrm{mm}$, $g_{\mathrm{bl}} = 13.4\ \mathrm{mm\,s^{-1}}$), suppressing localized thermal buildup and clearing ethylene, whereas stagnant pump-off faults create an insulating fluid envelope ($g_{\mathrm{bl}} < 3\ \mathrm{mm\,s^{-1}}$) that accelerates tissue hypoxia (Fig.~\ref{fig:phenotypes}d). Ionizing radiation (SPE/GCR heavy ions) triggers G2/M cell-cycle checkpoint arrest in the root apical meristem and quiescent center, suppressing elongation by 45\% (Fig.~\ref{fig:phenotypes}e). In dense stands (Chamber 2 lawn, $206.4\ \mathrm{seeds\,dm^{-2}}$), phytochrome B inactivation under depleted red:far-red light triggers shade-avoidance syndrome (SAS), increasing hypocotyl length by 38\% and inducing 3D lateral phototropic shoot lean ($1.59^\circ$) away from neighbor crowns (Fig.~\ref{fig:phenotypes}f). Across all seven mission vectors, quantitative phenotypic responses exhibit distinct biomarker signatures (Fig.~\ref{fig:phenotypes}g), establishing predictive morphometric benchmarks for autonomous flight imaging.
 
 \begin{figure*}[t]
 \centering
