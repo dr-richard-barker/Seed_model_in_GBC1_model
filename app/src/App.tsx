@@ -146,6 +146,7 @@ export function App() {
   const [showLedger, setShowLedger] = useState<boolean>(false);
   const [showTour, setShowTour] = useState<boolean>(false);
   const [showManuscript, setShowManuscript] = useState<boolean>(false);
+  const [showSupplementary, setShowSupplementary] = useState<boolean>(false);
   const [layers, setLayers] = useState<ChamberLayerVisibility>({
     housing: true,
     foam: true,
@@ -371,6 +372,9 @@ export function App() {
           </button>
           <button className="btn" onClick={() => setShowManuscript(true)} style={{ borderColor: "#a6d96a", color: "#a6d96a" }}>
             📄 Manuscript (PDF)
+          </button>
+          <button className="btn" onClick={() => setShowSupplementary(true)} style={{ borderColor: "#00d4ff", color: "#00d4ff" }}>
+            📑 Supplementary Info (PDF)
           </button>
           <button className="btn" onClick={() => setShowLedger(true)}>
             Parameter Ledger ({ LEDGER.length })
@@ -959,7 +963,7 @@ export function App() {
               </section>
 
               <section style={{ marginBottom: 20 }}>
-                <h3 style={{ color: "#5ec962", marginBottom: 6, fontSize: 14 }}>2. Three-Compartment Flight Sowing Architecture (164 Seeds)</h3>
+                <h3 style={{ color: "#5ec962", marginBottom: 6, fontSize: 14 }}>2. Three-Compartment Flight Sowing Architecture &amp; 3D Cellular Progression</h3>
                 <p>
                   GBC1 houses <strong>164 individual seeds</strong> on top of a <strong>35 µm Nytex monofilament root barrier</strong> at elevation Y = 14.77 mm above three porous phenolic foam cassettes (Y in [7.62, 14.62] mm), partitioned by solid internal baffles at Z = &plusmn;8.5 mm:
                 </p>
@@ -968,6 +972,16 @@ export function App() {
                   <li><strong>Chamber 2 Central (Z in [-7.5, +7.5] mm):</strong> 100 <em>Arabidopsis thaliana</em> genetic model seeds (10 &times; 10 dense lawn, 206.4 seeds/dm&sup2;).</li>
                   <li><strong>Chamber 3 (Z in [+9.5, +30.5] mm):</strong> 32 <em>Brassica rapa</em> crop seeds (8 &times; 4 lattice, 47.2 seeds/dm&sup2;).</li>
                 </ul>
+                <div style={{ textAlign: "center", margin: "10px 0" }}>
+                  <img
+                    src="fig2_community_germination_and_morphometrics.png"
+                    alt="3D Cellular Progression and Community Kinetics"
+                    style={{ maxWidth: "100%", maxHeight: 300, borderRadius: 6, border: "1px solid #1f2f3d" }}
+                  />
+                  <div style={{ fontSize: 11, color: "#8fa6bc", marginTop: 4 }}>
+                    Figure 2: 3D cellular developmental progression (deepspace-seed-twin midplane cellular anatomy) &amp; community kinetics
+                  </div>
+                </div>
               </section>
 
               <section style={{ marginBottom: 20 }}>
@@ -1009,7 +1023,7 @@ export function App() {
                   <img
                     src="fig6_seed_phenotypic_variation.png"
                     alt="3D Seed Model Phenotypic Variation"
-                    style={{ maxWidth: "100%", maxHeight: 340, borderRadius: 6, border: "1px solid #1f2f3d" }}
+                    style={{ maxWidth: "100%", maxHeight: 300, borderRadius: 6, border: "1px solid #1f2f3d" }}
                   />
                 </div>
                 <ul style={{ paddingLeft: 20, marginTop: 6, fontSize: 12 }}>
@@ -1022,8 +1036,51 @@ export function App() {
                 </ul>
               </section>
 
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#e7298a", marginBottom: 6, fontSize: 14 }}>5. 3D Chamber Digital Twin Visualizations: Gravity &amp; Airflow Lessons</h3>
+                <p>
+                  High-resolution 3D renders from <strong>Seed_model_in_GBC1_model</strong> illustrate how chamber boundaries, gravity scaling, and pump airflow alter seedling architecture (Figure 7 in manuscript):
+                </p>
+                <div style={{ textAlign: "center", margin: "10px 0" }}>
+                  <img
+                    src="fig7_chamber_gravity_flow_morphology.png"
+                    alt="Figure 7: 3D Chamber Lessons on Gravity and Flow"
+                    style={{ maxWidth: "100%", maxHeight: 300, borderRadius: 6, border: "1px solid #1f2f3d" }}
+                  />
+                </div>
+                <ul style={{ paddingLeft: 20, marginTop: 6, fontSize: 12 }}>
+                  <li><strong>Lesson 1 (Gravity Level):</strong> On the Moon (0.166g), 83.4% reduction in buoyant driving force results in broader radicle descent spread (35&deg;) and extensive horizontal Nytex gliding (2.87 mm) compared to Earth 1.0g downward descent. Microgravity (0g) produces autotropic root waving and coiling.</li>
+                  <li><strong>Lesson 2 (Pump Flow Rate):</strong> Active Push sweeping (Q = 25 mL/min) accelerates air into Chamber 2 (u = 80 mm/s, g_bl = 13.4 mm/s), purging ethylene below 0.1 ppb. Pump-off stagnant faults trap respiratory ethylene (136.5 ppb), triggering the severe triple response (+85% radial hypocotyl swelling, exaggerated hook, stunted radicle).</li>
+                </ul>
+              </section>
+
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#a6d96a", marginBottom: 6, fontSize: 14 }}>6. Supplementary Information: 5 Full-Page Montages (Figures S1–S5)</h3>
+                <p>
+                  A complete companion <strong>Supplementary Information document</strong> explores the full hardware setting space across 5 page-sized montages:
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 8, fontSize: 12 }}>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 8 }}>
+                    <strong>Fig. S1: Gravitational Scaling</strong>
+                    <div style={{ color: "#8fa6bc", fontSize: 11, marginTop: 2 }}>Earth (1.0g) &rarr; Mars (0.38g) &rarr; Moon (0.166g) &rarr; ISS (0.0g) statolith physics &amp; root turning.</div>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 8 }}>
+                    <strong>Fig. S2: Ventilation &amp; Triple Response</strong>
+                    <div style={{ color: "#8fa6bc", fontSize: 11, marginTop: 2 }}>Push vs. Pull vs. Stagnant CFD streamlines &amp; ethylene dose-response curves.</div>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 8 }}>
+                    <strong>Fig. S3: Substrate Matric Potential</strong>
+                    <div style={{ color: "#8fa6bc", fontSize: 11, marginTop: 2 }}>Capillary water retention, imbibition delay, and Nytex bubble-point safety (&Delta;P &lt;&lt; 8.04 kPa).</div>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 8 }}>
+                    <strong>Fig. S4: Sowing Density Sweeps</strong>
+                    <div style={{ color: "#8fa6bc", fontSize: 11, marginTop: 2 }}>0.25&times; to 2.0&times; crown closure, Beer–Lambert mutual shading, &amp; 3D phototropic lean.</div>
+                  </div>
+                </div>
+              </section>
+
               <section style={{ borderTop: "1px solid #1f2f3d", paddingTop: 14 }}>
-                <h3 style={{ color: "#e8f0f7", marginBottom: 6, fontSize: 14 }}>5. Quick-Start Guide for Interactive Exploration</h3>
+                <h3 style={{ color: "#e8f0f7", marginBottom: 6, fontSize: 14 }}>7. Quick-Start Guide for Interactive Exploration</h3>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
                   <button className="btn" onClick={() => { setShowTour(false); chamberViewerRef.current?.setCameraPreset("iso"); }}>
                     🎥 3D Isometric View
@@ -1039,6 +1096,9 @@ export function App() {
                   </button>
                   <button className="btn" onClick={() => { setShowTour(false); setShowManuscript(true); }} style={{ borderColor: "#a6d96a", color: "#a6d96a" }}>
                     📄 Read NPJ Manuscript
+                  </button>
+                  <button className="btn" onClick={() => { setShowTour(false); setShowSupplementary(true); }} style={{ borderColor: "#00d4ff", color: "#00d4ff" }}>
+                    📑 View Supplementary Info (PDF)
                   </button>
                 </div>
               </section>
@@ -1087,6 +1147,53 @@ export function App() {
               <iframe
                 src="./leaf_gbc1_community_npj_microgravity.pdf#toolbar=1&navpanes=1&view=FitH"
                 title="npj Microgravity Manuscript PDF"
+                style={{ width: "100%", height: "100%", border: "none" }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* SUPPLEMENTARY INFORMATION PDF EMBED MODAL */}
+      {showSupplementary && (
+        <div className="modal-backdrop" onClick={() => setShowSupplementary(false)}>
+          <div className="modal-dialog modal-dialog-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div>
+                <strong style={{ fontSize: 16, color: "#00d4ff" }}>
+                  Supplementary Information · Barker (2026) npj Microgravity
+                </strong>
+                <div style={{ fontSize: 11, color: "#8fa6bc", marginTop: 2 }}>
+                  5 Full-Page Montages (Figures S1–S5) exploring the flight hardware parameter space
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <a
+                  href="./supplementary_information.pdf"
+                  download="supplementary_information.pdf"
+                  className="btn"
+                  style={{ background: "#00d4ff", color: "#081018", textDecoration: "none", fontWeight: 700 }}
+                >
+                  ⬇️ Download Supplementary PDF (2.0 MB)
+                </a>
+                <a
+                  href="./supplementary_information.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                  style={{ textDecoration: "none" }}
+                >
+                  Open in New Tab
+                </a>
+                <button className="btn" onClick={() => setShowSupplementary(false)}>
+                  Close
+                </button>
+              </div>
+            </div>
+            <div className="modal-body" style={{ padding: 0, height: "82vh", overflow: "hidden" }}>
+              <iframe
+                src="./supplementary_information.pdf#toolbar=1&navpanes=1&view=FitH"
+                title="Supplementary Information PDF"
                 style={{ width: "100%", height: "100%", border: "none" }}
               />
             </div>

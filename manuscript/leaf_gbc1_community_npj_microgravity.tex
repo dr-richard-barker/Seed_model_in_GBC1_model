@@ -190,7 +190,7 @@ Gravitational sensitivity is driven by amyloplast statolith sedimentation in col
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{fig2_community_germination_and_morphometrics.png}
-\caption{\textbf{Community germination kinetics, organ kinematics, and 3D phototropic shoot lean over 120 hours.} \textbf{a}, Germination time-course across compartments ($t_{50} = 20.2\ \mathrm{h}$ in \textit{B. rapa} vs. $32.5\ \mathrm{h}$ in \textit{A. thaliana}). \textbf{b}, Mean hypocotyl and tangential radicle length on the 35~$\mu$m Nytex screen. \textbf{c}, Evolution of Leaf Area Index ($LAI$) and canopy cover fraction. \textbf{d}, 3D phototropic shoot lean induced by neighbor foliar shading.}\label{fig:kinetics}
+\caption{\textbf{3D cellular developmental progression and community germination kinetics across species and environments.} \textbf{a--e}, Mid-plane 3D cellular digital twin developmental progression simulated with \textit{deepspace-seed-twin} (\url{https://github.com/dr-richard-barker/deepspace-seed-twin}): \textbf{a}, 0~h dry dormant seed; \textbf{b}, 24~h imbibition and outer testa rupture; \textbf{c}, 32~h micropylar endosperm rupture matching $t_{50} = 32.5\ \mathrm{h}$ in Chamber 2; \textbf{d}, 72~h emergence contacting the 35~$\mu$m Nytex screen and initiating tangential gliding; \textbf{e}, 120~h mature seedling with expanded cotyledons and tissue fate mapping (epidermis, cortex, endodermis, stele, quiescent center, columella, and endosperm). \textbf{f}, Compartment germination kinetics $G(t)$ ($t_{50} = 20.2\ \mathrm{h}$ in \textit{B. rapa} vs. $32.5\ \mathrm{h}$ in \textit{A. thaliana}). \textbf{g}, Single-seed hydrotime base water-potential spread ($\Delta \psi_b$ vs. rupture time) demonstrating 100\% concordance (Gate 4). \textbf{h}, Hypocotyl elongation trajectories across gravity levels (1.0g Earth vs. 0.166g Moon vs. 0.0g ISS). \textbf{i}, Tangential root crawling kinematics along the 35~$\mu$m Nytex screen (Gate 3).}\label{fig:kinetics}
 \end{figure*}
 
 \subsection*{Germination Kinetics \& Organ Morphometrics}
@@ -219,7 +219,7 @@ where $\Omega_{ij}$ accounts for pairwise Euclidean distance, crown radii, and v
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig4_headspace_gas_and_push_pull_cfd.png}
+\includegraphics[width=\textwidth,height=0.36\textheight,keepaspectratio]{fig4_headspace_gas_and_push_pull_cfd.png}
 \caption{\textbf{Chamber headspace gas exchange, psychrometrics, and 3D CFD streamlines.} \textbf{a}, Headspace $\mathrm{O}_2$ and $\mathrm{CO}_2$ concentration dynamics with Farquhar--von Caemmerer--Berry canopy assimilation. \textbf{b}, Trace ethylene accumulation in active sweep mode ($< 0.1\ \mathrm{ppb}$) vs. stagnant fault ($> 130\ \mathrm{ppb}$). \textbf{c}, Headspace relative humidity and optical lid dew-point safety margin ($\Delta T_{\mathrm{margin}} \ge +2.8^\circ\mathrm{C}$). \textbf{d}, 3D CFD streamline topologies in Push vs. Pull ventilation modes.}\label{fig:gas}
 \end{figure*}
 
@@ -229,11 +229,28 @@ Collective metabolic activity across all 164 seedlings is coupled to the $54.05\
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{fig5_scenario_comparison_matrix.png}
+\includegraphics[width=\textwidth,height=0.36\textheight,keepaspectratio]{fig5_scenario_comparison_matrix.png}
 \caption{\textbf{Comprehensive 8-scenario mission and hardware fault comparison matrix.} Heatmap normalized against terrestrial 1g control across germination, organ lengths, crown microclimate, and headspace chemistry.}\label{fig:scenarios}
 \end{figure*}
 
 Under a simulated Stagnant Pump-Off Fault ($Q = 0$, $0.0g$), respiratory ethylene accumulates to $136.5\ \mathrm{ppb}$, driving root tip $\mathrm{O}_2$ down to $11.2\ \mathrm{kPa}$ and inhibiting root growth by 42\% (Fig.~\ref{fig:scenarios}). Similarly, a 40\% foam water deficit delays germination by $> 18\ \mathrm{h}$ and suppresses canopy $LAI$ by 48\%.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth,height=0.48\textheight,keepaspectratio]{fig7_chamber_gravity_flow_morphology.png}
+\caption{\textbf{3D chamber digital twin visualizations: lessons on gravity level and pump flow rate in the LEAF GBC1 flight chamber.} \textbf{a}, 3D isometric perspective of the LEAF GBC1 growth chamber ($48 \times 33.67 \times 68\ \mathrm{mm}$) showing the polycarbonate housing, internal baffles at $Z = \pm 8.5\ \mathrm{mm}$, porous foam reservoir, 35~$\mu$m Nytex screen at $Y = 14.77\ \mathrm{mm}$, and 164 growing seedlings under nominal lunar flight conditions ($0.166g$, $Q = 25\ \mathrm{mL\,min^{-1}}$ Push). \textbf{b}, Lesson 1: Gravitational scaling from Earth 1.0g (straight downward gravitropism and rapid statolith sedimentation) to Moon 0.166g (attenuated driving, wider $35^\circ$ dispersion, and tangential Nytex surface gliding) and microgravity 0.0g (loss of downward vector, stochastic waving, and contact thigmotropism; Supplementary Fig.~S1). \textbf{c}, Lesson 2: Ventilation flow rates and boundary-layer gas dynamics: active Push mode ($Q = 25\ \mathrm{mL\,min^{-1}}$, $g_{\mathrm{bl}} = 13.4\ \mathrm{mm\,s^{-1}}$, ethylene $< 0.1\ \mathrm{ppb}$) producing slender, healthy shoots versus stagnant pump-off faults ($Q = 0$, $g_{\mathrm{bl}} < 3\ \mathrm{mm\,s^{-1}}$, ethylene $= 136.5\ \mathrm{ppb}$) triggering the classic ethylene triple response (+85\% radial hypocotyl swelling, exaggerated apical hook curvature, and stunted root elongation; Supplementary Fig.~S2). \textbf{d}, Longitudinal boundary-layer conductance profile $g_{\mathrm{bl}}(z)$ through baffle windows. \textbf{e}, Quantitative organ morphometric comparison matrix across gravity and ventilation permutations (Supplementary Figs.~S3--S5).}\label{fig:chamber_lessons}
+\end{figure*}
+
+\subsection*{3D Chamber Digital Twin Visualizations: Gravity and Ventilation Lessons}\label{sec:res_chamber}
+
+Interactive 3D visualization of the complete LEAF GBC1 chamber digital twin reveals how physical boundaries and fluid mechanical forces dictate plant phenotypic architecture in deep space (Fig.~\ref{fig:chamber_lessons}). In the spatial domain (Fig.~\ref{fig:chamber_lessons}a), the three chamber compartments accommodate distinct sowing geometries: \textit{B. rapa} in outer Chambers 1 and 3 ($47.2\ \mathrm{seeds\,dm^{-2}}$) and the central \textit{A. thaliana} lawn in Chamber 2 ($206.4\ \mathrm{seeds\,dm^{-2}}$). 
+
+Two foundational operational lessons emerge:
+\begin{enumerate}
+    \item \textbf{Gravity scaling controls root search geometry}: On Earth (1.0g), high statolith buoyant force drives rapid vertical penetration to the 35~$\mu$m Nytex screen. On the Moon (0.166g), sedimentation rate drops by 83.4\% (Supplementary Fig.~S1), producing wider radicle dispersion ($35^\circ$ spread) and extensive horizontal surface crawling ($2.87\ \mathrm{mm}$ in Chamber 2), while microgravity (0.0g) abolishes gravitropic orientation entirely, inducing autotropic waving and contact loops (Fig.~\ref{fig:chamber_lessons}b).
+    \item \textbf{Forced sweep prevents boundary-layer ethylene intoxication}: Active Push pumping ($Q = 25\ \mathrm{mL\,min^{-1}}$) forces airflow through $Z = \pm 8.5\ \mathrm{mm}$ baffle windows, accelerating air velocity into Chamber 2 ($u = 80\ \mathrm{mm\,s^{-1}}$, $g_{\mathrm{bl}} = 13.4\ \mathrm{mm\,s^{-1}}$) and purging respiratory ethylene below $0.1\ \mathrm{ppb}$ (Fig.~\ref{fig:chamber_lessons}c,d; Supplementary Fig.~S2). In contrast, pump-off stagnant faults isolate the canopy within a thick boundary-layer envelope ($g_{\mathrm{bl}} < 3\ \mathrm{mm\,s^{-1}}$), allowing ethylene to accumulate to $136.5\ \mathrm{ppb}$ and triggering the severe diagnostic triple response (+85\% radial hypocotyl swelling, exaggerated apical hook curvature, and 42\% root stunting; Fig.~\ref{fig:chamber_lessons}c,e).
+\end{enumerate}
+Exhaustive full-page exploration of all hardware settings is documented in Supplementary Figures S1--S5.
 
 \section*{Discussion}
 
