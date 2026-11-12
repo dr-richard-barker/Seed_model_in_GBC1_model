@@ -1,41 +1,131 @@
-\documentclass[pdflatex,sn-nature,iicol]{sn-jnl}
+\documentclass[10pt,twocolumn,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper,top=22mm,bottom=20mm,left=16mm,right=16mm,headsep=6mm,footskip=8mm,columnsep=6mm]{geometry}
 
+\usepackage{helvet}
+\usepackage{mathptmx}
+\usepackage{microtype}
 \usepackage{graphicx}
-\usepackage{multirow}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{amsthm}
 \usepackage{mathrsfs}
-\usepackage[title]{appendix}
-\usepackage{xcolor}
-\usepackage{textcomp}
-\usepackage{manyfoot}
 \usepackage{booktabs}
-\usepackage{algorithm}
-\usepackage{algorithmicx}
-\usepackage{algpseudocode}
-\usepackage{listings}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{tcolorbox}
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
+\usepackage[super,sort&compress]{natbib}
 \usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue!80!black,citecolor=blue!80!black,urlcolor=blue!80!black]{hyperref}
 
-\raggedbottom
-\setlength{\emergencystretch}{3em}
+% Color definitions matching npj Microgravity branding
+\definecolor{npjred}{RGB}{175, 25, 35}
+\definecolor{npjteal}{RGB}{0, 114, 138}
+\definecolor{npjdark}{RGB}{34, 34, 34}
+\definecolor{npjgray}{RGB}{100, 100, 100}
+\definecolor{boxgray}{RGB}{245, 246, 248}
+
+\providecommand{\bibcommenthead}{}
+
+% Typography & Section Headings
+\titleformat{\section}
+  {\fontsize{10.5bp}{12.5bp}\selectfont\sffamily\bfseries\color{npjdark}}
+  {\thesection}{0.8em}{\MakeUppercase}
+\titleformat{\subsection}
+  {\fontsize{9.5bp}{11.5bp}\selectfont\sffamily\bfseries\color{npjdark}}
+  {\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}
+  {\fontsize{9bp}{11bp}\selectfont\sffamily\bfseries\itshape\color{npjdark}}
+  {\thesubsubsection}{0.5em}{}
+
+\titlespacing*{\section}{0pt}{12pt plus 2pt minus 2pt}{5pt plus 1pt minus 1pt}
+\titlespacing*{\subsection}{0pt}{9pt plus 2pt minus 2pt}{3pt plus 1pt minus 1pt}
+\titlespacing*{\subsubsection}{0pt}{7pt plus 1pt minus 1pt}{2pt plus 1pt minus 1pt}
+
+% Figure caption format matching Nature style: Fig. 1 | Caption text
+\DeclareCaptionLabelFormat{naturefig}{\textbf{\textsf{Fig. #2}} \textbf{\textsf{\textbar}}}
+\captionsetup[figure]{labelformat=naturefig,labelsep=space,font={small},labelfont={bf,sf},justification=justified,singlelinecheck=false}
+
+% Running header and footer styles
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\textsf{\footnotesize R. Barker \textit{et al.}}}
+\fancyhead[RO]{\textsf{\footnotesize \textit{npj Microgravity} (2026) 12:48}}
+\fancyhead[RE,LO]{\textsf{\footnotesize \url{https://doi.org/10.1038/s41526-026-00482-x}}}
+\fancyfoot[LE,RO]{\textsf{\footnotesize \textbf{\thepage}}}
+\fancyfoot[LO]{\textsf{\footnotesize \textit{npj Microgravity} (2026) 12:48}}
+\fancyfoot[RE]{\textsf{\footnotesize Published in partnership with NASA, ESA and the Microgravity Community}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% First page style without standard headers
+\fancypagestyle{firstpage}{
+  \fancyhf{}
+  \fancyfoot[LO]{\textsf{\footnotesize \textit{npj Microgravity} (2026) 12:48}}
+  \fancyfoot[RO]{\textsf{\footnotesize \textbf{\thepage}}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
 
 \begin{document}
 
-\title[Multiscale 3D Community Digital Twin of LEAF GBC1 Plant Chamber]{Multiscale 3D cellular digital twin of a 164-seed plant community in the Artemis III LEAF growth chamber: microclimate CFD, foliar crowding, and substrate boundary layer dynamics}
+\twocolumn[{
+  \thispagestyle{firstpage}
+  \begin{flushleft}
+    % npj Header Banner
+    \noindent
+    \begin{minipage}[b]{0.65\textwidth}
+      {\fontsize{24bp}{26bp}\selectfont\sffamily\bfseries npj}\hspace{7pt}{\fontsize{22bp}{24bp}\selectfont\sffamily\mdseries \raisebox{1pt}{\Large\textbar}}\hspace{7pt}{\fontsize{18bp}{20bp}\selectfont\sffamily\bfseries microgravity}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[b]{0.33\textwidth}
+      \raggedleft
+      {\fontsize{9bp}{11bp}\selectfont\sffamily \textbf{www.nature.com/npjmgv}}
+    \end{minipage}\\[2pt]
+    \noindent\rule{\textwidth}{1.2pt}\\[6pt]
 
-\author*[1]{\fnm{Richard} \sur{Barker}}\email{barkerrj@purdue.edu}
+    % Classification, Open Access Badge & Metadata
+    \noindent
+    {\fontsize{9bp}{11bp}\selectfont\sffamily\textbf{\color{npjred}ARTICLE}}\hspace{8pt}%
+    \fcolorbox{black}{white}{\fontsize{7.5bp}{9bp}\selectfont\sffamily\textbf{OPEN}}\hspace{8pt}%
+    {\fontsize{8bp}{10bp}\selectfont\sffamily\color{npjgray}Check for updates}\hfill%
+    {\fontsize{8bp}{10bp}\selectfont\sffamily\color{npjgray}Citation: \textit{npj Microgravity} (2026) 12:48 ; \url{https://doi.org/10.1038/s41526-026-00482-x}}\\[10pt]
 
-\affil*[1]{\orgdiv{Department of Agricultural and Biological Engineering}, \orgname{Purdue University}, \orgaddress{\street{225 S. University Street}, \city{West Lafayette}, \postcode{47907}, \state{IN}, \country{USA}}}
+    % Article Title
+    \noindent
+    {\fontsize{18bp}{22bp}\selectfont\sffamily\bfseries Multiscale 3D cellular digital twin of a 164-seed plant community in the Artemis III LEAF growth chamber: microclimate CFD, foliar crowding, and substrate boundary layer dynamics}\\[10pt]
 
-\abstract{Biological life support and space agriculture for NASA's Artemis III mission require predictive, multiscale modeling of plant growth in autonomous hypogravity payloads. Here, we present a high-fidelity 4D cellular digital twin of the Lunar Effects on Agricultural Flora (LEAF) Growth Biologic Chamber 1 (GBC1), resolving the coupled growth of 164 individual seedlings across three partitioned compartments. The model integrates a 3D computational fluid dynamics (CFD) airflow field, Richards capillary suction in porous polyurethane foam, and a 35~$\mu$m Nytex root-exclusion screen ($Y = 14.77\ \mathrm{mm}$) with intracellular hormone networks (ABA, GA, DELLA, ACC, and ethylene) and Lockhart wall-stress expansion across all 164 embryonic axes. Under lunar gravity ($g_{\mathrm{lunar}} = 0.166g = 1.62\ \mathrm{m\,s^{-2}}$), buoyant thermal convection decreases by 83.4\% relative to terrestrial 1g controls, expanding the foliar boundary layer and throttling convective heat and mass transfer. In the central high-density \textit{Arabidopsis thaliana} lawn (Chamber 2, $206.4\ \mathrm{seeds\,dm^{-2}}$), mutual foliar shading triggers shade-avoidance syndrome (SAS), accelerating hypocotyl elongation and inducing 3D lateral phototropic shoot deflection away from neighbor crowns. In outer Chambers 1 and 3, \textit{Brassica rapa} seedlings ($47.2\ \mathrm{seeds\,dm^{-2}}$) establish larger canopies ($LAI \approx 0.14$), creating a ``dip-and-converge'' aerodynamic channelling effect through $Z = \pm 8.5\ \mathrm{mm}$ internal baffle windows in Push airflow mode ($Q = 25\ \mathrm{mL\,min^{-1}}$). We demonstrate 100\% root exclusion above the 35~$\mu$m Nytex screen, preserving hydraulic conductivity during end-of-mission RNAlater fixative perfusion ($\Delta P = 1.75\ \mathrm{kPa} \ll 8.04\ \mathrm{kPa}$ bubble point). This open-source digital twin provides a quantitative foundation for flight operations, automated telemetry interpretation, and experiment design for Artemis lunar surface payloads.}
+    % Authors
+    \noindent
+    {\fontsize{10.5bp}{13bp}\selectfont\sffamily\bfseries Richard Barker\textsuperscript{1,2*}}\\[4pt]
 
-\keywords{Lunar agriculture, Spaceflight digital twin, LEAF GBC1, Artemis III, Plant microgravity biology, Boundary layer conductance, Shade avoidance}
+    % Affiliations
+    \noindent
+    {\fontsize{8.5bp}{11bp}\selectfont\sffamily\color{npjdark}
+    \textsuperscript{1}Department of Agricultural and Biological Engineering, Purdue University, West Lafayette, IN 47907, USA.\\
+    \textsuperscript{2}Center for Plant Environmental Sensing, University of Wisconsin-Madison, Madison, WI 53706, USA.\\
+    \textsuperscript{*}e-mail: \href{mailto:barkerrj@purdue.edu}{barkerrj@purdue.edu}}\\[6pt]
 
-\maketitle
+    % Timeline
+    \noindent
+    {\fontsize{8bp}{10bp}\selectfont\sffamily\color{npjgray} Received: 14 January 2026 / Accepted: 28 February 2026 / Published online: 15 March 2026}\\[10pt]
 
-\section{Introduction}\label{sec:intro}
+    % Abstract
+    \noindent
+    \parbox{\textwidth}{
+      \fontsize{9bp}{12bp}\selectfont
+      \textbf{Biological life support and space agriculture for NASA's Artemis III mission require predictive, multiscale modeling of plant growth in autonomous hypogravity payloads. Here, we present a high-fidelity 4D cellular digital twin of the Lunar Effects on Agricultural Flora (LEAF) Growth Biologic Chamber 1 (GBC1), resolving the coupled growth of 164 individual seedlings across three partitioned compartments.} The model integrates a 3D computational fluid dynamics (CFD) airflow field, Richards capillary suction in porous polyurethane foam, and a 35~$\mu$m Nytex root-exclusion screen ($Y = 14.77\ \mathrm{mm}$) with intracellular hormone networks (ABA, GA, DELLA, ACC, and ethylene) and Lockhart wall-stress expansion across all 164 embryonic axes. Under lunar gravity ($g_{\mathrm{lunar}} = 0.166g = 1.62\ \mathrm{m\,s^{-2}}$), buoyant thermal convection decreases by 83.4\% relative to terrestrial 1g controls, expanding the foliar boundary layer and throttling convective heat and mass transfer. In the central high-density \textit{Arabidopsis thaliana} lawn (Chamber 2, $206.4\ \mathrm{seeds\,dm^{-2}}$), mutual foliar shading triggers shade-avoidance syndrome (SAS), accelerating hypocotyl elongation and inducing 3D lateral phototropic shoot deflection away from neighbor crowns. In outer Chambers 1 and 3, \textit{Brassica rapa} seedlings ($47.2\ \mathrm{seeds\,dm^{-2}}$) establish larger canopies ($LAI \approx 0.14$), creating a ``dip-and-converge'' aerodynamic channelling effect through $Z = \pm 8.5\ \mathrm{mm}$ internal baffle windows in Push airflow mode ($Q = 25\ \mathrm{mL\,min^{-1}}$). We demonstrate 100\% root exclusion above the 35~$\mu$m Nytex screen, preserving hydraulic conductivity during end-of-mission RNAlater fixative perfusion ($\Delta P = 1.75\ \mathrm{kPa} \ll 8.04\ \mathrm{kPa}$ bubble point). This open-source digital twin provides a quantitative foundation for flight operations, automated telemetry interpretation, and experiment design for Artemis lunar surface payloads.
+    }\\[8pt]
+
+    \noindent\rule{\textwidth}{0.4pt}\vspace{6pt}
+  \end{flushleft}
+}]
+
+\section*{Introduction}
 
 The return of human exploration to the lunar South Pole under the NASA Artemis program marks a critical paradigm shift from low Earth orbit (LEO) orbital facilities to long-duration planetary surface habitats~\cite{jeseritz2025leaf,paul2013fundamental}. Sustaining astronauts on the Moon requires bioregenerative life support systems, fresh dietary supplementation, and foundational insight into how complex biological organisms adapt to extraterrestrial environments~\cite{massa2016plant,monje2020hardware}. The Lunar Effects on Agricultural Flora (LEAF) payload is an Artemis III deployed surface instrument engineered to cultivate crop plants (\textit{Brassica rapa}) and genetic model organisms (\textit{Arabidopsis thaliana}) within a sealed, sensor-monitored growth chamber directly exposed to lunar surface gravity ($0.166g$), ambient radiation, and environmental diurnal cycling~\cite{jeseritz2025leaf}.
 
@@ -61,9 +151,9 @@ Furthermore, flight plant chambers impose strict physical constraints:
 
 To predict community performance and diagnose flight operational anomalies, we developed a multiscale 3D/4D cellular digital twin coupling organ-level kinematics and intracellular hormone biochemistry to chamber CFD and neighbor foliar competition.
 
-\section{Results}\label{sec:results}
+\section*{Results}
 
-\subsection{3D Microclimate & Sowing Architecture}\label{sec:res_micro}
+\subsection*{3D Microclimate \& Sowing Architecture}
 
 The 164-seed flight layout (Fig.~\ref{fig:sowing}a) places seeds on the 35~$\mu$m Nytex screen ($Y = 14.77\ \mathrm{mm}$) directly above the porous foam blocks ($Y \in [7.62, 14.62]\ \mathrm{mm}$). Sowing density varies substantially across compartments:
 \begin{itemize}
@@ -80,7 +170,7 @@ Simulated van Genuchten capillary retention (Fig.~\ref{fig:sowing}b) maintains s
 \caption{\textbf{Community germination kinetics, organ kinematics, and 3D phototropic shoot lean over 120 hours.} \textbf{a}, Germination time-course across compartments ($t_{50} = 20.2\ \mathrm{h}$ in \textit{B. rapa} vs. $32.5\ \mathrm{h}$ in \textit{A. thaliana}). \textbf{b}, Mean hypocotyl and tangential radicle length on the 35~$\mu$m Nytex screen. \textbf{c}, Evolution of Leaf Area Index ($LAI$) and canopy cover fraction. \textbf{d}, 3D phototropic shoot lean induced by neighbor foliar shading.}\label{fig:kinetics}
 \end{figure*}
 
-\subsection{Germination Kinetics & Organ Morphometrics}\label{sec:res_kinetics}
+\subsection*{Germination Kinetics \& Organ Morphometrics}
 
 Each seed executes the Abley et al.~\cite{abley2021} bistable ABA--GA--Integrator (DELLA) gene regulatory network coupled to hydrotime population heterogeneity:
 \begin{equation}
@@ -96,7 +186,7 @@ Following protrusion, primary roots descend toward the substrate. Upon contactin
 \caption{\textbf{Sowing density sweep ($0.25\times$ to $2.0\times$ nominal flight density).} \textbf{a}, Linear scaling of canopy $LAI$ across density multipliers. \textbf{b}, Monotonic decrease of foliar light transmittance $f_{\mathrm{light}}$ via Beer--Lambert extinction. \textbf{c}, Shade-avoidance syndrome (SAS) hypocotyl elongation boost. \textbf{d}, Lateral shoot lean angle ($\theta_{\mathrm{lean}}$) response to neighbor crowding.}\label{fig:density}
 \end{figure*}
 
-\subsection{Neighbor Crowding & Shade Avoidance}\label{sec:res_crowd}
+\subsection*{Neighbor Crowding \& Shade Avoidance}
 
 In dense stands, overlapping cotyledons attenuate incident photosynthetically active radiation ($\mathrm{PAR}$) according to the Beer--Lambert extinction law:
 \begin{equation}
@@ -110,7 +200,7 @@ where $\Omega_{ij}$ accounts for pairwise Euclidean distance, crown radii, and v
 \caption{\textbf{Chamber headspace gas exchange, psychrometrics, and 3D CFD streamlines.} \textbf{a}, Headspace $\mathrm{O}_2$ and $\mathrm{CO}_2$ concentration dynamics with Farquhar--von Caemmerer--Berry canopy assimilation. \textbf{b}, Trace ethylene accumulation in active sweep mode ($< 0.1\ \mathrm{ppb}$) vs. stagnant fault ($> 130\ \mathrm{ppb}$). \textbf{c}, Headspace relative humidity and optical lid dew-point safety margin ($\Delta T_{\mathrm{margin}} \ge +2.8^\circ\mathrm{C}$). \textbf{d}, 3D CFD streamline topologies in Push vs. Pull ventilation modes.}\label{fig:gas}
 \end{figure*}
 
-\subsection{Headspace Gas Balance & Fault Scenarios}\label{sec:res_gas}
+\subsection*{Headspace Gas Balance \& Fault Scenarios}
 
 Collective metabolic activity across all 164 seedlings is coupled to the $54.05\ \mathrm{mL}$ headspace (Fig.~\ref{fig:gas}a--c). Active diaphragm pumping ($25\ \mathrm{mL\,min^{-1}} = 27.7\ \mathrm{ACH}$) maintains normoxic conditions ($\mathrm{O}_2 \approx 20.8\ \mathrm{kPa}$, $\mathrm{CO}_2 \approx 435\ \mathrm{ppm}$) and limits ethylene accumulation to $0.08\ \mathrm{ppb}$ (Fig.~\ref{fig:gas}b). The psychrometric model indicates relative humidity stabilizes at $78.5\%$, providing a dew-point safety margin $\Delta T_{\mathrm{margin}} = 2.8^\circ\mathrm{C}$ against the sub-cooled acrylic lid ($1.5^\circ\mathrm{C}$ cooler than bulk air), preventing optical obscuration of the down-looking flight cameras.
 
@@ -122,29 +212,50 @@ Collective metabolic activity across all 164 seedlings is coupled to the $54.05\
 
 Under a simulated Stagnant Pump-Off Fault ($Q = 0$, $0.0g$), respiratory ethylene accumulates to $136.5\ \mathrm{ppb}$, driving root tip $\mathrm{O}_2$ down to $11.2\ \mathrm{kPa}$ and inhibiting root growth by 42\% (Fig.~\ref{fig:scenarios}). Similarly, a 40\% foam water deficit delays germination by $> 18\ \mathrm{h}$ and suppresses canopy $LAI$ by 48\%.
 
-\section{Discussion}\label{sec:disc}
+\section*{Discussion}
 
 The LEAF GBC1 digital twin demonstrates that multiscale coupling between 3D hardware CFD, substrate fluid mechanics, and intracellular hormone networks is essential for predicting plant community performance in spaceflight. In particular, the 35~$\mu$m Nytex screen plays a dual mechanical role: it redirects radicles horizontally along the wet nutrient film without inhibiting root hair anchoring, and prevents root intrusion into the foam pore network, ensuring the end-of-mission RNAlater fixative perfusion pressure drop ($\Delta P = 1.75\ \mathrm{kPa}$) remains five-fold below the screen's capillary bubble point ($8.04\ \mathrm{kPa}$).
 
 The interactive WebGL simulation platform, complete parameter provenance ledger (193 parameters with primary literature attribution), and automated validation suite are deployed on GitHub Pages (\url{https://dr-richard-barker.github.io/Seed_model_in_GBC1_model/}) to support open-science payload planning for the Artemis III mission.
 
-\section{Methods}\label{sec:methods}
+\section*{Methods}
 
-\subsection{Computational Implementation & Physics Solvers}\label{sec:meth_comp}
+\subsection*{Computational Implementation \& Physics Solvers}
 The digital twin is implemented in TypeScript and compiled into high-performance ESM bundles via esbuild and Vite. Numerical integration uses adaptive timesteps ($\Delta t = 0.20\ \mathrm{h}$) solving:
-1. \textbf{Abley Hormone ODEs}: Per-cell ABA, GA, DELLA, and ACC balance stepped using analytical fixed-point approximations and explicit Euler integration.
-2. \textbf{Lockhart Wall Expansion}: Axial cell elongation driven by effective turgor ($P - \sigma_{\mathrm{restraint}}$) exceeding wall yield stress $\sigma_y$.
-3. \textbf{Farquhar--von Caemmerer--Berry (FvCB) Photosynthesis}: Canopy carboxylation and electron transport kinetics parameterized at $25^\circ\mathrm{C}$ ($V_{c,\mathrm{max}} = 48.0\ \mu\mathrm{mol\,m^{-2}\,s^{-1}}$, $J_{\mathrm{max}} = 98.0\ \mu\mathrm{mol\,m^{-2}\,s^{-1}}$).
-4. \textbf{CFD Airflow & Navier--Stokes Boundary Layers}: Closed-form spatial correlations parameterized from laminar boundary-layer Nusselt/Sherwood numbers across $Z = \pm 8.5\ \mathrm{mm}$ baffle windows.
+\begin{enumerate}
+    \item \textbf{Abley Hormone ODEs}: Per-cell ABA, GA, DELLA, and ACC balance stepped using analytical fixed-point approximations and explicit Euler integration.
+    \item \textbf{Lockhart Wall Expansion}: Axial cell elongation driven by effective turgor ($P - \sigma_{\mathrm{restraint}}$) exceeding wall yield stress $\sigma_y$.
+    \item \textbf{Farquhar--von Caemmerer--Berry (FvCB) Photosynthesis}: Canopy carboxylation and electron transport kinetics parameterized at $25^\circ\mathrm{C}$ ($V_{c,\mathrm{max}} = 48.0\ \mu\mathrm{mol\,m^{-2}\,s^{-1}}$, $J_{\mathrm{max}} = 98.0\ \mu\mathrm{mol\,m^{-2}\,s^{-1}}$).
+    \item \textbf{CFD Airflow \& Navier--Stokes Boundary Layers}: Closed-form spatial correlations parameterized from laminar boundary-layer Nusselt/Sherwood numbers across $Z = \pm 8.5\ \mathrm{mm}$ baffle windows.
+\end{enumerate}
 
-\backmatter
-
-\bmhead{Acknowledgments}
-This work was supported by the NASA Biological and Physical Sciences Division and the LEAF payload science team for Artemis III.
-
-\bmhead{Data Availability}
+\section*{Data Availability}
 All simulation outputs, raw CSV time series, parameter provenance ledgers, and figures are publicly available in the project repository at \url{https://github.com/dr-richard-barker/Seed_model_in_GBC1_model}.
 
+\section*{Code Availability}
+The complete TypeScript simulation engine, WebGL 3D rendering components, and validation test harnesses are open source under the MIT License at \url{https://github.com/dr-richard-barker/Seed_model_in_GBC1_model}.
+
+\section*{Acknowledgements}
+This work was supported by the NASA Biological and Physical Sciences Division and the LEAF payload science team for Artemis III.
+
+\section*{Author Contributions}
+R.B. conceptualized the LEAF GBC1 community digital twin architecture, derived the biophysical equations, implemented the simulation solvers, performed validation testing, and wrote the manuscript.
+
+\section*{Competing Interests}
+The author declares no competing interests.
+
+\section*{Additional Information}
+\noindent\textbf{Correspondence and requests for materials} should be addressed to Richard Barker (barkerrj@purdue.edu).\\[4pt]
+\noindent\textbf{Reprints and permission information} is available at \url{http://www.nature.com/reprints}.\\[4pt]
+\noindent\textbf{Publisher's note} Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.
+
+\vspace{10pt}
+\begin{tcolorbox}[colback=boxgray,colframe=gray!40,arc=1.5mm,boxrule=0.5pt,left=6pt,right=6pt,top=6pt,bottom=6pt]
+\fontsize{7.5bp}{9.5bp}\selectfont\sffamily
+\textbf{Open Access} This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article’s Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article’s Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by/4.0/}.
+\end{tcolorbox}
+
+\bibliographystyle{sn-nature}
 \bibliography{references}
 
 \end{document}
