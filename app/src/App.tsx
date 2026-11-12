@@ -144,6 +144,8 @@ export function App() {
   const [selectedCellId, setSelectedCellId] = useState<number | null>(null);
   const [cutAway, setCutAway] = useState<boolean>(true);
   const [showLedger, setShowLedger] = useState<boolean>(false);
+  const [showTour, setShowTour] = useState<boolean>(false);
+  const [showManuscript, setShowManuscript] = useState<boolean>(false);
   const [layers, setLayers] = useState<ChamberLayerVisibility>({
     housing: true,
     foam: true,
@@ -364,6 +366,12 @@ export function App() {
               { (latest?.nytex_root_exclusion_pct ?? 100).toFixed(1) }% (ΔP { (latest?.rnalater_dp_kpa ?? 1.65).toFixed(2) } kPa)
             </strong>
           </div>
+          <button className="btn active" onClick={() => setShowTour(true)} style={{ background: "#00d4ff", color: "#081018", fontWeight: 700 }}>
+            📖 Flight Tour &amp; Intro
+          </button>
+          <button className="btn" onClick={() => setShowManuscript(true)} style={{ borderColor: "#a6d96a", color: "#a6d96a" }}>
+            📄 Manuscript (PDF)
+          </button>
           <button className="btn" onClick={() => setShowLedger(true)}>
             Parameter Ledger ({ LEDGER.length })
           </button>
@@ -917,6 +925,148 @@ export function App() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* SCIENTIFIC INTRODUCTION & FLIGHT TOUR MODAL */}
+      {showTour && (
+        <div className="modal-backdrop" onClick={() => setShowTour(false)}>
+          <div className="modal-dialog modal-dialog-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div>
+                <strong style={{ fontSize: 16, color: "#00d4ff" }}>
+                  LEAF GBC1 · Artemis III Lunar Plant Growth Chamber Digital Twin
+                </strong>
+                <div style={{ fontSize: 11, color: "#8fa6bc", marginTop: 2 }}>
+                  NASA Artemis III Deployed Surface Payload · Multiscale 164-Seed Cellular &amp; CFD Digital Twin
+                </div>
+              </div>
+              <button className="btn" onClick={() => setShowTour(false)}>
+                Close Tour
+              </button>
+            </div>
+            <div className="modal-body" style={{ lineHeight: 1.55, fontSize: 13, color: "#d2e1ee" }}>
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#00d4ff", marginBottom: 6, fontSize: 14 }}>1. Scientific Mission &amp; Biological Challenge</h3>
+                <p>
+                  On the lunar surface, <strong>hypogravity (g = 0.166g)</strong> reduces natural buoyant thermal convection by <strong>83.4%</strong> compared to terrestrial 1g. Without buoyant airflow, warm humid air envelopes plant foliage, thickening the boundary layer, impeding transpirational cooling, and suppressing photosynthetic CO2 uptake while accumulating respiratory ethylene (C2H4) to toxic levels.
+                </p>
+                <p style={{ marginTop: 8 }}>
+                  The <strong>Lunar Effects on Agricultural Flora (LEAF)</strong> instrument on Artemis III cultivates plants in sealed Growth Biologic Chambers (GBC) to study morphological, physiological, and molecular gene expression responses on the lunar surface. This digital twin simulates <strong>Growth Bed Chamber 1 (GBC1)</strong> across a 5-day (120 h) flight mission.
+                </p>
+              </section>
+
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#5ec962", marginBottom: 6, fontSize: 14 }}>2. Three-Compartment Flight Sowing Architecture (164 Seeds)</h3>
+                <p>
+                  GBC1 houses <strong>164 individual seeds</strong> on top of a <strong>35 µm Nytex monofilament root barrier</strong> at elevation Y = 14.77 mm above three porous phenolic foam cassettes (Y in [7.62, 14.62] mm), partitioned by solid internal baffles at Z = &plusmn;8.5 mm:
+                </p>
+                <ul style={{ paddingLeft: 20, marginTop: 6 }}>
+                  <li><strong>Chamber 1 (Z in [-30.5, -9.5] mm):</strong> 32 <em>Brassica rapa</em> crop seeds (8 &times; 4 lattice, 47.2 seeds/dm&sup2;).</li>
+                  <li><strong>Chamber 2 Central (Z in [-7.5, +7.5] mm):</strong> 100 <em>Arabidopsis thaliana</em> genetic model seeds (10 &times; 10 dense lawn, 206.4 seeds/dm&sup2;).</li>
+                  <li><strong>Chamber 3 (Z in [+9.5, +30.5] mm):</strong> 32 <em>Brassica rapa</em> crop seeds (8 &times; 4 lattice, 47.2 seeds/dm&sup2;).</li>
+                </ul>
+              </section>
+
+              <section style={{ marginBottom: 20 }}>
+                <h3 style={{ color: "#f5a623", marginBottom: 6, fontSize: 14 }}>3. Multiscale Physical &amp; Biological Couplings</h3>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 8 }}>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 10 }}>
+                    <strong style={{ color: "#00d4ff" }}>3D CFD Airflow &amp; Microclimate</strong>
+                    <p style={{ fontSize: 12, marginTop: 4 }}>
+                      Simulates active sweep-air pumping (Q = 25 mL/min) in Push mode (Ports 1 &amp; 3 &rarr; Port 2) or Pull mode (Port 2 &rarr; Ports 1 &amp; 3), capturing ``dip-and-converge'' flow through baffle windows, wind attenuation through foliage, and local boundary layer conductance g_bl.
+                    </p>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 10 }}>
+                    <strong style={{ color: "#5ec962" }}>Crowding &amp; Shade Avoidance (SAS)</strong>
+                    <p style={{ fontSize: 12, marginTop: 4 }}>
+                      Beer–Lambert foliar canopy light extinction (f_light) triggers shade avoidance syndrome (SAS) in dense stands, upregulating hypocotyl elongation and driving 3D lateral phototropic shoot lean (&le; 2.2&deg;) away from shading neighbors.
+                    </p>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 10 }}>
+                    <strong style={{ color: "#a6d96a" }}>35 µm Nytex Root-Barrier Exclusion</strong>
+                    <p style={{ fontSize: 12, marginTop: 4 }}>
+                      Radicles anchor on the 35 µm mesh and deflect tangentially (100% exclusion above Y = 14.77 mm), preventing foam clogging and keeping the end-of-mission RNAlater fixative pressure drop &Delta;P = 1.75 kPa &lt;&lt; 8.04 kPa bubble point.
+                    </p>
+                  </div>
+                  <div style={{ background: "#0a131c", border: "1px solid #1f2f3d", borderRadius: 6, padding: 10 }}>
+                    <strong style={{ color: "#ff5c5c" }}>54.05 mL Headspace Chemistry</strong>
+                    <p style={{ fontSize: 12, marginTop: 4 }}>
+                      Collective respiration and FvCB canopy photosynthesis balance O2 and CO2. Continuous sweep flushing prevents ethylene accumulation (&lt; 0.1 ppb vs. &gt; 130 ppb stagnant) and maintains lid dew margin &Delta;T &ge; +2.8&deg;C to prevent camera fogging.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section style={{ borderTop: "1px solid #1f2f3d", paddingTop: 14 }}>
+                <h3 style={{ color: "#e8f0f7", marginBottom: 6, fontSize: 14 }}>4. Quick-Start Guide for Interactive Exploration</h3>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 8 }}>
+                  <button className="btn" onClick={() => { setShowTour(false); chamberViewerRef.current?.setCameraPreset("iso"); }}>
+                    🎥 3D Isometric View
+                  </button>
+                  <button className="btn" onClick={() => { setShowTour(false); chamberViewerRef.current?.setCameraPreset("top"); }}>
+                    🗺️ Top-Down Sowing Map
+                  </button>
+                  <button className="btn" onClick={() => { setShowTour(false); chamberViewerRef.current?.setCameraPreset("ch2"); }}>
+                    🌱 Zoom Chamber 2 (100 Ath)
+                  </button>
+                  <button className="btn" onClick={() => { setShowTour(false); setTargetHour(120); }}>
+                    ⏱️ Jump to 120 h (Mature Canopy)
+                  </button>
+                  <button className="btn" onClick={() => { setShowTour(false); setShowManuscript(true); }} style={{ borderColor: "#a6d96a", color: "#a6d96a" }}>
+                    📄 Read NPJ Manuscript
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* NPJ MICROGRAVITY MANUSCRIPT PDF EMBED MODAL */}
+      {showManuscript && (
+        <div className="modal-backdrop" onClick={() => setShowManuscript(false)}>
+          <div className="modal-dialog modal-dialog-xl" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <div>
+                <strong style={{ fontSize: 16, color: "#a6d96a" }}>
+                  Manuscript · npj Microgravity Two-Column Format
+                </strong>
+                <div style={{ fontSize: 11, color: "#8fa6bc", marginTop: 2 }}>
+                  Compiled with Springer Nature sn-jnl template (pdflatex + bibtex)
+                </div>
+              </div>
+              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <a
+                  href="./leaf_gbc1_community_npj_microgravity.pdf"
+                  download="leaf_gbc1_community_npj_microgravity.pdf"
+                  className="btn"
+                  style={{ background: "#a6d96a", color: "#081018", textDecoration: "none", fontWeight: 700 }}
+                >
+                  ⬇️ Download PDF (2.9 MB)
+                </a>
+                <a
+                  href="./leaf_gbc1_community_npj_microgravity.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn"
+                  style={{ textDecoration: "none" }}
+                >
+                  Open in New Tab
+                </a>
+                <button className="btn" onClick={() => setShowManuscript(false)}>
+                  Close
+                </button>
+              </div>
+            </div>
+            <div className="modal-body" style={{ padding: 0, height: "82vh", overflow: "hidden" }}>
+              <iframe
+                src="./leaf_gbc1_community_npj_microgravity.pdf#toolbar=1&navpanes=1&view=FitH"
+                title="npj Microgravity Manuscript PDF"
+                style={{ width: "100%", height: "100%", border: "none" }}
+              />
             </div>
           </div>
         </div>

@@ -1,0 +1,1341 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  11 NOV 2026 19:20
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**leaf_gbc1_community_npj_microgravity.tex
+(./leaf_gbc1_community_npj_microgravity.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./sn-jnl.cls
+Document Class: sn-jnl 2019/11/18 v0.1: An authoring template for Springer Jour
+nal articles
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/base/article.
+cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/base/fleqn.cl
+o
+File: fleqn.clo 2016/12/29 v1.2b Standard LaTeX option (flush left equations)
+\mathindent=\skip49
+Applying: [2015/01/01] Make \[ robust on input line 50.
+LaTeX Info: Redefining \[ on input line 51.
+Already applied: [0000/00/00] Make \[ robust on input line 62.
+Applying: [2015/01/01] Make \] robust on input line 74.
+LaTeX Info: Redefining \] on input line 75.
+Already applied: [0000/00/00] Make \] robust on input line 83.
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/base/size10.c
+lo
+File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count275
+\c@section=\count276
+\c@subsection=\count277
+\c@subsubsection=\count278
+\c@paragraph=\count279
+\c@subparagraph=\count280
+\c@figure=\count281
+\c@table=\count282
+\abovecaptionskip=\skip50
+\belowcaptionskip=\skip51
+\bibindent=\dimen148
+)
+LaTeX Info: Redefining \rm on input line 144.
+LaTeX Info: Redefining \sf on input line 145.
+LaTeX Info: Redefining \tt on input line 146.
+LaTeX Info: Redefining \bf on input line 147.
+LaTeX Info: Redefining \it on input line 148.
+LaTeX Info: Redefining \sl on input line 149.
+LaTeX Info: Redefining \sc on input line 150.
+LaTeX Info: Redefining \cal on input line 151.
+LaTeX Info: Redefining \mit on input line 152.
+LaTeX Info: Redefining \textsubscript on input line 210.
+\columnhsize=\skip52
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/geometry/geom
+etry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics/keyv
+al.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/iftex/ifvte
+x.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/iftex/iftex
+.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count283
+\Gm@cntv=\count284
+\c@Gm@tempcnt=\count285
+\Gm@bindingoffset=\dimen149
+\Gm@wd@mp=\dimen150
+\Gm@odd@mp=\dimen151
+\Gm@even@mp=\dimen152
+\Gm@layoutwidth=\dimen153
+\Gm@layoutheight=\dimen154
+\Gm@layouthoffset=\dimen155
+\Gm@layoutvoffset=\dimen156
+\Gm@dimlist=\toks18
+)
+\artcatbox=\box53
+\aucount=\count286
+\corraucount=\count287
+\punctcount=\count288
+\emailcnt=\count289
+\c@affn=\count290
+\addcount=\count291
+\PacsCount=\count292
+\PacsTmpCnt=\count293
+\FMremarkdim=\dimen157
+\fmremarkbox=\box54
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/sttools/cuted
+.sty
+Package: cuted 2025/12/15 v2.10 Mixing onecolumn and twocolumn modes (ST)
+\At@ViperColsBreak=\toks19
+\preCutedStrip=\toks20
+\postCutedStrip=\toks21
+\cuted@@tempbox@a=\box55
+\cuted@@tempbox@c=\box56
+\cuted@@tempbox@var=\box57
+\hold@viper=\box58
+\@viper=\box59
+\cuted@@varbox@a=\box60
+\cuted@@varbox@c=\box61
+\cuted@@tempdim@spread=\dimen158
+\cuted@@tempdim@a=\dimen159
+\cuted@@tempdim@b=\dimen160
+\ht@hold@viper=\dimen161
+\ht@viper=\dimen162
+\var@@pagediscards@ht=\dimen163
+\stripsep=\skip53
+\viper@penalty=\count294
+\strip@page@discards=\dimen164
+)
+\firstpagehtcheck=\dimen165
+\labelwidthi=\dimen166
+\labelwidthii=\dimen167
+\labelwidthiii=\dimen168
+\labelwidthiv=\dimen169
+\figwidth=\dimen170
+\figheight=\dimen171
+\sidecapwidth=\dimen172
+\wrapcapline=\dimen173
+\totalwrapline=\dimen174
+\wraptotline=\dimen175
+\figurebox=\box62
+\wrapfigcapbox=\box63
+\figcapbox=\box64
+\capbox=\box65
+\headwidthskip=\skip54
+\tabcapbox=\box66
+\temptbox=\box67
+\tempdime=\dimen176
+\tabhtdime=\dimen177
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics/rota
+ting.sty
+Package: rotating 2025/01/14 v2.16e rotated objects in LaTeX
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics/grap
+hicx.sty
+Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics/grap
+hics.sty
+Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics/trig
+.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics-cfg/
+graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 106.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics-def/
+pdftex.def
+File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen178
+\Gin@req@width=\dimen179
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/base/ifthen.s
+ty
+Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count295
+\rotFPtop=\skip55
+\rotFPbot=\skip56
+\rot@float@box=\box68
+\rot@mess@toks=\toks22
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/threeparttabl
+e/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box69
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/appendix/appe
+ndix.sty
+Package: appendix 2020/02/08 v1.2c extra appendix facilities
+\c@@pps=\count296
+\c@@ppsavesec=\count297
+\c@@ppsaveapp=\count298
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/hyperref/hype
+rref.sty
+Package: hyperref 2026-01-29 v7.01p Hypertext links for LaTeX
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/kvsetkeys/kvs
+etkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/kvdefinekey
+s/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/pdfescape/p
+dfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/ltxcmds/ltx
+cmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/pdftexcmds/
+pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/infwarerr/i
+nfwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+))
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/hycolor/hycol
+or.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/hyperref/name
+ref.sty
+Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/refcount/refc
+ount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/gettitlestr
+ing/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/kvoptions/kvo
+ptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count299
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/etoolbox/etoo
+lbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count300
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/stringenc/s
+tringenc.sty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\@linkdim=\dimen180
+\Hy@linkcounter=\count301
+\Hy@pagecounter=\count302
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/hyperref/pd1e
+nc.def
+File: pd1enc.def 2026-01-29 v7.01p Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/intcalc/int
+calc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count303
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/hyperref/puen
+c.def
+File: puenc.def 2026-01-29 v7.01p Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4201.
+Package hyperref Info: Link nesting OFF on input line 4206.
+Package hyperref Info: Hyper index ON on input line 4209.
+Package hyperref Info: Plain pages OFF on input line 4216.
+Package hyperref Info: Backreferencing OFF on input line 4221.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4468.
+\c@Hy@tempcnt=\count304
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4807.
+\XeTeXLinkMargin=\dimen181
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/bitset/bits
+et.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/bigintcalc/
+bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count305
+\Field@Width=\dimen182
+\Fld@charsize=\dimen183
+Package hyperref Info: Hyper figures OFF on input line 6084.
+Package hyperref Info: Link nesting OFF on input line 6089.
+Package hyperref Info: Hyper index ON on input line 6092.
+Package hyperref Info: backreferencing OFF on input line 6099.
+Package hyperref Info: Link coloring OFF on input line 6104.
+Package hyperref Info: Link coloring with OCG OFF on input line 6109.
+Package hyperref Info: PDF/A mode OFF on input line 6114.
+\Hy@abspage=\count306
+\c@Item=\count307
+\c@Hfootnote=\count308
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/hyperref/hpdf
+tex.def
+File: hpdftex.def 2026-01-29 v7.01p Hyperref driver for pdfTeX
+\Fld@listcount=\count309
+\c@bookmark@seq@number=\count310
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/rerunfilechec
+k/rerunfilecheck.sty
+Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/generic/uniquecount
+er/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
+)
+\Hy@SectionHShift=\skip57
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 1483.
+Package hyperref Info: Option `breaklinks' set `true' on input line 1483.
+Package hyperref Info: Option `plainpages' set `false' on input line 1483.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 1483.
+Package hyperref Info: Option `bookmarksnumbered' set `false' on input line 148
+3.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/wrapfig/wrapf
+ig.sty
+\wrapoverhang=\dimen184
+\WF@size=\dimen185
+\c@WF@wrappedlines=\count311
+\WF@box=\box70
+\WF@everypar=\toks23
+Package: wrapfig 2003/01/31  v 3.6
+)
+\wraplines=\count312
+\@authorfigbox=\box71
+\@authorfigboxdim=\skip58
+\biofigadjskip=\skip59
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/natbib/natbib
+.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip60
+\bibsep=\skip61
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count313
+))
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/multirow/mult
+irow.sty
+Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
+\multirow@colwidth=\skip62
+\multirow@cntb=\count314
+\multirow@dima=\skip63
+\bigstrutjot=\dimen186
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsmath/amsma
+th.sty
+Package: amsmath 2025/07/09 v2.17z AMS math features
+\@mathmargin=\skip64
+
+For additional information on amsmath, use the `?' option.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsmath/amste
+xt.sty
+Package: amstext 2024/11/17 v2.01 AMS text
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsmath/amsge
+n.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks24
+\ex@=\dimen187
+))
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsmath/amsbs
+y.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen188
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsmath/amsop
+n.sty
+Package: amsopn 2022/04/08 v2.04 operator names
+)
+\inf@bad=\count315
+LaTeX Info: Redefining \frac on input line 233.
+\uproot@=\count316
+\leftroot@=\count317
+LaTeX Info: Redefining \overline on input line 398.
+LaTeX Info: Redefining \colon on input line 409.
+\classnum@=\count318
+\DOTSCASE@=\count319
+LaTeX Info: Redefining \ldots on input line 495.
+LaTeX Info: Redefining \dots on input line 498.
+LaTeX Info: Redefining \cdots on input line 619.
+\Mathstrutbox@=\box72
+\strutbox@=\box73
+LaTeX Info: Redefining \big on input line 721.
+LaTeX Info: Redefining \Big on input line 722.
+LaTeX Info: Redefining \bigg on input line 723.
+LaTeX Info: Redefining \Bigg on input line 724.
+\big@size=\dimen189
+LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+\macc@depth=\count320
+LaTeX Info: Redefining \bmod on input line 904.
+LaTeX Info: Redefining \pmod on input line 909.
+LaTeX Info: Redefining \smash on input line 939.
+LaTeX Info: Redefining \relbar on input line 969.
+LaTeX Info: Redefining \Relbar on input line 970.
+\c@MaxMatrixCols=\count321
+\dotsspace@=\muskip18
+\c@parentequation=\count322
+\dspbrk@lvl=\count323
+\tag@help=\toks25
+\row@=\count324
+\column@=\count325
+\maxfields@=\count326
+\andhelp@=\toks26
+\eqnshift@=\dimen190
+\alignsep@=\dimen191
+\tagshift@=\dimen192
+\tagwidth@=\dimen193
+\totwidth@=\dimen194
+\lineht@=\dimen195
+\@envbody=\toks27
+\multlinegap=\skip65
+\multlinetaggap=\skip66
+\mathdisplay@stack=\toks28
+LaTeX Info: Redefining \[ on input line 2950.
+LaTeX Info: Redefining \] on input line 2951.
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/amss
+ymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/amsf
+onts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amscls/amsthm
+.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks29
+\thm@bodyfont=\toks30
+\thm@headfont=\toks31
+\thm@notefont=\toks32
+\thm@headpunct=\toks33
+\thm@preskip=\skip67
+\thm@postskip=\skip68
+\thm@headsep=\skip69
+\dth@everypar=\toks34
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/jknapltx/math
+rsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/xcolor/xcolor
+.sty
+Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics-cfg/
+color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/graphics/math
+color.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1365.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1367.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/base/textcomp
+.sty
+Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/ncctools/many
+foot.sty
+Package: manyfoot 2019/08/03 v1.11 Many Footnote Levels Package (NCC)
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/ncctools/nccf
+oots.sty
+Package: nccfoots 2005/02/03 v1.2 NCC Footnotes Package (NCC)
+)
+\MFL@columnwidth=\dimen196
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/booktabs/book
+tabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen197
+\lightrulewidth=\dimen198
+\cmidrulewidth=\dimen199
+\belowrulesep=\dimen256
+\belowbottomsep=\dimen257
+\aboverulesep=\dimen258
+\abovetopsep=\dimen259
+\cmidrulesep=\dimen260
+\cmidrulekern=\dimen261
+\defaultaddspace=\dimen262
+\@cmidla=\count327
+\@cmidlb=\count328
+\@aboverulesep=\dimen263
+\@belowrulesep=\dimen264
+\@thisruleclass=\count329
+\@lastruleclass=\count330
+\@thisrulewidth=\dimen265
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/algorithms/al
+gorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/float/float.s
+ty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count331
+\float@exts=\toks35
+\float@box=\box74
+\@float@everytoks=\toks36
+\@floatcapt=\box75
+)
+\@float@every@algorithm=\toks37
+\c@algorithm=\count332
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/algorithmicx/
+algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count333
+\c@ALG@rem=\count334
+\c@ALG@nested=\count335
+\ALG@tlm=\skip70
+\ALG@thistlm=\skip71
+\c@ALG@Lnr=\count336
+\c@ALG@blocknr=\count337
+\c@ALG@storecount=\count338
+\c@ALG@tmpcounter=\count339
+\ALG@tmplength=\skip72
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/algorithmicx/
+algpseudocode.sty
+Package: algpseudocode 
+
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/listings/list
+ings.sty
+\lst@mode=\count340
+\lst@gtempboxa=\box76
+\lst@token=\toks38
+\lst@length=\count341
+\lst@currlwidth=\dimen266
+\lst@column=\count342
+\lst@pos=\count343
+\lst@lostspace=\dimen267
+\lst@width=\dimen268
+\lst@newlines=\count344
+\lst@lineno=\count345
+\lst@maxwidth=\dimen269
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/listings/lstp
+atch.sty
+File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/listings/lstm
+isc.sty
+File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
+\c@lstnumber=\count346
+\lst@skipnumbers=\count347
+\lst@framebox=\box77
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/listings/list
+ings.cfg
+File: listings.cfg 2025/11/14 1.11b listings configuration
+))
+Package: listings 2025/11/14 1.11b (Carsten Heinz)
+
+==> First Aid for listings.sty no longer applied!
+    Expected:
+        2024/09/23 1.10c (Carsten Heinz)
+    but found:
+        2025/11/14 1.11b (Carsten Heinz)
+    so I'm assuming it got fixed.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/mhchem/mhchem
+.sty
+Package: mhchem 2024/01/29 v4.10 for typesetting chemical formulae
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/l3kernel/expl
+3.sty
+Package: expl3 2026-01-19 L3 programming layer (loader) 
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/l3backend/l3b
+ackend-pdftex.def
+File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count348
+))
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/l3packages/l3
+keys2e/l3keys2e.sty
+Package: l3keys2e 2025-10-09 LaTeX2e option processing using LaTeX3 keys
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/tools/calc.st
+y
+Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
+\calc@Acount=\count349
+\calc@Bcount=\count350
+\calc@Adimen=\dimen270
+\calc@Bdimen=\dimen271
+\calc@Askip=\skip73
+\calc@Bskip=\skip74
+LaTeX Info: Redefining \setlength on input line 86.
+LaTeX Info: Redefining \addtolength on input line 87.
+\calc@Ccount=\count351
+\calc@Cskip=\skip75
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/chemgreek/che
+mgreek.sty
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/l3packages/xp
+arse/xparse.sty
+Package: xparse 2025-10-09 L3 Experimental document command parser
+)
+Package: chemgreek 2020/01/16 v1.1a interface for upright Greek letters for use
+ in chemistry (CN)
+\l__chemgreek_tmpa_int=\count352
+\g__chemgreek_tmpa_int=\count353
+)
+\l__mhchem_ce_distanceFromLastComma_int=\count354
+\__mhchem_arrow_extPgfLength_skip=\skip76
+\mhchem@minispace@tmp=\skip77
+\mhchem@minibackspace@tmp=\skip78
+\mhchem@bondwidth=\skip79
+\mhchem@bondheight=\skip80
+\mhchem@smallbondwidth@tmpA=\skip81
+\mhchem@smallbondwidth@tmpB=\skip82
+\mhchem@smallbondwidth=\skip83
+\mhchem@bondtmp@minussidebearingleft=\skip84
+\mhchem@bondtmp@minussidebearingright=\skip85
+\l__mhchem_option_version_int=\count355
+\mhchem@option@minusmathsidebearingleft=\dimen272
+\mhchem@option@minusmathsidebearingright=\dimen273
+\mhchem@option@minustextsidebearingleft=\dimen274
+\mhchem@option@minustextsidebearingright=\dimen275
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/siunitx/siuni
+tx.sty
+Package: siunitx 2025-07-09 v3.4.14 A comprehensive (SI) units package
+\l__siunitx_number_uncert_offset_int=\count356
+\l__siunitx_number_exponent_fixed_int=\count357
+\l__siunitx_number_min_decimal_int=\count358
+\l__siunitx_number_min_integer_int=\count359
+\l__siunitx_number_round_precision_int=\count360
+\l__siunitx_number_lower_threshold_int=\count361
+\l__siunitx_number_upper_threshold_int=\count362
+\l__siunitx_number_group_first_int=\count363
+\l__siunitx_number_group_size_int=\count364
+\l__siunitx_number_group_minimum_int=\count365
+\l__siunitx_angle_tmp_dim=\dimen276
+\l__siunitx_angle_marker_box=\box78
+\l__siunitx_angle_unit_box=\box79
+\l__siunitx_compound_count_int=\count366
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/translations/
+translations.sty
+Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages
+ (CN)
+)
+\l__siunitx_table_tmp_box=\box80
+\l__siunitx_table_tmp_dim=\dimen277
+\l__siunitx_table_column_width_dim=\dimen278
+\l__siunitx_table_integer_box=\box81
+\l__siunitx_table_decimal_box=\box82
+\l__siunitx_table_uncert_box=\box83
+\l__siunitx_table_before_box=\box84
+\l__siunitx_table_after_box=\box85
+\l__siunitx_table_before_dim=\dimen279
+\l__siunitx_table_carry_dim=\dimen280
+\l__siunitx_unit_tmp_int=\count367
+\l__siunitx_unit_position_int=\count368
+\l__siunitx_unit_total_int=\count369
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/tools/array.s
+ty
+Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
+\col@sep=\dimen281
+\ar@mcellbox=\box86
+\extrarowheight=\dimen282
+\NC@list=\toks39
+\extratabsurround=\skip86
+\backup@length=\skip87
+\ar@cellbox=\box87
+))
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/xurl/xurl.sty
+Package: xurl 2022/01/09 v 0.10 modify URL breaks
+)
+Package translations Info: No language package found. I am going to use `englis
+h' as default language. on input line 24.
+ (./leaf_gbc1_community_npj_microgravity.aux)
+\openout1 = `leaf_gbc1_community_npj_microgravity.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+\footinsA=\insert252
+\c@footnoteA=\count370
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* bindingoffset: 17.07164pt
+* modes: twoside 
+* h-part:(L,W,R)=(50.07684pt, 455.24408pt, 75.11531pt)
+* v-part:(T,H,B)=(73.97716pt, 614.57951pt, 156.49017pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24408pt
+* \textheight=614.57951pt
+* \oddsidemargin=-5.1215pt
+* \evensidemargin=2.84532pt
+* \topmargin=-24.94597pt
+* \headheight=12.0pt
+* \headsep=14.65314pt
+* \topskip=10.0pt
+* \footskip=28.82265pt
+* \marginparwidth=34.1433pt
+* \marginparsep=14.22636pt
+* \columnsep=22.76219pt
+* \skip\footins=18.0pt plus 6.0pt minus 3.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemargintrue
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/context/base/mkii/s
+upp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count371
+\scratchdimen=\dimen283
+\scratchbox=\box88
+\nofMPsegments=\count372
+\nofMParguments=\count373
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count374
+\MPscratchDim=\dimen284
+\MPnumerator=\count375
+\makeMPintoPDFobject=\count376
+\everyMPtoPDFconversion=\toks41
+)
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/epstopdf-pkg/
+epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/latexconfig/e
+pstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package hyperref Info: Link coloring ON on input line 24.
+ (./leaf_gbc1_community_npj_microgravity.out)
+(./leaf_gbc1_community_npj_microgravity.out)
+\@outlinefile=\write3
+\openout3 = `leaf_gbc1_community_npj_microgravity.out'.
+
+\c@lstlisting=\count377
+
+Package chemgreek Info: Activating mapping `default' on line 24.
+
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/translations/
+translations-basic-dictionary-english.trsl
+File: translations-basic-dictionary-english.trsl (english translation file `tra
+nslations-basic-dictionary')
+)
+Package translations Info: loading dictionary `translations-basic-dictionary' f
+or `english'. on input line 24.
+LaTeX Font Info:    Calculating math sizes for size <12.045> on input line 37.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <8.43146> not available
+(Font)              size <8> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 37.
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsa
+.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
+
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/amsfonts/umsb
+.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 37
+.
+
+(/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/tex/latex/jknapltx/ursf
+s.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.43146> not available
+(Font)              size <8> substituted on input line 37.
+
+LaTeX Font Info:    Calculating math sizes for size <11.04124> on input line 37
+.
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <5.52061> not available
+(Font)              size <6> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <5.52061> not available
+(Font)              size <6> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <5.52061> not available
+(Font)              size <6> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.52061> not available
+(Font)              size <6> substituted on input line 37.
+
+LaTeX Font Info:    Calculating math sizes for size <9.03374> on input line 37.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <4.51686> not available
+(Font)              size <5> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/b/it' in size <4.51686> not available
+(Font)              size <5> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/b/n' in size <4.51686> not available
+(Font)              size <5> substituted on input line 37.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <4.51686> not available
+(Font)              size <5> substituted on input line 37.
+
+LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 37
+.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[1{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updm
+ap/pdftex.map}
+
+
+]
+Underfull \hbox (badness 1874) in paragraph at lines 42--43
+[]\OT1/cmr/m/n/10 Cultivating plants in hypograv-ity imposes
+ []
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 46--48
+\OT1/cmr/m/n/10 83\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 4%$ on the Moon. With-out f
+orced air-flow,
+ []
+
+<fig1_gbc1_sowing_and_microclimate.png, id=80, 900.966pt x 674.52pt>
+File: fig1_gbc1_sowing_and_microclimate.png Graphic file (type png)
+<use fig1_gbc1_sowing_and_microclimate.png>
+Package pdftex.def Info: fig1_gbc1_sowing_and_microclimate.png  used on input l
+ine 51.
+(pdftex.def)             Requested size: 455.24408pt x 340.83061pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+[]\OT1/cmr/bx/n/10 High-density multi-species sow-ing\OT1/cmr/m/n/10 :
+ []
+
+
+Underfull \hbox (badness 1990) in paragraph at lines 57--58
+\OT1/cmr/m/n/10 seedlings across three seg-re-gated com-part-
+ []
+
+
+Underfull \hbox (badness 3009) in paragraph at lines 57--58
+\OT1/cmr/m/n/10 ments within an outer foot-print of only
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+[]\OT1/cmr/bx/n/10 Substrate mois-ture man-age-ment
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+\OT1/cmr/bx/n/10 and root exclu-sion\OT1/cmr/m/n/10 : Hydrophilic
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--59
+\OT1/cmr/m/n/10 polyurethane/phenolic foam stores water
+ []
+
+
+Underfull \hbox (badness 5189) in paragraph at lines 59--60
+[]\OT1/cmr/bx/n/10 Closed-headspace dynam-ics\OT1/cmr/m/n/10 : A shared
+ []
+
+! Misplaced alignment tab character &.
+<argument> 3D Microclimate &
+                             Sowing Architecture
+l.66 ...ion{3D Microclimate & Sowing Architecture}
+                                                  \label{sec:res_micro}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `alignment tab' on input line 66.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+[]\OT1/cmr/bx/n/10 Chamber 2\OT1/cmr/m/n/10 : 100 \OT1/cmr/m/it/10 A. thaliana 
+\OT1/cmr/m/n/10 seeds
+ []
+
+
+Underfull \hbox (badness 4846) in paragraph at lines 71--72
+\OT1/cmr/m/n/10 ($206\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 4 []$, $10 \OMS/cmsy/m/n
+/10 ^^B \OT1/cmr/m/n/10 10$ lawn, $\OML/cmm/m/it/10 Z \OMS/cmsy/m/n/10 2
+ []
+
+
+Underfull \hbox (badness 2111) in paragraph at lines 75--76
+\OT1/cmr/m/n/10 tial $\OML/cmm/m/it/10   \OMS/cmsy/m/n/10 ^^Y ^^@\OT1/cmr/m/n/1
+0 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 005 []$ at 100% acti-va-tion
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 75--76
+\OT1/cmr/m/n/10 mois-ture deficit fault. In Push mode ($\OML/cmm/m/it/10 Q \OT1
+/cmr/m/n/10 =
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 75--76
+\OT1/cmr/m/n/10 3 ($\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^F\O
+T1/cmr/m/n/10 21\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 59 []$), passes through $\OML
+/cmm/m/it/10 Z \OT1/cmr/m/n/10 =
+ []
+
+<fig2_community_germination_and_morphometrics.png, id=85, 897.5934pt x 645.3711
+pt>
+File: fig2_community_germination_and_morphometrics.png Graphic file (type png)
+<use fig2_community_germination_and_morphometrics.png>
+Package pdftex.def Info: fig2_community_germination_and_morphometrics.png  used
+ on input line 79.
+(pdftex.def)             Requested size: 455.24408pt x 327.32295pt.
+! Misplaced alignment tab character &.
+<argument> Germination Kinetics &
+                                  Organ Morphometrics
+l.83 ...ermination Kinetics & Organ Morphometrics}
+                                                  \label{sec:res_kinetics}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `alignment tab' on input line 83.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[2{/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/cm-su
+per/cm-super-ts1.enc}]
+<fig3_sowing_density_crowding_sweep.png, id=113, 876.1533pt x 630.9171pt>
+File: fig3_sowing_density_crowding_sweep.png Graphic file (type png)
+<use fig3_sowing_density_crowding_sweep.png>
+Package pdftex.def Info: fig3_sowing_density_crowding_sweep.png  used on input 
+line 95.
+(pdftex.def)             Requested size: 455.24408pt x 327.82848pt.
+
+! Misplaced alignment tab character &.
+<argument> Neighbor Crowding &
+                               Shade Avoidance
+l.99 ...ction{Neighbor Crowding & Shade Avoidance}
+                                                  \label{sec:res_crowd}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `alignment tab' on input line 99.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[3
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.104 \end{equation}
+                     <./fig1_gbc1_sowing_and_microclimate.png>]
+Underfull \hbox (badness 1783) in paragraph at lines 104--106
+\OT1/cmr/m/n/10 tance, crown radii, and ver-ti-cal height hier-
+ []
+
+
+Underfull \hbox (badness 7925) in paragraph at lines 104--106
+\OT1/cmr/m/n/10 ar-chy. Under nom-i-nal Cham-ber 2 den-sity
+ []
+
+
+Underfull \hbox (badness 1728) in paragraph at lines 104--106
+\OT1/cmr/m/n/10 ($206\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 4 []$), mean light trans
+-mit-tance
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 104--106
+\OT1/cmr/m/n/10 ing trig-gers shade-avoidance syn-drome (SAS),
+ []
+
+<fig4_headspace_gas_and_push_pull_cfd.png, id=133, 887.4756pt x 645.3711pt>
+File: fig4_headspace_gas_and_push_pull_cfd.png Graphic file (type png)
+<use fig4_headspace_gas_and_push_pull_cfd.png>
+Package pdftex.def Info: fig4_headspace_gas_and_push_pull_cfd.png  used on inpu
+t line 109.
+(pdftex.def)             Requested size: 455.24408pt x 331.04533pt.
+! Misplaced alignment tab character &.
+<argument> Headspace Gas Balance &
+                                   Fault Scenarios
+l.113 ...{Headspace Gas Balance & Fault Scenarios}
+                                                  \label{sec:res_gas}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `alignment tab' on input line 113.
+
+
+Underfull \hbox (badness 4403) in paragraph at lines 115--116
+\OT1/cmr/m/n/10 Collective metabolic activ-ity across all 164
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--116
+\OT1/cmr/m/n/10 (Fig. [][]4[][]a--c). Active diaphragm pump-ing
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 115--116
+\OT1/cmr/m/n/10 (Fig. [][]4[][]b). The psy-chro-met-ric model indi-cates
+ []
+
+<fig5_scenario_comparison_matrix.png, id=136, 969.8634pt x 384.4764pt>
+File: fig5_scenario_comparison_matrix.png Graphic file (type png)
+<use fig5_scenario_comparison_matrix.png>
+Package pdftex.def Info: fig5_scenario_comparison_matrix.png  used on input lin
+e 119.
+(pdftex.def)             Requested size: 455.24408pt x 180.46925pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.125 \section
+              {Discussion}\label{sec:disc} <./fig2_community_germination_and_mo
+rphometrics.png>]
+Underfull \hbox (badness 5519) in paragraph at lines 129--130
+[]\OT1/cmr/m/n/10 The inter-ac-tive WebGL sim-u-la-tion plat-
+ []
+
+! Misplaced alignment tab character &.
+<argument> Computational Implementation &
+                                          Physics Solvers
+l.133 ...ational Implementation & Physics Solvers}
+                                                  \label{sec:meth_comp}
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `alignment tab' on input line 133.
+
+! Misplaced alignment tab character &.
+<argument> CFD Airflow &
+                         Navier--Stokes Boundary Layers
+l.138 ...Airflow & Navier--Stokes Boundary Layers}
+                                                  : Closed-form spatial corr...
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Underfull \hbox (badness 1024) in paragraph at lines 134--139
+\OT1/cmr/m/n/10 4. \OT1/cmr/bx/n/10 CFD Air-flow  Navier--Stokes Bound-
+ []
+
+
+Underfull \hbox (badness 1924) in paragraph at lines 134--139
+\OT1/cmr/bx/n/10 ary Lay-ers\OT1/cmr/m/n/10 : Closed-form spa-tial cor-re-la-ti
+ons
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.139 
+       <./fig3_sowing_density_crowding_sweep.png>]
+
+Package hyperref Warning: Difference (3) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 143.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 146.
+
+(./leaf_gbc1_community_npj_microgravity.bbl
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.20 \bibitem{paul2013fundamental}
+                                   <./fig4_headspace_gas_and_push_pull_cfd.png>
+]
+Underfull \hbox (badness 3138) in paragraph at lines 68--76
+[]\OT1/cmr/m/n/10 Kitaya, Y., Tsu-ruyama, J., Kawai, M.,
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+[]| []
+ []
+
+[7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.150 \end{document}
+                     <./fig5_scenario_comparison_matrix.png>]
+(./leaf_gbc1_community_npj_microgravity.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.48314pt have occurred.
+
+Package rerunfilecheck Info: File `leaf_gbc1_community_npj_microgravity.out' ha
+s not changed.
+(rerunfilecheck)             Checksum: F60902E25CBE80E5146A7F717BD37329;1936.
+ ) 
+Here is how much of TeX's memory you used:
+ 19414 strings out of 467525
+ 370543 string characters out of 5408440
+ 785609 words of memory out of 5000000
+ 48005 multiletter control sequences out of 15000+600000
+ 649176 words of font info for 127 fonts, out of 8000000 for 9000
+ 1151 hyphenation exceptions out of 8191
+ 90i,9n,93p,2065b,1187s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
+sfonts/cmextra/cmbsy6.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-di
+st/fonts/type1/public/amsfonts/cmextra/cmbsy9.pfb></opt/homebrew/Cellar/texlive
+/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></opt/home
+brew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx12.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmbx6.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></opt/homebrew/Cellar/texlive/2026
+0301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></opt/homebrew/C
+ellar/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.p
+fb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi5.pfb></opt/homebrew/Cellar/texlive/20260301/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></opt/homebrew/Cellar
+/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></o
+pt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/ty
+pe1/public/amsfonts/cmextra/cmmib9.pfb></opt/homebrew/Cellar/texlive/20260301/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></opt/homebrew/Cellar/
+texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></op
+t/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr17.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmr6.pfb></opt/homebrew/Cellar/texlive/20260301/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></opt/homebrew/Cellar/texlive/2
+0260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></opt/homebrew
+/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy6.pfb></opt/homebrew/Cellar/texlive/20260301/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></opt/homebrew/Cellar
+/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></o
+pt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti10.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti8.pfb></opt/homebrew/Cellar/texlive/20260301/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></opt/homebrew/Cellar/texli
+ve/20260301/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on leaf_gbc1_community_npj_microgravity.pdf (7 pages, 3000399 by
+tes).
+PDF statistics:
+ 303 PDF objects out of 1000 (max. 8388607)
+ 223 compressed objects within 3 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 114 words of extra memory for PDF output out of 10000 (max. 10000000)
+

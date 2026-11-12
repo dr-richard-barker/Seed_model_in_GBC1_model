@@ -1,0 +1,90 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\burl{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\eprint}[2][]{\url{#2}}
+\providecommand{\doi}[1]{\url{https://doi.org/#1}}
+\bibcommenthead
+
+\bibitem{jeseritz2025leaf}
+\bibinfo{author}{Jeseritz, J.}, \bibinfo{author}{Barker, R.},
+  \bibinfo{author}{Haveman, N.~J.}, \bibinfo{author}{Paul, A.-L.} \&
+  \bibinfo{author}{Ferl, R.~J.}
+\newblock \bibinfo{title}{The lunar effects on agricultural flora ({LEAF})
+  payload for {Artemis III}: Science objectives, hardware architecture, and
+  operational concepts}.
+\newblock \emph{\bibinfo{journal}{npj Microgravity}}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{12} (\bibinfo{year}{2025}).
+
+\bibitem{paul2013fundamental}
+\bibinfo{author}{Paul, A.-L.}, \bibinfo{author}{Wheeler, R.~M.},
+  \bibinfo{author}{Levine, H.~G.} \& \bibinfo{author}{Ferl, R.~J.}
+\newblock \bibinfo{title}{Fundamental plant biology in spaceflight}.
+\newblock \emph{\bibinfo{journal}{Adv. Space Res.}}
+  \textbf{\bibinfo{volume}{51}}, \bibinfo{pages}{534--548}
+  (\bibinfo{year}{2013}).
+
+\bibitem{massa2016plant}
+\bibinfo{author}{Massa, G.~D.}, \bibinfo{author}{Wheeler, R.~M.},
+  \bibinfo{author}{Morrow, R.~C.} \& \bibinfo{author}{Shen, F.~T.}
+\newblock \bibinfo{title}{Growth systems for advanced plant research on the
+  {International Space Station}}.
+\newblock \emph{\bibinfo{journal}{Life Sci. Space Res.}}
+  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{30--39} (\bibinfo{year}{2016}).
+
+\bibitem{monje2020hardware}
+\bibinfo{author}{Monje, O.} \emph{et~al.}
+\newblock \bibinfo{title}{Hardware validation of the advanced plant habitat on
+  the {ISS}}.
+\newblock \emph{\bibinfo{journal}{Front. Plant Sci.}}
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{567} (\bibinfo{year}{2020}).
+
+\bibitem{porterfield2002biophysical}
+\bibinfo{author}{Porterfield, D.~M.}
+\newblock \bibinfo{title}{The biophysical limitations in physiological
+  transport and exchange in plants grown in microgravity}.
+\newblock \emph{\bibinfo{journal}{J. Plant Growth Regul.}}
+  \textbf{\bibinfo{volume}{21}}, \bibinfo{pages}{177--190}
+  (\bibinfo{year}{2002}).
+
+\bibitem{kitaya2001gravity}
+\bibinfo{author}{Kitaya, Y.} \emph{et~al.}
+\newblock \bibinfo{title}{The effect of gravity on surface temperatures and net
+  photosynthetic rates of plant leaves}.
+\newblock \emph{\bibinfo{journal}{Adv. Space Res.}}
+  \textbf{\bibinfo{volume}{28}}, \bibinfo{pages}{659--664}
+  (\bibinfo{year}{2001}).
+
+\bibitem{farquhar1980biochemical}
+\bibinfo{author}{Farquhar, G.~D.}, \bibinfo{author}{von Caemmerer, S.} \&
+  \bibinfo{author}{Berry, J.~A.}
+\newblock \bibinfo{title}{A biochemical model of photosynthetic {CO2}
+  assimilation in leaves of {C3} species}.
+\newblock \emph{\bibinfo{journal}{Planta}} \textbf{\bibinfo{volume}{149}},
+  \bibinfo{pages}{78--90} (\bibinfo{year}{1980}).
+
+\bibitem{kitaya2003air}
+\bibinfo{author}{Kitaya, Y.}, \bibinfo{author}{Tsuruyama, J.},
+  \bibinfo{author}{Kawai, M.}, \bibinfo{author}{Shibuya, T.} \&
+  \bibinfo{author}{Kiyota, M.}
+\newblock \bibinfo{title}{Effects of air current on transpiration and net
+  photosynthetic rates of plants in a closed plant culture system}.
+\newblock \emph{\bibinfo{journal}{Adv. Space Res.}}
+  \textbf{\bibinfo{volume}{31}}, \bibinfo{pages}{177--182}
+  (\bibinfo{year}{2003}).
+
+\bibitem{abley2021}
+\bibinfo{author}{Abley, K.} \emph{et~al.}
+\newblock \bibinfo{title}{An alternative model of plant hormone interactions
+  during seed germination}.
+\newblock \emph{\bibinfo{journal}{eLife}} \textbf{\bibinfo{volume}{10}},
+  \bibinfo{pages}{e59485} (\bibinfo{year}{2021}).
+
+\bibitem{footitt2019}
+\bibinfo{author}{Footitt, S.} \& \bibinfo{author}{Finch-Savage, W.~E.}
+\newblock \bibinfo{title}{Dormancy cycling in {Arabidopsis} seeds}.
+\newblock \emph{\bibinfo{journal}{J. Exp. Bot.}} \textbf{\bibinfo{volume}{70}},
+  \bibinfo{pages}{4897--4909} (\bibinfo{year}{2019}).
+
+\end{thebibliography}
