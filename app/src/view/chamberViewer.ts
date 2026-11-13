@@ -71,7 +71,12 @@ export function createChamberViewer(
   onPickSeed: (seedId: number, cellId: number | null) => void,
 ): ChamberViewer {
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x0b1014);
+  const isDarkTheme = () => document.documentElement.dataset.theme !== "light";
+  scene.background = new THREE.Color(isDarkTheme() ? 0x0b1014 : 0xeef2f6);
+  const themeObserver = new MutationObserver(() => {
+    scene.background = new THREE.Color(isDarkTheme() ? 0x0b1014 : 0xeef2f6);
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   const camera = new THREE.PerspectiveCamera(38, 1, 0.2, 600);
   camera.position.set(58, 46, 54);
@@ -729,6 +734,7 @@ export function createChamberViewer(
     dispose() {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      themeObserver.disconnect();
       renderer.domElement.removeEventListener("pointerdown", onPointerDown);
       renderer.domElement.removeEventListener("pointerup", onPointerUp);
       cellGeo.dispose();

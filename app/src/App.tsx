@@ -7,6 +7,10 @@ import { LEDGER, REFERENCES, defaultParams } from "./model/params";
 import { PRESET_BY_ID } from "./model/presets";
 import type { FlowMode } from "./model/gbc1Field";
 import { Chart } from "./ui/Chart";
+import { DualComparePage } from "./ui/DualComparePage";
+import { OverviewPage, type PortalView } from "./ui/OverviewPage";
+import { PaperPage } from "./ui/PaperPage";
+import { TutorialPage } from "./ui/TutorialPage";
 import {
   createChamberViewer,
   type CameraPreset,
@@ -123,6 +127,48 @@ const SCENARIOS: MissionScenario[] = [
 export function App() {
   const baseParams = useMemo(() => defaultParams(), []);
   const leafPreset = useMemo(() => PRESET_BY_ID.get("leaf_gbc1")!, []);
+
+  // Portal theme & active view
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    try {
+      const saved = localStorage.getItem("gbc1-portal-theme");
+      if (saved === "light" || saved === "dark") return saved;
+    } catch {
+      // ignore storage errors
+    }
+    return "dark";
+  });
+
+  const [activeView, setActiveView] = useState<PortalView>(() => {
+    const hash = window.location.hash.replace(/^#\/?/, "");
+    if (hash === "simulator" || hash === "compare" || hash === "paper" || hash === "tutorial" || hash === "overview") {
+      return hash;
+    }
+    return "overview";
+  });
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem("gbc1-portal-theme", theme);
+    } catch {
+      // ignore storage errors
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    if (window.location.hash !== `#${activeView}`) {
+      window.history.replaceState(null, "", `#${activeView}`);
+    }
+  }, [activeView]);
+
+  const chartTheme = useMemo(
+    () =>
+      theme === "light"
+        ? { fg: "#0f172a", muted: "#475569", line: "#cbd5e1" }
+        : { fg: "#e8f0f7", muted: "#8fa6bc", line: "#1f2f3d" },
+    [theme],
+  );
 
   // Mission configuration state
   const [scenarioId, setScenarioId] = useState<string>("lunar_push_nominal");
@@ -253,7 +299,7 @@ export function App() {
   const singleSeedColorsRef = useRef<Float32Array>(new Float32Array(24000 * 3));
 
   useEffect(() => {
-    if (!chamberContainerRef.current) return;
+    if (activeView !== "simulator" || !chamberContainerRef.current) return;
     const viewer = createChamberViewer(chamberContainerRef.current, (seedId, cellId) => {
       setSelectedSeedId(seedId);
       setSelectedCellId(cellId);
@@ -263,25 +309,25 @@ export function App() {
       viewer.dispose();
       chamberViewerRef.current = null;
     };
-  }, []);
+  }, [activeView]);
 
   useEffect(() => {
-    if (!singleSeedContainerRef.current) return;
+    if (activeView !== "simulator" || !singleSeedContainerRef.current) return;
     const sv = createSeedViewer(
       singleSeedContainerRef.current,
       24000,
       (_s, cell) => setSelectedCellId(cell),
-      { background: 0x0b1116 },
     );
     singleSeedViewerRef.current = sv;
     return () => {
       sv.dispose();
       singleSeedViewerRef.current = null;
     };
-  }, []);
+  }, [activeView]);
 
   // Sync 3D Viewers whenever simulation state, color mode, or selected seed updates
   useEffect(() => {
+    if (activeView !== "simulator") return;
     const comm = communityRef.current;
     if (!comm) return;
     if (chamberViewerRef.current) {
@@ -296,15 +342,17 @@ export function App() {
       singleSeedViewerRef.current.frame(view);
       singleSeedViewerRef.current.setGravityArrow(comm.env.gravity_g);
     }
-  }, [simTick, colorMode, decoderClass, selectedSeedId]);
+  }, [simTick, colorMode, decoderClass, selectedSeedId, activeView]);
 
   useEffect(() => {
+    if (activeView !== "simulator") return;
     chamberViewerRef.current?.setLayers(layers);
-  }, [layers]);
+  }, [layers, activeView]);
 
   useEffect(() => {
+    if (activeView !== "simulator") return;
     singleSeedViewerRef.current?.setCut(cutAway);
-  }, [cutAway]);
+  }, [cutAway, activeView]);
 
   const applyScenario = (id: string) => {
     setScenarioId(id);
@@ -329,59 +377,81 @@ export function App() {
   const tx = samples.map((s) => s.t);
 
   return (
-    <div className="gbc1-shell">
-      {/* TOP TELEMETRY & MISSION BAR */}
+    <div className={`gbc1-shell ${activeView === "simulator" ? "is-simulator" : ""}`}>
+      {/* TOP PORTAL NAVIGATION & TELEMETRY BAR */}
       <header className="topbar">
         <div className="topbar-title">
           <h1>LEAF GBC1 · 164-Seed Cellular Community Digital Twin</h1>
           <span className="subtitle">
-            3-Compartment CAD + CFD + 35 µm Nytex Barrier + Multi-Seed Crowding &amp; Gas Coupling
+            Artemis III Lunar Growth Chamber · 3-Compartment CAD + CFD + 35 µm Nytex Barrier
           </span>
         </div>
+
+        <nav className="nav-pills" aria-label="Portal navigation">
+          {(
+            [
+              { id: "overview", label: "Overview & Results" },
+              { id: "simulator", label: "3D Digital Twin" },
+              { id: "compare", label: "Dual Comparison & PDF" },
+              { id: "paper", label: "Paper & PDF" },
+              { id: "tutorial", label: "Tutorial" },
+            ] as const
+          ).map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              className={`nav-pill ${activeView === tab.id ? "active" : ""}`}
+              onClick={() => setActiveView(tab.id)}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
+
         <div className="topbar-kpis">
-          <div className="kpi-pill">
-            <span>Time:</span>
-            <strong>{ (comm?.t ?? 0).toFixed(1) } h</strong>
-          </div>
-          <div className="kpi-pill">
-            <span>Seeds:</span>
-            <strong>{ comm?.specs.length ?? 164 } ({ (comm?.sowing.overallDensityDm2 ?? 89.1).toFixed(0) }/dm²)</strong>
-          </div>
-          <div className="kpi-pill">
-            <span>Germ:</span>
-            <strong>{ (latest?.germination_pct_all ?? 0).toFixed(1) }%</strong>
-          </div>
-          <div className="kpi-pill">
-            <span>O₂ / CO₂:</span>
-            <strong>
-              { (latest?.o2_hs_kpa ?? 21.2).toFixed(1) } kPa / { (latest?.co2_hs_ppm ?? 420).toFixed(0) } ppm
-            </strong>
-          </div>
-          <div className="kpi-pill">
-            <span>C₂H₄:</span>
-            <strong>{ (latest?.eth_hs_ppb ?? 0).toFixed(1) } ppb</strong>
-          </div>
-          <div className="kpi-pill">
-            <span>Nytex Exclusion:</span>
-            <strong style={{ color: "#5ec962" }}>
-              { (latest?.nytex_root_exclusion_pct ?? 100).toFixed(1) }% (ΔP { (latest?.rnalater_dp_kpa ?? 1.65).toFixed(2) } kPa)
-            </strong>
-          </div>
-          <button className="btn active" onClick={() => setShowTour(true)} style={{ background: "#00d4ff", color: "#081018", fontWeight: 700 }}>
-            📖 Flight Tour &amp; Intro
-          </button>
-          <button className="btn" onClick={() => setShowManuscript(true)} style={{ borderColor: "#a6d96a", color: "#a6d96a" }}>
-            📄 Manuscript (PDF)
-          </button>
-          <button className="btn" onClick={() => setShowSupplementary(true)} style={{ borderColor: "#00d4ff", color: "#00d4ff" }}>
-            📑 Supplementary Info (PDF)
-          </button>
-          <button className="btn" onClick={() => setShowLedger(true)}>
-            Parameter Ledger ({ LEDGER.length })
+          {activeView === "simulator" && (
+            <>
+              <div className="kpi-pill">
+                <span>Time:</span>
+                <strong>{(comm?.t ?? 0).toFixed(1)} h</strong>
+              </div>
+              <div className="kpi-pill">
+                <span>Germ:</span>
+                <strong>{(latest?.germination_pct_all ?? 0).toFixed(1)}%</strong>
+              </div>
+              <div className="kpi-pill">
+                <span>O₂:</span>
+                <strong>{(latest?.o2_hs_kpa ?? 21.2).toFixed(1)} kPa</strong>
+              </div>
+              <div className="kpi-pill">
+                <span>C₂H₄:</span>
+                <strong>{(latest?.eth_hs_ppb ?? 0).toFixed(1)} ppb</strong>
+              </div>
+              <div className="kpi-pill">
+                <span>Nytex:</span>
+                <strong style={{ color: "var(--good)" }}>
+                  {(latest?.nytex_root_exclusion_pct ?? 100).toFixed(1)}%
+                </strong>
+              </div>
+            </>
+          )}
+          <button
+            type="button"
+            className="theme-toggle-btn"
+            onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+            title="Switch between Dark and Light appearance"
+          >
+            {theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode"}
           </button>
         </div>
       </header>
 
+      {activeView === "overview" && <OverviewPage onNavigate={setActiveView} />}
+      {activeView === "compare" && <DualComparePage theme={theme} />}
+      {activeView === "paper" && <PaperPage />}
+      {activeView === "tutorial" && <TutorialPage onNavigate={setActiveView} />}
+
+      {activeView === "simulator" && (
       <div className="workspace">
         {/* LEFT SIDEBAR: SCENARIOS, HARDWARE & SOWING CONTROLS */}
         <aside className="sidebar-left">
@@ -792,9 +862,7 @@ export function App() {
               yMin={0}
               yMax={105}
               now={comm?.t}
-              fg="#e8f0f7"
-              muted="#8fa6bc"
-              line="#1f2f3d"
+              {...chartTheme}
               series={[
                 { label: "Ch 2 Arabidopsis (206/dm²)", color: "#00d4ff", x: tx, y: samples.map((s) => s.ch2.germinationPct) },
                 { label: "Ch 1 B. rapa (47/dm²)", color: "#5ec962", x: tx, y: samples.map((s) => s.ch1.germinationPct) },
@@ -808,9 +876,7 @@ export function App() {
               xMax={120}
               yMin={0}
               now={comm?.t}
-              fg="#e8f0f7"
-              muted="#8fa6bc"
-              line="#1f2f3d"
+              {...chartTheme}
               series={[
                 { label: "Ch 1/3 B. rapa Hypocotyl", color: "#5ec962", x: tx, y: samples.map((s) => s.ch1.meanHypocotylMm) },
                 { label: "Ch 2 Ath Hypocotyl", color: "#00d4ff", x: tx, y: samples.map((s) => s.ch2.meanHypocotylMm) },
@@ -825,9 +891,7 @@ export function App() {
               xMax={120}
               yMin={0}
               now={comm?.t}
-              fg="#e8f0f7"
-              muted="#8fa6bc"
-              line="#1f2f3d"
+              {...chartTheme}
               series={[
                 { label: "Ch 1 B. rapa LAI", color: "#5ec962", x: tx, y: samples.map((s) => s.ch1.lai) },
                 { label: "Ch 2 Ath LAI", color: "#00d4ff", x: tx, y: samples.map((s) => s.ch2.lai) },
@@ -843,11 +907,9 @@ export function App() {
               yMin={0}
               yMax={22}
               now={comm?.t}
-              fg="#e8f0f7"
-              muted="#8fa6bc"
-              line="#1f2f3d"
+              {...chartTheme}
               series={[
-                { label: "Headspace O₂", color: "#e8f0f7", x: tx, y: samples.map((s) => s.o2_hs_kpa) },
+                { label: "Headspace O₂", color: chartTheme.fg, x: tx, y: samples.map((s) => s.o2_hs_kpa) },
                 { label: "Ch 2 Ath Tip O₂", color: "#00d4ff", x: tx, y: samples.map((s) => s.ch2.meanO2TipKpa) },
                 { label: "Ch 1 B. rapa Tip O₂", color: "#5ec962", x: tx, y: samples.map((s) => s.ch1.meanO2TipKpa) },
               ]}
@@ -858,9 +920,7 @@ export function App() {
               yLabel="CO₂ ppm / C₂H₄ ppb"
               xMax={120}
               now={comm?.t}
-              fg="#e8f0f7"
-              muted="#8fa6bc"
-              line="#1f2f3d"
+              {...chartTheme}
               series={[
                 { label: "Headspace CO₂ (ppm ÷ 10)", color: "#00d4ff", x: tx, y: samples.map((s) => s.co2_hs_ppm / 10) },
                 { label: "Headspace C₂H₄ (ppb)", color: "#ff5c5c", x: tx, y: samples.map((s) => s.eth_hs_ppb) },
@@ -872,9 +932,7 @@ export function App() {
               yLabel="mm/s or °C"
               xMax={120}
               now={comm?.t}
-              fg="#e8f0f7"
-              muted="#8fa6bc"
-              line="#1f2f3d"
+              {...chartTheme}
               series={[
                 { label: "Ch 2 g_bl (mm/s)", color: "#00d4ff", x: tx, y: samples.map((s) => s.ch2.meanGblMms) },
                 { label: "Ch 1/3 g_bl (mm/s)", color: "#5ec962", x: tx, y: samples.map((s) => s.ch1.meanGblMms) },
@@ -884,6 +942,7 @@ export function App() {
           </div>
         </aside>
       </div>
+      )}
 
       {/* PARAMETER PROVENANCE LEDGER MODAL */}
       {showLedger && (
