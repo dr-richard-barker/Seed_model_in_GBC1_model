@@ -286,7 +286,7 @@ def fig4_headspace_and_cfd() -> None:
     ax.set_xlabel("Time After Imbibition (h)")
     ax.set_ylabel("Oxygen Partial Pressure (kPa)")
     ax.set_title("A. Shared 54.05 mL Headspace & Cellular Tip $\\mathrm{O_2}$")
-    ax.legend(loc="lower left")
+    ax.legend(loc="lower right")
 
     # Panel B: Headspace CO2 Dynamics
     ax = axes[0, 1]
@@ -297,7 +297,7 @@ def fig4_headspace_and_cfd() -> None:
     ax.set_xlabel("Time After Imbibition (h)")
     ax.set_ylabel("Headspace $\\mathrm{CO_2}$ (ppm)")
     ax.set_title("B. Respiratory $\\mathrm{CO_2}$ Release & Diurnal FvCB Assimilation")
-    ax.legend(loc="upper left")
+    ax.legend(loc="lower right", bbox_to_anchor=(0.98, 0.08))
 
     # Panel C: Ethylene Accumulation (Active vs Stagnant)
     ax = axes[1, 0]
@@ -322,7 +322,7 @@ def fig4_headspace_and_cfd() -> None:
     ax.set_xlabel("Time After Imbibition (h)")
     ax.set_ylabel("$g_{bl}$ (mm/s) or Dew Margin $\\Delta T$ (°C)")
     ax.set_title("D. Push vs. Pull Manifold Channelling & Lid Condensation Margin")
-    ax.legend(loc="upper right")
+    ax.legend(loc="center right")
 
     fig.suptitle("LEAF GBC1 Shared Headspace Mass Balance & Push/Pull CFD Coupling", fontsize=12.5, fontweight="bold", y=1.01)
     fig.tight_layout()

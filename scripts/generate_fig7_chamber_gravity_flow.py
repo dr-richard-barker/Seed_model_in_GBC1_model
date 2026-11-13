@@ -142,107 +142,141 @@ def draw_3d_chamber_perspective(ax):
     # Outflow at Port 2 (Z = 0)
     ax.quiver(-8.0, 0.0, 24, -8, 0, 0, color="#ff9800", lw=1.5, arrow_length_ratio=0.3)
     
-    # Labels
-    ax.text(-12, -22, 34, "Chamber 1 (32 B. rapa)", color=C_CH1, fontsize=6.5, weight="bold")
-    ax.text(-12, 0, 34, "Chamber 2 (100 Ath Lawn)", color=C_CH2, fontsize=6.5, weight="bold")
-    ax.text(-12, 22, 34, "Chamber 3 (32 B. rapa)", color=C_CH3, fontsize=6.5, weight="bold")
+    # Labels (spread clearly around left, center-top, and right of chamber roofline)
+    ax.text(-16.0, -22, 33.5, "Chamber 1 (32 B. rapa)", color=C_CH1, fontsize=6.4, weight="bold", ha="right")
+    ax.text(2.0, 0, 42.5, "Chamber 2 (100 Ath Lawn)", color=C_CH2, fontsize=6.4, weight="bold", ha="center")
+    ax.text(18.0, 22, 41.0, "Chamber 3 (32 B. rapa)", color=C_CH3, fontsize=6.4, weight="bold", ha="left")
     
     ax.set_xlim(-20, 25)
     ax.set_ylim(-35, 35)
-    ax.set_zlim(0, 36)
-    ax.set_xlabel("X (mm)", labelpad=-8, fontsize=7)
-    ax.set_ylabel("Z (mm)", labelpad=-8, fontsize=7)
-    ax.set_zlabel("Y (mm)", labelpad=-8, fontsize=7)
+    ax.set_zlim(0, 40)
+    ax.set_xticks([-20, 0, 20])
+    ax.set_yticks([-20, 0, 20])
+    ax.set_zticks([0, 15, 30])
+    ax.tick_params(axis="both", which="major", pad=2, labelsize=6.5)
+    ax.set_xlabel("X (mm)", labelpad=6, fontsize=7.2)
+    ax.set_ylabel("Z (mm)", labelpad=8, fontsize=7.2)
+    ax.set_zlabel("Y (mm)", labelpad=6, fontsize=7.2)
     ax.view_init(elev=22, azim=-55)
     ax.set_box_aspect([1.0, 1.6, 0.9])
 
 def main():
-    fig = plt.figure(figsize=(7.4, 7.4))
-    gs = fig.add_gridspec(3, 2, height_ratios=[1.15, 0.95, 0.95], hspace=0.36, wspace=0.25)
+    fig = plt.figure(figsize=(7.6, 8.0))
+    gs = fig.add_gridspec(3, 2, height_ratios=[1.15, 1.0, 0.95], hspace=0.40, wspace=0.28)
 
     # -------------------------------------------------------------
     # Panel a: 3D Chamber CAD & 164-Seed Sowing Layout
     # -------------------------------------------------------------
     ax_a = fig.add_subplot(gs[0, :], projection="3d")
-    ax_a.set_title("a  LEAF GBC1 3D Chamber Digital Twin: 164-Seed Community & Push CFD Streamlines", loc="left", weight="bold", pad=12)
+    ax_a.set_title(
+        "a  LEAF GBC1 3D Chamber Digital Twin: 164-Seed Community & Push CFD Streamlines",
+        loc="left",
+        x=-0.52,
+        fontsize=8.3,
+        weight="bold",
+        pad=10,
+    )
     draw_3d_chamber_perspective(ax_a)
 
     # -------------------------------------------------------------
     # Panel b: Lesson 1 — Gravity Level Alterations (1g vs 0.166g vs 0g)
     # -------------------------------------------------------------
     ax_b = fig.add_subplot(gs[1, 0])
-    ax_b.set_title("b  Lesson 1: Gravitational Regimes & Statolith Steering", loc="left", weight="bold")
-    ax_b.set_xlim(-1.6, 1.6)
-    ax_b.set_ylim(-1.5, 2.2)
-    ax_b.set_aspect("equal")
+    ax_b.set_title("b  Lesson 1: Gravitational Regimes & Statolith Steering", loc="left", fontsize=8.0, weight="bold")
+    ax_b.set_xlim(-2.55, 2.55)
+    ax_b.set_ylim(-1.55, 2.35)
     ax_b.axis("off")
     
     # Draw Nytex line
     ax_b.axhline(0, color="#2980b9", lw=1.2, ls="--")
-    ax_b.text(1.5, 0.08, "35 µm Nytex", color="#2980b9", fontsize=5.5, ha="right", weight="bold")
+    ax_b.text(-2.50, 0.12, "35 µm Nytex", color="#2980b9", fontsize=5.6, ha="left", weight="bold")
     
     # 1. Earth 1.0g (left)
-    # Straight downward root, sharp gravitropism
-    ax_b.plot([-1.0, -1.0], [0.8, 1.8], color="#e6c86e", lw=3.0) # shoot
-    ax_b.plot([-1.0, -1.0], [0.8, 0.0], color=C_OK, lw=2.5) # radicle down to Nytex
-    ax_b.plot([-1.0, -0.6], [0.0, 0.0], color=C_OK, lw=2.5) # small turn along Nytex
-    ax_b.scatter(-0.6, 0.0, color="#d98cb3", s=18, zorder=5) # QC
-    ax_b.scatter([-1.15, -0.85], [1.9, 1.9], color="#4caf50", s=30, zorder=5) # cotyledons
-    ax_b.text(-1.0, -0.5, "1.0g Earth\n• Rapid sedimentation\n• Uniaxial downward\n• High statolith flux", ha="center", fontsize=5.8, weight="bold")
+    x1 = -1.65
+    ax_b.plot([x1, x1], [0.8, 1.85], color="#e6c86e", lw=3.0) # shoot
+    ax_b.plot([x1, x1], [0.8, 0.0], color=C_OK, lw=2.5) # radicle down to Nytex
+    ax_b.plot([x1, x1 + 0.35], [0.0, 0.0], color=C_OK, lw=2.5) # small turn along Nytex
+    ax_b.scatter(x1 + 0.35, 0.0, color="#d98cb3", s=18, zorder=5) # QC
+    ax_b.scatter([x1 - 0.16, x1 + 0.16], [1.96, 1.96], color="#4caf50", s=28, zorder=5) # cotyledons
+    ax_b.text(
+        x1, -0.26,
+        "1.0g Earth\n• Rapid sedimentation\n• Uniaxial downward\n• High statolith flux",
+        ha="center", va="top", fontsize=5.4, weight="bold", linespacing=1.28,
+    )
 
     # 2. Moon 0.166g (middle)
-    ax_b.plot([0.0, 0.05], [0.8, 2.0], color="#e6c86e", lw=3.0)
-    ax_b.plot([0.0, 0.15], [0.8, 0.0], color=C_OK, lw=2.5) # angled radicle
-    ax_b.plot([0.15, 0.65], [0.0, 0.0], color=C_OK, lw=2.5) # longer glide along Nytex
-    ax_b.scatter(0.65, 0.0, color="#d98cb3", s=18, zorder=5)
-    ax_b.scatter([-0.1, 0.2], [2.1, 2.1], color="#4caf50", s=30, zorder=5)
-    ax_b.text(0.1, -0.5, "0.166g Moon\n• 83.4% lower buoyancy\n• Delayed turning (35°)\n• Broad Nytex contact", ha="center", fontsize=5.8, weight="bold")
+    x2 = 0.0
+    ax_b.plot([x2, x2 + 0.05], [0.8, 2.02], color="#e6c86e", lw=3.0)
+    ax_b.plot([x2, x2 + 0.15], [0.8, 0.0], color=C_OK, lw=2.5) # angled radicle
+    ax_b.plot([x2 + 0.15, x2 + 0.65], [0.0, 0.0], color=C_OK, lw=2.5) # longer glide along Nytex
+    ax_b.scatter(x2 + 0.65, 0.0, color="#d98cb3", s=18, zorder=5)
+    ax_b.scatter([x2 - 0.12, x2 + 0.20], [2.12, 2.12], color="#4caf50", s=28, zorder=5)
+    ax_b.text(
+        x2, -0.26,
+        "0.166g Moon\n• 83.4% lower buoyancy\n• Delayed turning (35°)\n• Broad Nytex contact",
+        ha="center", va="top", fontsize=5.4, weight="bold", linespacing=1.28,
+    )
 
     # 3. Microgravity 0g (right)
-    ax_b.plot([1.0, 1.1], [0.8, 1.9], color="#e6c86e", lw=3.0)
-    # Wandering, wavy root on Nytex
-    rx_pts = [1.0, 1.1, 1.25, 1.45, 1.55]
-    ry_pts = [0.8, 0.3, 0.05, 0.05, 0.15] # curling up off mesh!
+    x3 = 1.65
+    ax_b.plot([x3, x3 + 0.10], [0.8, 1.92], color="#e6c86e", lw=3.0)
+    rx_pts = [x3, x3 + 0.10, x3 + 0.25, x3 + 0.45, x3 + 0.56]
+    ry_pts = [0.8, 0.30, 0.06, 0.06, 0.18]
     ax_b.plot(rx_pts, ry_pts, color=C_OK, lw=2.5)
     ax_b.scatter(rx_pts[-1], ry_pts[-1], color="#d98cb3", s=18, zorder=5)
-    ax_b.scatter([0.9, 1.25], [2.0, 2.0], color="#4caf50", s=30, zorder=5)
-    ax_b.text(1.1, -0.5, "0g Microgravity\n• No sedimentation\n• Autotropic waving\n• Stochastic curling", ha="center", fontsize=5.8, weight="bold")
+    ax_b.scatter([x3 - 0.08, x3 + 0.24], [2.02, 2.02], color="#4caf50", s=28, zorder=5)
+    ax_b.text(
+        x3, -0.26,
+        "0g Microgravity\n• No sedimentation\n• Autotropic waving\n• Stochastic curling",
+        ha="center", va="top", fontsize=5.4, weight="bold", linespacing=1.28,
+    )
 
     # -------------------------------------------------------------
     # Panel c: Lesson 2 — Pump Flow Rate & Ethylene Triple Response
     # -------------------------------------------------------------
     ax_c = fig.add_subplot(gs[1, 1])
-    ax_c.set_title("c  Lesson 2: Airflow Rates & Ethylene Triple Response", loc="left", weight="bold")
-    ax_c.set_xlim(-1.4, 1.4)
-    ax_c.set_ylim(-1.5, 2.2)
-    ax_c.set_aspect("equal")
+    ax_c.set_title("c  Lesson 2: Airflow & Ethylene Triple Response", loc="left", fontsize=8.0, weight="bold")
+    ax_c.set_xlim(-2.35, 2.35)
+    ax_c.set_ylim(-1.75, 2.55)
     ax_c.axis("off")
     
     # 1. Active Push (Q = 25 mL/min) (left)
-    ax_c.plot([-0.7, -0.7], [0.4, 1.8], color="#e6c86e", lw=3.0) # slender hypocotyl
-    ax_c.plot([-0.7, -0.7], [0.4, -0.4], color=C_OK, lw=2.5) # healthy root
-    ax_c.scatter([-0.85, -0.55], [1.9, 1.9], color="#4caf50", s=35, zorder=5) # open cotyledons
-    # Thin boundary layer outline
-    b_act = patches.Ellipse((-0.7, 0.9), 0.75, 1.7, angle=0, fill=False, edgecolor="#27ae60", lw=1.2, ls="--")
+    xc1 = -1.15
+    ax_c.plot([xc1, xc1], [0.4, 1.8], color="#e6c86e", lw=3.0) # slender hypocotyl
+    ax_c.plot([xc1, xc1], [0.4, -0.35], color=C_OK, lw=2.5) # healthy root
+    ax_c.scatter([xc1 - 0.16, xc1 + 0.16], [1.9, 1.9], color="#4caf50", s=32, zorder=5) # open cotyledons
+    b_act = patches.Ellipse((xc1, 0.95), 0.90, 1.75, angle=0, fill=False, edgecolor="#27ae60", lw=1.2, ls="--")
     ax_c.add_patch(b_act)
-    ax_c.text(-0.7, 2.05, "Thin δ_bl (0.8 mm)", color="#27ae60", fontsize=5.5, ha="center", weight="bold")
-    ax_c.text(-0.7, -0.75, "Active Push (25 mL/min)\n• C₂H₄ < 0.1 ppb (purged)\n• g_bl = 13.4 mm/s\n• Slender, expanded shoot", ha="center", fontsize=5.8, weight="bold")
+    ax_c.text(xc1, 2.18, r"Thin $\delta_{\mathrm{bl}}$ (0.8 mm)", color="#27ae60", fontsize=5.6, ha="center", va="bottom", weight="bold")
+    ax_c.text(
+        xc1, -0.58,
+        "Active Push (25 mL/min)\n"
+        r"• $\mathrm{C_2H_4} < 0.1$ ppb (purged)" "\n"
+        r"• $g_{\mathrm{bl}} = 13.4$ mm/s" "\n"
+        "• Slender, expanded shoot",
+        ha="center", va="top", fontsize=5.4, weight="bold", linespacing=1.28,
+    )
 
     # 2. Stagnant Fault (Q = 0) (right)
-    # Swollen hypocotyl, exaggerated hook, stunted root
-    # Hook curve
+    xc2 = 1.15
     t_hook = np.linspace(0, np.pi * 0.8, 15)
-    hook_x = 0.7 - 0.25 * (1 - np.cos(t_hook))
+    hook_x = xc2 - 0.25 * (1 - np.cos(t_hook))
     hook_y = 1.0 + 0.3 * np.sin(t_hook)
-    ax_c.plot([0.7, 0.7], [0.4, 1.0], color=C_ETH, lw=6.5) # 85% thicker stem!
+    ax_c.plot([xc2, xc2], [0.4, 1.0], color=C_ETH, lw=6.5) # 85% thicker stem!
     ax_c.plot(hook_x, hook_y, color=C_ETH, lw=6.0) # exaggerated hook
-    ax_c.plot([0.7, 0.7], [0.4, 0.05], color=C_ETH, lw=3.5) # stunted root!
+    ax_c.plot([xc2, xc2], [0.4, 0.05], color=C_ETH, lw=3.5) # stunted root!
     ax_c.scatter(hook_x[-1], hook_y[-1], color="#a3b899", s=22, zorder=5) # closed, stunted cotyledons
-    # Thick boundary layer envelope
-    b_stag = patches.Ellipse((0.7, 0.8), 1.3, 2.1, angle=0, fill=True, facecolor="#e74c3c", alpha=0.15, edgecolor="#c0392b", lw=1.4, ls=":")
+    b_stag = patches.Ellipse((xc2, 0.82), 1.55, 2.1, angle=0, fill=True, facecolor="#e74c3c", alpha=0.15, edgecolor="#c0392b", lw=1.4, ls=":")
     ax_c.add_patch(b_stag)
-    ax_c.text(0.7, 2.05, "Stagnant Gas Bag (Q = 0)", color="#c0392b", fontsize=5.5, ha="center", weight="bold")
-    ax_c.text(0.7, -0.75, "Stagnant Fault (Pump Off)\n• C₂H₄ = 136.5 ppb (trapped)\n• g_bl < 3.0 mm/s\n• +85% Radial Swelling", ha="center", fontsize=5.8, weight="bold")
+    ax_c.text(xc2, 2.18, "Stagnant Gas Bag (Q = 0)", color="#c0392b", fontsize=5.6, ha="center", va="bottom", weight="bold")
+    ax_c.text(
+        xc2, -0.58,
+        "Stagnant Fault (Pump Off)\n"
+        r"• $\mathrm{C_2H_4} = 136.5$ ppb (trapped)" "\n"
+        r"• $g_{\mathrm{bl}} < 3.0$ mm/s" "\n"
+        "• +85% Radial Swelling",
+        ha="center", va="top", fontsize=5.4, weight="bold", linespacing=1.28,
+    )
 
     # -------------------------------------------------------------
     # Panel d: Microclimate Profiles Across Compartments (Z = -33 to +33 mm)
@@ -297,10 +331,10 @@ def main():
     ax_e.set_xticks(x)
     ax_e.set_xticklabels(scenarios, fontsize=6.5, rotation=20, ha="right")
     ax_e.set_ylabel("Organ Metric (mm / Scaled)")
-    ax_e.set_ylim(0, 3.8)
-    ax_e.legend(loc="upper left", ncol=3, frameon=False, fontsize=6.0)
+    ax_e.set_ylim(0, 4.15)
+    ax_e.legend(loc="upper left", ncol=2, frameon=False, fontsize=5.8, columnspacing=1.0)
 
-    fig.subplots_adjust(top=0.94, bottom=0.08, left=0.08, right=0.96, hspace=0.38, wspace=0.25)
+    fig.subplots_adjust(top=0.94, bottom=0.08, left=0.08, right=0.96, hspace=0.40, wspace=0.26)
 
     # Save outputs
     out_png = OUT_MANUSCRIPT / "fig7_chamber_gravity_flow_morphology.png"
