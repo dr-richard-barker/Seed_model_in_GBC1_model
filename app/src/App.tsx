@@ -232,8 +232,9 @@ export function App() {
     });
   };
 
-  // Rebuild simulation when boundary conditions change
+  // Rebuild simulation when boundary conditions change or when switching to simulator
   useEffect(() => {
+    if (activeView !== "simulator") return;
     const comm = buildNewCommunity(
       gravityG,
       flowMlMin,
@@ -250,12 +251,27 @@ export function App() {
     }
     setSimTick((v) => v + 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gravityG, flowMlMin, flowMode, waterFillPct, densityMultiplier, tempC, lightUmol]);
+  }, [activeView, gravityG, flowMlMin, flowMode, waterFillPct, densityMultiplier, tempC, lightUmol]);
 
   // Advance or rewind when targetHour changes
   useEffect(() => {
+    if (activeView !== "simulator") return;
     const comm = communityRef.current;
-    if (!comm) return;
+    if (!comm) {
+      const fresh = buildNewCommunity(
+        gravityG,
+        flowMlMin,
+        flowMode,
+        waterFillPct,
+        densityMultiplier,
+        tempC,
+        lightUmol,
+      );
+      fresh.runTo(targetHour);
+      communityRef.current = fresh;
+      setSimTick((v) => v + 1);
+      return;
+    }
     if (targetHour >= comm.t - 1e-6) {
       comm.runTo(targetHour);
       setSimTick((v) => v + 1);
@@ -274,7 +290,7 @@ export function App() {
       setSimTick((v) => v + 1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetHour]);
+  }, [activeView, targetHour]);
 
   // Play timer
   useEffect(() => {

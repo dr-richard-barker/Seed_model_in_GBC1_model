@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import PRECOMPUTED_RAW from "../data/precomputedScenarios.json";
 import { GBC1CommunityTwin, type CommunitySample } from "../model/community";
 import { resolveEnv } from "../model/environment";
 import type { FlowMode } from "../model/gbc1Field";
@@ -17,10 +18,19 @@ export interface DualSimConfig {
   lightUmol: number;
 }
 
+interface PrecomputedScenarioData {
+  seedCount: number;
+  samples: CommunitySample[];
+}
+
+const PRECOMPUTED = PRECOMPUTED_RAW as unknown as Record<string, PrecomputedScenarioData>;
+
 interface DualPreset {
   id: string;
   title: string;
   subtitle: string;
+  scenarioAId: string;
+  scenarioBId: string;
   a: DualSimConfig;
   b: DualSimConfig;
 }
@@ -30,6 +40,8 @@ const DUAL_PRESETS: DualPreset[] = [
     id: "earth_vs_lunar",
     title: "Earth 1.0g vs. Lunar 0.166g",
     subtitle: "Gravitational scaling, Grashof convection (−83.4%), & statolith dispersion",
+    scenarioAId: "earth_1g_push",
+    scenarioBId: "lunar_push_nominal",
     a: {
       label: "Sim A · Earth Control (1.0g)",
       gravityG: 1.0,
@@ -55,6 +67,8 @@ const DUAL_PRESETS: DualPreset[] = [
     id: "lunar_vs_0g",
     title: "Lunar 0.166g vs. Microgravity 0.0g",
     subtitle: "Artemis lunar surface vs. ISS orbital free-fall",
+    scenarioAId: "lunar_push_nominal",
+    scenarioBId: "iss_0g_push",
     a: {
       label: "Sim A · Lunar Surface (0.166g)",
       gravityG: 0.166,
@@ -80,6 +94,8 @@ const DUAL_PRESETS: DualPreset[] = [
     id: "active_vs_stagnant",
     title: "Active Sweep (25 mL/min) vs. Stagnant Fault (Q = 0)",
     subtitle: "Boundary-layer ethylene accumulation & root-tip hypoxia diagnostic",
+    scenarioAId: "lunar_push_nominal",
+    scenarioBId: "stagnant_0g_fault",
     a: {
       label: "Sim A · Active Push (25 mL/min)",
       gravityG: 0.166,
@@ -105,6 +121,8 @@ const DUAL_PRESETS: DualPreset[] = [
     id: "push_vs_pull",
     title: "Push vs. Pull Airflow Topology",
     subtitle: "Dip-and-converge jet channelling into Chamber 2",
+    scenarioAId: "lunar_push_nominal",
+    scenarioBId: "lunar_pull_nominal",
     a: {
       label: "Sim A · Push Mode (Ports 1,3 → 2)",
       gravityG: 0.166,
@@ -130,6 +148,8 @@ const DUAL_PRESETS: DualPreset[] = [
     id: "hydration_deficit",
     title: "100% Hydration vs. 40% Capillary Deficit",
     subtitle: "Richards–van Genuchten foam matric potential & germination delay",
+    scenarioAId: "lunar_push_nominal",
+    scenarioBId: "moisture_deficit_40pct",
     a: {
       label: "Sim A · Nominal 100% Fill",
       gravityG: 0.166,
@@ -155,6 +175,8 @@ const DUAL_PRESETS: DualPreset[] = [
     id: "sparse_vs_crowded",
     title: "Sparse (0.5×) vs. Crowded (1.5×) Sowing",
     subtitle: "Beer–Lambert foliar shading, SAS elongation & phototropic lean",
+    scenarioAId: "lunar_sparse_05x",
+    scenarioBId: "lunar_crowded_15x",
     a: {
       label: "Sim A · Sparse 0.5× (82 seeds)",
       gravityG: 0.166,
@@ -190,10 +212,50 @@ interface DualRunResult {
   seedCountB: number;
 }
 
-function runSingleSimulation(
+function findMatchingPrecomputed(cfg: DualSimConfig): { samples: CommunitySample[]; seedCount: number } | null {
+  for (const p of DUAL_PRESETS) {
+    if (
+      Math.abs(p.a.gravityG - cfg.gravityG) < 1e-4 &&
+      Math.abs(p.a.flowMlMin - cfg.flowMlMin) < 1e-4 &&
+      p.a.flowMode === cfg.flowMode &&
+      Math.abs(p.a.waterFillPct - cfg.waterFillPct) < 1e-4 &&
+      Math.abs(p.a.densityMultiplier - cfg.densityMultiplier) < 1e-4 &&
+      Math.abs(p.a.tempC - cfg.tempC) < 1e-4 &&
+      Math.abs(p.a.lightUmol - cfg.lightUmol) < 1e-4
+    ) {
+      const d = PRECOMPUTED[p.scenarioAId];
+      if (d) return d;
+    }
+    if (
+      Math.abs(p.b.gravityG - cfg.gravityG) < 1e-4 &&
+      Math.abs(p.b.flowMlMin - cfg.flowMlMin) < 1e-4 &&
+      p.b.flowMode === cfg.flowMode &&
+      Math.abs(p.b.waterFillPct - cfg.waterFillPct) < 1e-4 &&
+      Math.abs(p.b.densityMultiplier - cfg.densityMultiplier) < 1e-4 &&
+      Math.abs(p.b.tempC - cfg.tempC) < 1e-4 &&
+      Math.abs(p.b.lightUmol - cfg.lightUmol) < 1e-4
+    ) {
+      const d = PRECOMPUTED[p.scenarioBId];
+      if (d) return d;
+    }
+  }
+  return null;
+}
+
+async function runSingleSimulationAsync(
   cfg: DualSimConfig,
   durationH: number,
-): { samples: CommunitySample[]; seedCount: number } {
+  onProgress?: (pct: number) => void,
+): Promise<{ samples: CommunitySample[]; seedCount: number }> {
+  const matched = findMatchingPrecomputed(cfg);
+  if (matched) {
+    onProgress?.(100);
+    return {
+      samples: matched.samples.filter((s) => s.t <= durationH),
+      seedCount: matched.seedCount,
+    };
+  }
+
   const baseParams = defaultParams();
   const leafPreset = PRESET_BY_ID.get("leaf_gbc1")!;
   const env = resolveEnv(leafPreset, {
@@ -212,7 +274,14 @@ function runSingleSimulation(
     sampleEvery: 2.0,
     rngSeed: 20261111,
   });
-  twin.runTo(durationH);
+
+  const chunkH = 2.0;
+  while (twin.t < durationH - 1e-9) {
+    const nextTarget = Math.min(durationH, twin.t + chunkH);
+    twin.runTo(nextTarget);
+    onProgress?.(Math.min(100, (twin.t / durationH) * 100));
+    await new Promise((r) => setTimeout(r, 0));
+  }
   return { samples: twin.samples, seedCount: twin.specs.length };
 }
 
@@ -233,21 +302,23 @@ export function DualComparePage({ theme }: Props) {
   const [configA, setConfigA] = useState<DualSimConfig>({ ...DUAL_PRESETS[0].a });
   const [configB, setConfigB] = useState<DualSimConfig>({ ...DUAL_PRESETS[0].b });
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const [progressMsg, setProgressMsg] = useState<string>("");
 
-  // Initial deterministic run for immediate display
+  // Initial deterministic run from precomputed data (instant 0 ms load)
   const [result, setResult] = useState<DualRunResult>(() => {
-    const resA = runSingleSimulation(DUAL_PRESETS[0].a, 120);
-    const resB = runSingleSimulation(DUAL_PRESETS[0].b, 120);
+    const initPreset = DUAL_PRESETS[0];
+    const dataA = PRECOMPUTED[initPreset.scenarioAId] || { seedCount: 164, samples: [] };
+    const dataB = PRECOMPUTED[initPreset.scenarioBId] || { seedCount: 164, samples: [] };
     return {
-      presetTitle: DUAL_PRESETS[0].title,
+      presetTitle: initPreset.title,
       durationH: 120,
       generatedAt: new Date().toLocaleString(),
-      configA: { ...DUAL_PRESETS[0].a },
-      configB: { ...DUAL_PRESETS[0].b },
-      samplesA: resA.samples,
-      samplesB: resB.samples,
-      seedCountA: resA.seedCount,
-      seedCountB: resB.seedCount,
+      configA: { ...initPreset.a },
+      configB: { ...initPreset.b },
+      samplesA: dataA.samples.filter((s) => s.t <= 120),
+      samplesB: dataB.samples.filter((s) => s.t <= 120),
+      seedCountA: dataA.seedCount,
+      seedCountB: dataB.seedCount,
     };
   });
 
@@ -267,30 +338,35 @@ export function DualComparePage({ theme }: Props) {
     const nextB = { ...found.b };
     setConfigA(nextA);
     setConfigB(nextB);
-    setIsRunning(true);
-    window.setTimeout(() => {
-      const resA = runSingleSimulation(nextA, durationH);
-      const resB = runSingleSimulation(nextB, durationH);
+    const dataA = PRECOMPUTED[found.scenarioAId];
+    const dataB = PRECOMPUTED[found.scenarioBId];
+    if (dataA && dataB) {
       setResult({
         presetTitle: found.title,
         durationH,
         generatedAt: new Date().toLocaleString(),
         configA: nextA,
         configB: nextB,
-        samplesA: resA.samples,
-        samplesB: resB.samples,
-        seedCountA: resA.seedCount,
-        seedCountB: resB.seedCount,
+        samplesA: dataA.samples.filter((s) => s.t <= durationH),
+        samplesB: dataB.samples.filter((s) => s.t <= durationH),
+        seedCountA: dataA.seedCount,
+        seedCountB: dataB.seedCount,
       });
-      setIsRunning(false);
-    }, 10);
+    }
   };
 
-  const runCustomComparison = () => {
+  const runCustomComparison = async () => {
     setIsRunning(true);
-    window.setTimeout(() => {
-      const resA = runSingleSimulation(configA, durationH);
-      const resB = runSingleSimulation(configB, durationH);
+    setProgressMsg("Initializing comparison...");
+    try {
+      setProgressMsg("Simulating Sim A...");
+      const resA = await runSingleSimulationAsync(configA, durationH, (pct) => {
+        setProgressMsg(`Simulating Sim A: ${pct.toFixed(0)}%`);
+      });
+      setProgressMsg("Simulating Sim B...");
+      const resB = await runSingleSimulationAsync(configB, durationH, (pct) => {
+        setProgressMsg(`Simulating Sim B: ${pct.toFixed(0)}%`);
+      });
       setResult({
         presetTitle: `${configA.label} vs. ${configB.label}`,
         durationH,
@@ -302,8 +378,10 @@ export function DualComparePage({ theme }: Props) {
         seedCountA: resA.seedCount,
         seedCountB: resB.seedCount,
       });
+    } finally {
       setIsRunning(false);
-    }, 10);
+      setProgressMsg("");
+    }
   };
 
   const endA = result.samplesA[result.samplesA.length - 1];
@@ -385,7 +463,7 @@ export function DualComparePage({ theme }: Props) {
           </div>
           <div className="btn-group">
             <button className="cta-btn cta-primary" onClick={runCustomComparison} disabled={isRunning}>
-              {isRunning ? "Running Simulations..." : "▶ Run Dual Comparison"}
+              {isRunning ? (progressMsg ? `⏳ ${progressMsg}` : "Running Simulations...") : "▶ Run Dual Comparison"}
             </button>
             <button className="cta-btn cta-secondary" onClick={() => window.print()}>
               🖨 Export Report as PDF
