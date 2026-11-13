@@ -1,14 +1,12 @@
 import { useMemo, useState } from "react";
 import { LEDGER, REFERENCES } from "../model/params";
 
-const BIBTEX_CITATION = `@article{barker2026leafgbc1,
-  author  = {Barker, Richard},
-  title   = {Multiscale 3D cellular digital twin of a 164-seed plant community in the Artemis III LEAF growth chamber: microclimate CFD, foliar crowding, and substrate boundary layer dynamics},
-  journal = {npj Microgravity},
+const BIBTEX_CITATION = `@misc{barker2026leafgbc1,
+  author  = {Barker, Richard and Porterfield, D. Marshall},
+  title   = {Multiscale 3D cellular digital twin of a 164-seed plant community in the Artemis III LEAF growth chamber: microclimate CFD, foliar crowding, and substrate boundary-layer dynamics},
   year    = {2026},
-  volume  = {12},
-  pages   = {48},
-  doi     = {10.1038/s41526-026-00482-x}
+  note    = {Manuscript prepared for submission to npj Microgravity},
+  url     = {https://dr-richard-barker.github.io/Seed_model_in_GBC1_model/}
 }`;
 
 export function PaperPage() {

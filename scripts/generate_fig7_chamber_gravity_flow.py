@@ -142,14 +142,15 @@ def draw_3d_chamber_perspective(ax):
     # Outflow at Port 2 (Z = 0)
     ax.quiver(-8.0, 0.0, 24, -8, 0, 0, color="#ff9800", lw=1.5, arrow_length_ratio=0.3)
     
-    # Labels (spread clearly around left, center-top, and right of chamber roofline)
-    ax.text(-16.0, -22, 33.5, "Chamber 1 (32 B. rapa)", color=C_CH1, fontsize=6.4, weight="bold", ha="right")
-    ax.text(2.0, 0, 42.5, "Chamber 2 (100 Ath Lawn)", color=C_CH2, fontsize=6.4, weight="bold", ha="center")
-    ax.text(18.0, 22, 41.0, "Chamber 3 (32 B. rapa)", color=C_CH3, fontsize=6.4, weight="bold", ha="left")
+    # Labels (placed cleanly above the 3D wireframe with translucent pill backgrounds)
+    pill = dict(facecolor="white", alpha=0.88, edgecolor="none", pad=1.2)
+    ax.text(-16.0, -24, 38.0, "Chamber 1 (32 B. rapa)", color=C_CH1, fontsize=6.4, weight="bold", ha="right", bbox=pill)
+    ax.text(2.0, 0, 44.5, "Chamber 2 (100 Ath Lawn)", color=C_CH2, fontsize=6.4, weight="bold", ha="center", bbox=pill)
+    ax.text(18.0, 24, 42.5, "Chamber 3 (32 B. rapa)", color=C_CH3, fontsize=6.4, weight="bold", ha="left", bbox=pill)
     
     ax.set_xlim(-20, 25)
     ax.set_ylim(-35, 35)
-    ax.set_zlim(0, 40)
+    ax.set_zlim(0, 44)
     ax.set_xticks([-20, 0, 20])
     ax.set_yticks([-20, 0, 20])
     ax.set_zticks([0, 15, 30])
@@ -183,13 +184,16 @@ def main():
     # -------------------------------------------------------------
     ax_b = fig.add_subplot(gs[1, 0])
     ax_b.set_title("b  Lesson 1: Gravitational Regimes & Statolith Steering", loc="left", fontsize=8.0, weight="bold")
-    ax_b.set_xlim(-2.55, 2.55)
-    ax_b.set_ylim(-1.55, 2.35)
+    ax_b.set_xlim(-2.75, 2.75)
+    ax_b.set_ylim(-1.60, 2.35)
     ax_b.axis("off")
     
     # Draw Nytex line
     ax_b.axhline(0, color="#2980b9", lw=1.2, ls="--")
-    ax_b.text(-2.50, 0.12, "35 µm Nytex", color="#2980b9", fontsize=5.6, ha="left", weight="bold")
+    ax_b.text(
+        -2.70, 0.14, "35 µm Nytex", color="#2980b9", fontsize=5.6, ha="left", weight="bold",
+        bbox=dict(facecolor="white", alpha=0.88, edgecolor="none", pad=1.0),
+    )
     
     # 1. Earth 1.0g (left)
     x1 = -1.65
@@ -236,7 +240,7 @@ def main():
     # -------------------------------------------------------------
     ax_c = fig.add_subplot(gs[1, 1])
     ax_c.set_title("c  Lesson 2: Airflow & Ethylene Triple Response", loc="left", fontsize=8.0, weight="bold")
-    ax_c.set_xlim(-2.35, 2.35)
+    ax_c.set_xlim(-2.55, 2.55)
     ax_c.set_ylim(-1.75, 2.55)
     ax_c.axis("off")
     
@@ -297,15 +301,27 @@ def main():
     
     ax_d.axvline(-8.5, color="#556677", ls="--", lw=0.9)
     ax_d.axvline(8.5, color="#556677", ls="--", lw=0.9)
-    ax_d.text(0.0, 13.8, "Ch 2 Jet Convergence\n(g_bl = 13.4 mm/s)", color="#0088cc", fontsize=5.8, ha="center", weight="bold")
-    ax_d.text(-20, 6.0, "Ch 1 Baffle", color="#556677", fontsize=5.5, ha="center")
-    ax_d.text(20, 6.0, "Ch 3 Baffle", color="#556677", fontsize=5.5, ha="center")
+    ax_d.text(
+        0.0, 14.1, "Ch 2 Jet Convergence\n(g_bl = 13.4 mm/s)",
+        color="#0088cc", fontsize=5.8, ha="center", weight="bold",
+        bbox=dict(facecolor="white", alpha=0.88, edgecolor="none", pad=1.2),
+    )
+    ax_d.text(-20, 8.2, "Ch 1 Baffle", color="#556677", fontsize=5.5, ha="center")
+    ax_d.text(20, 8.2, "Ch 3 Baffle", color="#556677", fontsize=5.5, ha="center")
     
     ax_d.set_xlim(-33, 33)
-    ax_d.set_ylim(0, 16)
+    ax_d.set_ylim(0, 16.5)
     ax_d.set_xlabel("Chamber Longitudinal Position Z (mm)")
     ax_d.set_ylabel("Conductance g_bl (mm/s)")
-    ax_d.legend(loc="lower left", frameon=False, fontsize=6.2)
+    ax_d.legend(
+        loc="lower left",
+        bbox_to_anchor=(0.02, 0.23),
+        frameon=True,
+        facecolor="white",
+        framealpha=0.92,
+        edgecolor="#d0d7de",
+        fontsize=6.0,
+    )
 
     # -------------------------------------------------------------
     # Panel e: Morphological Biometrics Across Hardware Permutations (120 h)

@@ -351,27 +351,27 @@ def fig5_scenario_comparison_matrix() -> None:
     ax.set_yticklabels(labels)
     ax.invert_yaxis()
     ax.set_xlabel("Percentage (%)")
-    ax.set_title("A. Germination & Light Access")
-    ax.legend(loc="lower left")
+    ax.set_title("A. Germination & Light Access", pad=40)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=1, fontsize=8.0, frameon=True, facecolor="white", framealpha=0.9)
 
     # Panel B: Mean Hypocotyl Height (Ch 2 Ath vs Ch 1/3 B. rapa)
     ax = axes[1]
     ax.barh(y_pos - 0.18, ch1_hyp, height=0.34, color="#2ca02c", label="Ch 1/3 B. rapa Shoot (mm)")
     ax.barh(y_pos + 0.18, ch2_hyp, height=0.34, color="#0088cc", label="Ch 2 A. thaliana Shoot (mm)")
     ax.set_xlabel("Mean Hypocotyl Length at 120 h (mm)")
-    ax.set_title("B. Compartment Shoot Elongation")
-    ax.legend(loc="lower right")
+    ax.set_title("B. Compartment Shoot Elongation", pad=40)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=1, fontsize=8.0, frameon=True, facecolor="white", framealpha=0.9)
 
     # Panel C: Ch 2 Conductance g_bl & Headspace Ethylene
     ax = axes[2]
     ax.barh(y_pos - 0.18, ch2_gbl, height=0.34, color="#0088cc", label="Ch 2 $g_{bl}$ (mm/s)")
     ax.barh(y_pos + 0.18, np.minimum(eth, 25.0), height=0.34, color="#d95f02", label="Headspace $\\mathrm{C_2H_4}$ (ppb, cap 25)")
     ax.set_xlabel("$g_{bl}$ (mm/s) / Ethylene (ppb)")
-    ax.set_title("C. Ventilation & Ethylene Control")
-    ax.legend(loc="lower right")
+    ax.set_title("C. Ventilation & Ethylene Control", pad=40)
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, 1.01), ncol=1, fontsize=8.0, frameon=True, facecolor="white", framealpha=0.9)
 
-    fig.suptitle("LEAF GBC1 164-Seed Community Digital Twin: 8-Scenario Performance Matrix at 120 h", fontsize=12.5, fontweight="bold", y=1.02)
-    fig.tight_layout()
+    fig.suptitle("LEAF GBC1 164-Seed Community Digital Twin: 8-Scenario Performance Matrix at 120 h", fontsize=12.5, fontweight="bold", y=1.01)
+    fig.tight_layout(rect=[0, 0, 1, 0.94])
     save_fig(fig, "fig5_scenario_comparison_matrix")
 
 
