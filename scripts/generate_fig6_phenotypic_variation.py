@@ -76,7 +76,7 @@ def draw_cellular_seedling(ax, cells: list[dict[str, str]], x0: float, y0: float
                            scale: float = 0.00035, angle_deg: float = 0.0,
                            bend_root_deg: float = 0.0, color_override: str | None = None,
                            radiation_stunt: bool = False, nytex_turn: bool = False,
-                           title: str = "", title_y: float = -1.50):
+                           title: str = "", title_y: float = -1.55):
     """Render authentic mid-plane cellular cross-section from deepspace-seed-twin simulation."""
     rad_angle = math.radians(angle_deg)
     cos_a, sin_a = math.cos(rad_angle), math.sin(rad_angle)
@@ -132,13 +132,13 @@ def draw_cellular_seedling(ax, cells: list[dict[str, str]], x0: float, y0: float
         ax.add_patch(rect)
         
     if title:
-        ax.text(x0, title_y, title, ha="center", va="top", fontsize=6.2, weight="bold",
+        ax.text(x0, title_y, title, ha="center", va="top", fontsize=5.6, weight="bold",
                 color="#112233", linespacing=1.12,
-                bbox=dict(boxstyle="round,pad=0.22", fc="#ffffff", ec="#e2e8f0", lw=0.6))
+                bbox=dict(boxstyle="round,pad=0.16", fc="#ffffff", ec="#cbd5e1", lw=0.65))
 
 def main():
-    fig = plt.figure(figsize=(7.5, 9.4))
-    gs = fig.add_gridspec(4, 2, height_ratios=[1.05, 1.0, 1.0, 1.08], hspace=0.38, wspace=0.25)
+    fig = plt.figure(figsize=(8.2, 10.2))
+    gs = fig.add_gridspec(4, 2, height_ratios=[1.02, 1.0, 1.0, 1.08], hspace=0.35, wspace=0.14)
 
     # Preload cellular coordinate datasets
     c_0h = load_cells("layout_ground_light_0h.csv")
@@ -151,174 +151,174 @@ def main():
     # Panel a: 3D Anatomy & 35 µm Nytex Contact Mechanics
     # -------------------------------------------------------------
     ax_a = fig.add_subplot(gs[0, 0])
-    ax_a.set_title("a  3D Cellular Seed Anatomy & Nytex Barrier Deflection", loc="left", weight="bold")
-    ax_a.set_xlim(-2.1, 2.1)
-    ax_a.set_ylim(-1.6, 2.5)
+    ax_a.set_title("a  3D Cellular Seed Anatomy & Nytex Barrier", loc="left", weight="bold", fontsize=7.6)
+    ax_a.set_xlim(-3.10, 3.10)
+    ax_a.set_ylim(-1.95, 2.35)
     ax_a.set_aspect("equal")
     ax_a.axis("off")
     
     # Nytex barrier line strictly at Y = 0.0
     ax_a.axhline(0.0, color="#2980b9", lw=1.6, ls="--", zorder=2)
-    ax_a.text(-2.05, 0.14, " 35 µm Nytex Screen (Y = 14.77 mm) ", color="#1f618d", fontsize=5.8,
+    ax_a.text(-3.00, 0.14, " 35 µm Nytex Screen (Y = 14.77 mm) ", color="#1f618d", fontsize=5.3,
               ha="left", va="bottom", weight="bold",
-              bbox=dict(boxstyle="round,pad=0.18", fc="#ebf5fb", ec="#aed6f1", lw=0.6), zorder=6)
-    ax_a.text(-2.05, -0.14, " Polyurethane Foam Pores (100% Excluded) ", color="#556677", fontsize=5.2,
+              bbox=dict(boxstyle="round,pad=0.14", fc="#ebf5fb", ec="#aed6f1", lw=0.6), zorder=6)
+    ax_a.text(-3.00, -0.14, " Polyurethane Foam Pores (100% Excluded) ", color="#556677", fontsize=5.0,
               ha="left", va="top", style="italic")
     
     # 1. Dry seed (left, t = 0 h)
-    draw_cellular_seedling(ax_a, c_0h, x0=-1.35, y0=0.45, scale=0.0018,
-                           title="0 h: Imbibition\n(Dry Seed)", title_y=-1.50)
+    draw_cellular_seedling(ax_a, c_0h, x0=-2.05, y0=0.85, scale=0.0017,
+                           title="0 h: Imbibition\n(Dry Seed)", title_y=-1.45)
     
     # 2. Testa/Endosperm Rupture (middle, t = 32 h)
-    draw_cellular_seedling(ax_a, c_32h, x0=-0.15, y0=0.45, scale=0.0018,
-                           title="32 h: Endo Rupture\nRadicle Egress", title_y=-1.50)
+    draw_cellular_seedling(ax_a, c_32h, x0=-0.05, y0=0.85, scale=0.0017,
+                           title="32 h: Endo Rupture\nRadicle Egress", title_y=-1.45)
     
     # 3. Nytex screen deflection (right, t = 120 h)
-    draw_cellular_seedling(ax_a, c_120h, x0=1.15, y0=0.42, scale=0.00032, nytex_turn=True,
-                           title="72–120 h: Tangential\nGliding (>10×)", title_y=-1.50)
+    draw_cellular_seedling(ax_a, c_120h, x0=1.95, y0=0.38, scale=0.00032, nytex_turn=True,
+                           title="72–120 h: Tangential\nGliding (>10×)", title_y=-1.45)
     
     # Fixative safety callout pill badge
     ax_a.annotate("ΔP = 1.75 kPa << 8.04 kPa\n(Fixative Perfusion Safe)",
-                  xy=(1.45, 0.0), xytext=(0.40, -1.05),
+                  xy=(2.20, -0.04), xytext=(1.15, -0.80),
                   arrowprops=dict(arrowstyle="->", color="#c0392b", lw=1.0),
-                  fontsize=5.8, color="#c0392b", weight="bold", linespacing=1.1,
-                  bbox=dict(boxstyle="round,pad=0.25", fc="#fdf2f2", ec="#f5b7b1", lw=0.7))
+                  fontsize=5.3, color="#c0392b", weight="bold", linespacing=1.1, ha="center",
+                  bbox=dict(boxstyle="round,pad=0.16", fc="#fdf2f2", ec="#f5b7b1", lw=0.7))
 
     # -------------------------------------------------------------
     # Panel b: Gravitational Regimes (1.0g vs 0.166g vs 0g)
     # -------------------------------------------------------------
     ax_b = fig.add_subplot(gs[0, 1])
-    ax_b.set_title("b  Gravitational Regimes: Statolith & Amyloplast Sedimentation", loc="left", weight="bold")
-    ax_b.set_xlim(-2.0, 2.0)
-    ax_b.set_ylim(-1.8, 2.7)
+    ax_b.set_title("b  Gravitational Regimes: Statolith Sedimentation", loc="left", weight="bold", fontsize=7.6)
+    ax_b.set_xlim(-3.10, 3.10)
+    ax_b.set_ylim(-1.95, 2.35)
     ax_b.set_aspect("equal")
     ax_b.axis("off")
     
     # 1.0g Earth
-    draw_cellular_seedling(ax_b, c_120h, x0=-1.25, y0=0.25, scale=0.00033,
-                           title="1.0g Earth\nPositive Gravitropism", title_y=-1.50)
+    draw_cellular_seedling(ax_b, c_120h, x0=-2.05, y0=0.18, scale=0.00033,
+                           title="1.0g Earth\nPositive Gravitropism", title_y=-1.45)
     # 0.166g Moon
-    draw_cellular_seedling(ax_b, c_120h, x0=0.0, y0=0.25, scale=0.00033, bend_root_deg=25.0, angle_deg=10.0,
-                           title="0.166g Moon\nAttenuated Descent", title_y=-1.50)
+    draw_cellular_seedling(ax_b, c_120h, x0=0.0, y0=0.18, scale=0.00033, bend_root_deg=25.0, angle_deg=10.0,
+                           title="0.166g Moon\nAttenuated Descent", title_y=-1.45)
     # 0g Microgravity
-    draw_cellular_seedling(ax_b, c_120h, x0=1.25, y0=0.25, scale=0.00033, bend_root_deg=50.0, angle_deg=25.0,
-                           title="0g Microgravity\nWandering Radicle", title_y=-1.50)
+    draw_cellular_seedling(ax_b, c_120h, x0=2.05, y0=0.18, scale=0.00033, bend_root_deg=50.0, angle_deg=25.0,
+                           title="0g Microgravity\nWandering Radicle", title_y=-1.45)
     
     # Statolith banner in top headspace
-    ax_b.text(0.0, 2.50, " Amyloplast statolith sedimentation velocity v_sed proportional to g ",
-              ha="center", va="top", fontsize=5.8, style="italic", color="#1a365d",
-              bbox=dict(boxstyle="round,pad=0.25", fc="#f0f4f8", ec="#cbd5e0", lw=0.7))
+    ax_b.text(0.0, 2.22, " Amyloplast statolith sedimentation velocity $v_{\\mathrm{sed}} \\propto g$ ",
+              ha="center", va="top", fontsize=5.5, style="italic", color="#1a365d",
+              bbox=dict(boxstyle="round,pad=0.18", fc="#f0f4f8", ec="#cbd5e0", lw=0.7))
 
     # -------------------------------------------------------------
     # Panel c: Atmospheric Pressure & Gas Partial Pressures (O2 / CO2 / Ethylene)
     # -------------------------------------------------------------
     ax_c = fig.add_subplot(gs[1, 0])
-    ax_c.set_title("c  Atmosphere & Gas Chemistry: Normoxia, Hypoxia, & Triple Response", loc="left", weight="bold")
-    ax_c.set_xlim(-2.0, 2.0)
-    ax_c.set_ylim(-1.8, 2.7)
+    ax_c.set_title("c  Atmosphere & Gas Chemistry: Normoxia to Ethylene", loc="left", weight="bold", fontsize=7.6)
+    ax_c.set_xlim(-3.10, 3.10)
+    ax_c.set_ylim(-1.95, 2.35)
     ax_c.set_aspect("equal")
     ax_c.axis("off")
     
     # Normoxia (standard healthy 120 h)
-    draw_cellular_seedling(ax_c, c_120h, x0=-1.25, y0=0.25, scale=0.00033,
-                           title="Normoxia (21 kPa O₂)\nNominal Cabin Growth", title_y=-1.50)
+    draw_cellular_seedling(ax_c, c_120h, x0=-2.05, y0=0.18, scale=0.00033,
+                           title="Normoxia (21 kPa $\\mathrm{O_2}$)\nNominal Cabin Growth", title_y=-1.45)
     # Hypoxia (< 5 kPa O2) - stunted with anthocyanin/purple metabolic stress tone
-    draw_cellular_seedling(ax_c, c_120h, x0=0.0, y0=0.25, scale=0.00022, color_override="#6a3d6a",
-                           title="Hypoxia (< 5 kPa O₂)\nStunted / Fermentation", title_y=-1.50)
+    draw_cellular_seedling(ax_c, c_120h, x0=0.0, y0=0.18, scale=0.00022, color_override="#6a3d6a",
+                           title="Hypoxia (< 5 kPa $\\mathrm{O_2}$)\nStunted / Fermentation", title_y=-1.45)
     # Ethylene Triple Response (> 50 ppb C2H4) - authentic swollen cellular model
-    draw_cellular_seedling(ax_c, c_eth, x0=1.25, y0=0.15, scale=0.00075,
-                           title="Triple Response\n> 50 ppb Ethylene", title_y=-1.50)
+    draw_cellular_seedling(ax_c, c_eth, x0=2.05, y0=0.10, scale=0.00075,
+                           title="Triple Response\n> 50 ppb Ethylene", title_y=-1.45)
 
     # -------------------------------------------------------------
     # Panel d: Airflow Microclimate & Boundary Layer Conductance (Push vs Stagnant)
     # -------------------------------------------------------------
     ax_d = fig.add_subplot(gs[1, 1])
-    ax_d.set_title("d  Convective Airflow: Forced Sweep vs Stagnant Boundary Envelope", loc="left", weight="bold")
-    ax_d.set_xlim(-1.8, 1.8)
-    ax_d.set_ylim(-1.8, 2.7)
+    ax_d.set_title("d  Convective Airflow: Forced Sweep vs Stagnant", loc="left", weight="bold", fontsize=7.6)
+    ax_d.set_xlim(-2.85, 2.85)
+    ax_d.set_ylim(-1.95, 2.45)
     ax_d.set_aspect("equal")
     ax_d.axis("off")
     
     # Active Push flow (Q = 25 mL/min)
-    draw_cellular_seedling(ax_d, c_120h, x0=-0.90, y0=0.25, scale=0.00033,
-                           title="Active Push Sweep\ng_bl = 13.4 mm/s", title_y=-1.50)
+    draw_cellular_seedling(ax_d, c_120h, x0=-1.40, y0=0.18, scale=0.00033,
+                           title="Active Push Sweep\n$g_{\\mathrm{bl}}$ = 13.4 mm/s", title_y=-1.45)
     # Thin boundary layer outline
-    b1 = patches.Ellipse((-0.90, 0.35), 0.85, 1.8, angle=5, fill=False, edgecolor="#27ae60", lw=1.2, ls="--")
+    b1 = patches.Ellipse((-1.40, 0.25), 0.90, 1.8, angle=5, fill=False, edgecolor="#27ae60", lw=1.2, ls="--")
     ax_d.add_patch(b1)
-    ax_d.text(-0.90, 2.45, "Thin δ_bl (0.8 mm)\nActive Push Mode", color="#1e7e1e", fontsize=5.6,
+    ax_d.text(-1.40, 2.25, "Thin $\\delta_{\\mathrm{bl}}$ (0.8 mm)\nActive Push Mode", color="#1e7e1e", fontsize=5.4,
               ha="center", va="top", weight="bold",
-              bbox=dict(boxstyle="round,pad=0.22", fc="#f2faf2", ec="#bfe6cc", lw=0.7))
+              bbox=dict(boxstyle="round,pad=0.16", fc="#f2faf2", ec="#bfe6cc", lw=0.7))
     
     # Stagnant (Q = 0)
-    draw_cellular_seedling(ax_d, c_120h, x0=0.90, y0=0.25, scale=0.00030, color_override="#556677",
-                           title="Stagnant Envelope\ng_bl < 3 mm/s", title_y=-1.50)
+    draw_cellular_seedling(ax_d, c_120h, x0=1.40, y0=0.18, scale=0.00030, color_override="#556677",
+                           title="Stagnant Envelope\n$g_{\\mathrm{bl}}$ < 3 mm/s", title_y=-1.45)
     # Compact stagnant envelope
-    b2 = patches.Ellipse((0.90, 0.35), 1.15, 2.1, angle=0, fill=True, facecolor="#fadbd8", alpha=0.30,
+    b2 = patches.Ellipse((1.40, 0.25), 1.25, 2.1, angle=0, fill=True, facecolor="#fadbd8", alpha=0.30,
                          edgecolor="#c0392b", lw=1.2, ls=":")
     ax_d.add_patch(b2)
-    ax_d.text(0.90, 2.45, "Stagnant Fluid Bag\n(Ethylene & Heat Trapped)", color="#9c27b0", fontsize=5.6,
+    ax_d.text(1.40, 2.25, "Stagnant Fluid Bag\n(Ethylene & Heat Trapped)", color="#9c27b0", fontsize=5.4,
               ha="center", va="top", weight="bold",
-              bbox=dict(boxstyle="round,pad=0.22", fc="#fdf2f2", ec="#f5b7b1", lw=0.7))
+              bbox=dict(boxstyle="round,pad=0.16", fc="#fdf2f2", ec="#f5b7b1", lw=0.7))
 
     # -------------------------------------------------------------
     # Panel e: Cosmic Radiation & Heavy Ion Meristematic Checkpoint
     # -------------------------------------------------------------
     ax_e = fig.add_subplot(gs[2, 0])
-    ax_e.set_title("e  Cosmic Radiation: GCR / SPE Ionizing Meristematic Checkpoint", loc="left", weight="bold")
-    ax_e.set_xlim(-1.8, 1.8)
-    ax_e.set_ylim(-1.8, 2.7)
+    ax_e.set_title("e  Cosmic Radiation: GCR / SPE Meristem Checkpoint", loc="left", weight="bold", fontsize=7.6)
+    ax_e.set_xlim(-2.85, 2.85)
+    ax_e.set_ylim(-1.95, 2.45)
     ax_e.set_aspect("equal")
     ax_e.axis("off")
     
     # Unirradiated Control
-    draw_cellular_seedling(ax_e, c_120h, x0=-0.90, y0=0.25, scale=0.00033,
-                           title="Unirradiated Control\nIntact Meristem", title_y=-1.50)
+    draw_cellular_seedling(ax_e, c_120h, x0=-1.40, y0=0.18, scale=0.00033,
+                           title="Unirradiated Control\nIntact Meristem", title_y=-1.45)
     # High-LET Solar Particle Event (SPE) stunting
-    draw_cellular_seedling(ax_e, c_120h, x0=0.90, y0=0.25, scale=0.00033, radiation_stunt=True,
-                           title="High-LET SPE Dose\nG2/M Checkpoint Arrest", title_y=-1.50)
+    draw_cellular_seedling(ax_e, c_120h, x0=1.40, y0=0.18, scale=0.00033, radiation_stunt=True,
+                           title="High-LET SPE Dose\nG2/M Checkpoint Arrest", title_y=-1.45)
     
     # Re-routed Radiation track from upper-right corner avoiding shoot
-    ax_e.annotate("High-LET ⁵⁶Fe Heavy Ion\n(Meristematic DSB Breaks)",
-                  xy=(0.95, -0.65), xytext=(1.55, 2.45),
+    ax_e.annotate("High-LET $^{56}\\mathrm{Fe}$ Heavy Ion\n(Meristematic DSB Breaks)",
+                  xy=(1.40, -0.65), xytext=(2.10, 2.25),
                   arrowprops=dict(arrowstyle="->", color="#c0392b", lw=1.3, ls="--"),
-                  fontsize=5.8, color="#c0392b", weight="bold", ha="right", va="top",
-                  bbox=dict(boxstyle="round,pad=0.22", fc="#fdf2f2", ec="#f5b7b1", lw=0.7))
+                  fontsize=5.4, color="#c0392b", weight="bold", ha="right", va="top",
+                  bbox=dict(boxstyle="round,pad=0.16", fc="#fdf2f2", ec="#f5b7b1", lw=0.7))
 
     # -------------------------------------------------------------
     # Panel f: Light Spectrum & Foliar Crowding (SAS Shade Avoidance)
     # -------------------------------------------------------------
     ax_f = fig.add_subplot(gs[2, 1])
-    ax_f.set_title("f  Light Quality & Canopy Crowding: SAS & Lateral Phototropic Lean", loc="left", weight="bold")
-    ax_f.set_xlim(-1.8, 1.8)
-    ax_f.set_ylim(-1.8, 2.9)
+    ax_f.set_title("f  Light Quality & Crowding: SAS & Phototropic Lean", loc="left", weight="bold", fontsize=7.6)
+    ax_f.set_xlim(-2.85, 2.85)
+    ax_f.set_ylim(-1.95, 2.55)
     ax_f.set_aspect("equal")
     ax_f.axis("off")
     
     # Solitary Open Stand (High R:FR, compact)
-    draw_cellular_seedling(ax_f, c_120h, x0=-0.90, y0=0.25, scale=0.00033,
-                           title="Solitary Open Stand\nHigh R:FR (Compact)", title_y=-1.50)
+    draw_cellular_seedling(ax_f, c_120h, x0=-1.40, y0=0.18, scale=0.00033,
+                           title="Solitary Open Stand\nHigh R:FR (Compact)", title_y=-1.45)
     # Dense Lawn SAS (Low R:FR, authentic dark/etiolated hyper-elongation)
-    draw_cellular_seedling(ax_f, c_dark, x0=0.90, y0=0.25, scale=0.00030, angle_deg=-6.0,
-                           title="Dense Stand (Ch 2 Lawn)\nLow R:FR (SAS Elongation)", title_y=-1.50)
+    draw_cellular_seedling(ax_f, c_dark, x0=1.40, y0=0.18, scale=0.00030, angle_deg=-6.0,
+                           title="Dense Stand (Ch 2 Lawn)\nLow R:FR (SAS Elongation)", title_y=-1.45)
     
     # 3D Phototropic lean annotation in upper headspace
     ax_f.annotate("3D Phototropic Lean\naway from neighbor crowns",
-                  xy=(0.75, 2.30), xytext=(-0.10, 2.68),
+                  xy=(1.22, 2.00), xytext=(0.00, 2.38),
                   arrowprops=dict(arrowstyle="->", color=C_SAS, lw=1.2),
-                  fontsize=5.8, color=C_SAS, weight="bold", ha="center", va="top",
-                  bbox=dict(boxstyle="round,pad=0.22", fc="#fbfde8", ec="#e2ec98", lw=0.7))
+                  fontsize=5.4, color=C_SAS, weight="bold", ha="center", va="top",
+                  bbox=dict(boxstyle="round,pad=0.16", fc="#fbfde8", ec="#e2ec98", lw=0.7))
 
     # -------------------------------------------------------------
     # Panel g: Quantitative Multi-Vector Phenotypic Response Matrix
     # -------------------------------------------------------------
     ax_g = fig.add_subplot(gs[3, :])
-    ax_g.set_title("g  Quantitative Phenotypic Plasticity Response Matrix Across Spaceflight Mission Vectors (120 h)", loc="left", weight="bold")
+    ax_g.set_title("g  Quantitative Phenotypic Plasticity Response Matrix Across Spaceflight Mission Vectors (120 h)", loc="left", weight="bold", fontsize=7.6)
     
     scenarios = [
         "Nominal Lunar\nFlight (0.166g)",
         "Microgravity\n(0g LEO)",
-        "Stagnant Fault\n(Q = 0, High C₂H₄)",
-        "Hypoxic Substrate\n(< 5 kPa O₂)",
+        "Stagnant Fault\n(Q = 0, High $\\mathrm{C_2H_4}$)",
+        "Hypoxic Substrate\n(< 5 kPa $\\mathrm{O_2}$)",
         "Solar Particle\nEvent (SPE)",
         "High Density\nSAS (200/dm²)",
         "Capillary Deficit\n(-0.26 MPa)",
@@ -330,7 +330,7 @@ def main():
     germ_del_h  = [ 2.1, 3.4, 18.5, 24.2, 8.6, 1.2, 28.5]
     
     x = np.arange(len(scenarios))
-    w = 0.18
+    w = 0.17
     
     rects1 = ax_g.bar(x - 1.5 * w, hyp_len_rel, w, label="Hypocotyl Length (% 1g)", color=C_GRAV)
     rects2 = ax_g.bar(x - 0.5 * w, rad_len_rel, w, label="Radicle Length (% 1g)", color=C_OK)
@@ -340,24 +340,24 @@ def main():
     ax_g.axhline(100, color="#888888", ls=":", lw=1.0)
     ax_g.set_ylabel("Response (% Control / Scaled)")
     ax_g.set_xticks(x)
-    ax_g.set_xticklabels(scenarios, fontsize=6.8, linespacing=1.05)
-    ax_g.set_ylim(0, 275)
+    ax_g.set_xticklabels(scenarios, fontsize=6.6, linespacing=1.05)
+    ax_g.set_ylim(0, 265)
     # Legend with opaque background in upper headspace
-    ax_g.legend(loc="upper center", bbox_to_anchor=(0.5, 0.98), ncol=4, frameon=True,
-                facecolor="white", edgecolor="#e0e0e0", framealpha=0.95, fontsize=6.2)
+    ax_g.legend(loc="upper center", bbox_to_anchor=(0.5, 0.97), ncol=4, frameon=True,
+                facecolor="white", edgecolor="#e0e0e0", framealpha=0.95, fontsize=6.1)
     
     # Value annotations on key outliers with clean cards
-    ax_g.text(2 + 0.5 * w, 195, "+85% Triple\nResponse", ha="center", va="bottom", fontsize=5.5,
+    ax_g.text(2 + 0.5 * w, 195, "+85% Triple\nResponse", ha="center", va="bottom", fontsize=5.4,
               color=C_ETH, weight="bold", linespacing=1.05,
-              bbox=dict(boxstyle="round,pad=0.2", fc="#fffaf4", ec="#fcd34d", lw=0.6))
-    ax_g.text(5 - 1.5 * w, 148, "+38% SAS\nElongation", ha="center", va="bottom", fontsize=5.5,
+              bbox=dict(boxstyle="round,pad=0.16", fc="#fffaf4", ec="#fcd34d", lw=0.6))
+    ax_g.text(5 - 1.5 * w, 148, "+38% SAS\nElongation", ha="center", va="bottom", fontsize=5.4,
               color=C_GRAV, weight="bold", linespacing=1.05,
-              bbox=dict(boxstyle="round,pad=0.2", fc="#f0f7fb", ec="#cce0f0", lw=0.6))
-    ax_g.text(6 + 1.5 * w, 122, "+28.5 h Delay", ha="center", va="bottom", fontsize=5.5,
+              bbox=dict(boxstyle="round,pad=0.16", fc="#f0f7fb", ec="#cce0f0", lw=0.6))
+    ax_g.text(6 + 1.5 * w, 122, "+28.5 h Delay", ha="center", va="bottom", fontsize=5.4,
               color=C_RAD, weight="bold",
-              bbox=dict(boxstyle="round,pad=0.2", fc="#fdf2f2", ec="#f5b7b1", lw=0.6))
+              bbox=dict(boxstyle="round,pad=0.16", fc="#fdf2f2", ec="#f5b7b1", lw=0.6))
 
-    fig.subplots_adjust(top=0.95, bottom=0.07, left=0.08, right=0.96, hspace=0.38, wspace=0.25)
+    fig.subplots_adjust(top=0.95, bottom=0.06, left=0.07, right=0.97, hspace=0.35, wspace=0.14)
     
     # Save outputs to both fig2 and fig6 targets
     targets = [

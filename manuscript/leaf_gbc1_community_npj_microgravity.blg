@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: leaf_gbc1_community_npj_microgravity.aux
 The style file: sn-nature.bst
 Database file #1: references.bib
-You've used 10 entries,
+You've used 26 entries,
             2710 wiz_defined-function locations,
-            1106 strings with 11286 characters,
-and the built_in function-call counts, 4141 in all, are:
-= -- 294
-> -- 120
+            1218 strings with 15000 characters,
+and the built_in function-call counts, 10634 in all, are:
+= -- 781
+> -- 284
 < -- 0
-+ -- 60
-- -- 30
-* -- 545
-:= -- 472
-add.period$ -- 30
-call.type$ -- 10
-change.case$ -- 10
++ -- 142
+- -- 71
+* -- 1378
+:= -- 1207
+add.period$ -- 78
+call.type$ -- 26
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 352
-empty$ -- 352
-format.name$ -- 39
-if$ -- 802
+cite$ -- 26
+duplicate$ -- 894
+empty$ -- 930
+format.name$ -- 94
+if$ -- 2082
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 90
-newline$ -- 60
-num.names$ -- 10
-pop$ -- 46
+int.to.str$ -- 26
+missing$ -- 224
+newline$ -- 140
+num.names$ -- 26
+pop$ -- 116
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 49
+skip$ -- 124
 stack$ -- 0
-substring$ -- 202
-swap$ -- 389
+substring$ -- 593
+swap$ -- 972
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 27
-width$ -- 12
-write$ -- 119
+while$ -- 71
+width$ -- 28
+write$ -- 294

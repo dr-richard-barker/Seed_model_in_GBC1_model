@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  12 NOV 2026 11:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Homebrew) (preloaded format=pdflatex 2026.3.4)  12 NOV 2026 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1225,7 +1225,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 137.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 137.
-<fig1_gbc1_sowing_and_microclimate.png, id=20, 900.966pt x 674.52pt>
+<fig1_gbc1_sowing_and_microclimate.png, id=26, 900.966pt x 674.52pt>
 File: fig1_gbc1_sowing_and_microclimate.png Graphic file (type png)
 <use fig1_gbc1_sowing_and_microclimate.png>
 Package pdftex.def Info: fig1_gbc1_sowing_and_microclimate.png  used on input l
@@ -1256,44 +1256,44 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 .fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<fig2_seed_phenotypic_variation.png, id=54, 542.025pt x 679.338pt>
+<fig2_seed_phenotypic_variation.png, id=76, 592.614pt x 737.154pt>
 File: fig2_seed_phenotypic_variation.png Graphic file (type png)
 <use fig2_seed_phenotypic_variation.png>
 Package pdftex.def Info: fig2_seed_phenotypic_variation.png  used on input line
  180.
-(pdftex.def)             Requested size: 393.64865pt x 493.37299pt.
+(pdftex.def)             Requested size: 396.63336pt x 493.37321pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 187.
  [2 <./fig1_gbc1_sowing_and_microclimate.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./fig2_seed_phenotypic_variation.png>]
-<fig2_community_germination_and_morphometrics.png, id=78, 542.025pt x 607.068pt
->
+<fig2_community_germination_and_morphometrics.png, id=119, 542.025pt x 607.068p
+t>
 File: fig2_community_germination_and_morphometrics.png Graphic file (type png)
 <use fig2_community_germination_and_morphometrics.png>
 Package pdftex.def Info: fig2_community_germination_and_morphometrics.png  used
  on input line 192.
 (pdftex.def)             Requested size: 506.45908pt x 567.25371pt.
-<fig3_sowing_density_crowding_sweep.png, id=84, 876.1533pt x 630.9171pt>
+<fig3_sowing_density_crowding_sweep.png, id=127, 876.1533pt x 630.9171pt>
 File: fig3_sowing_density_crowding_sweep.png Graphic file (type png)
 <use fig3_sowing_density_crowding_sweep.png>
 Package pdftex.def Info: fig3_sowing_density_crowding_sweep.png  used on input 
 line 208.
 (pdftex.def)             Requested size: 506.45908pt x 364.70953pt.
-<fig4_headspace_gas_and_push_pull_cfd.png, id=88, 887.4756pt x 645.3711pt>
+<fig4_headspace_gas_and_push_pull_cfd.png, id=132, 887.4756pt x 645.3711pt>
 File: fig4_headspace_gas_and_push_pull_cfd.png Graphic file (type png)
 <use fig4_headspace_gas_and_push_pull_cfd.png>
 Package pdftex.def Info: fig4_headspace_gas_and_push_pull_cfd.png  used on inpu
 t line 222.
 (pdftex.def)             Requested size: 359.19543pt x 261.20645pt.
-<fig5_scenario_comparison_matrix.png, id=91, 969.8634pt x 384.4764pt>
+<fig5_scenario_comparison_matrix.png, id=135, 969.8634pt x 384.4764pt>
 File: fig5_scenario_comparison_matrix.png Graphic file (type png)
 <use fig5_scenario_comparison_matrix.png>
 Package pdftex.def Info: fig5_scenario_comparison_matrix.png  used on input lin
 e 232.
 (pdftex.def)             Requested size: 506.46292pt x 200.77367pt.
-<fig7_chamber_gravity_flow_morphology.png, id=93, 534.798pt x 534.798pt>
+<fig7_chamber_gravity_flow_morphology.png, id=138, 534.798pt x 534.798pt>
 File: fig7_chamber_gravity_flow_morphology.png Graphic file (type png)
 <use fig7_chamber_gravity_flow_morphology.png>
 Package pdftex.def Info: fig7_chamber_gravity_flow_morphology.png  used on inpu
@@ -1302,14 +1302,12 @@ t line 240.
  [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [5 <./fig2_community_germination_and_morphometrics.png>] [6 <./fig3_sowing_den
 sity_crowding_sweep.png>]
 Underfull \vbox (badness 2653) has occurred while \output is active []
 
-
+ [7 <./fig4_headspace_gas_and_push_pull_cfd.png> <./fig5_scenario_comparison_ma
+trix.png>]
 
 LaTeX Font Warning: Font shape `OT1/cmtt/m/n' in size <7.52812> not available
 (Font)              size <8> substituted on input line 295.
@@ -1337,12 +1335,9 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <4.5169> not available
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7 <./fig4_headspace_gas_and_push_pull_cfd.png> <./fig5_scenario_comparison_ma
-trix.png>]
-(./leaf_gbc1_community_npj_microgravity.bbl [8 <./fig7_chamber_gravity_flow_mor
-phology.png>]) [9
 
-] (./leaf_gbc1_community_npj_microgravity.aux)
+(./leaf_gbc1_community_npj_microgravity.bbl [8 <./fig7_chamber_gravity_flow_mor
+phology.png>]) [9] (./leaf_gbc1_community_npj_microgravity.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1357,13 +1352,13 @@ s not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33736 strings out of 467525
- 693348 string characters out of 5408440
- 1101642 words of memory out of 5000000
- 61349 multiletter control sequences out of 15000+600000
- 792739 words of font info for 757 fonts, out of 8000000 for 9000
+ 33810 strings out of 467525
+ 694612 string characters out of 5408440
+ 1104556 words of memory out of 5000000
+ 61399 multiletter control sequences out of 15000+600000
+ 792819 words of font info for 762 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,14n,108p,2260b,1193s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,14n,108p,2313b,1174s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/public/am
 sfonts/cmextra/cmbsy9.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmex10.pfb></opt/homebrew/Cellar/texlive/2026
@@ -1385,11 +1380,11 @@ rew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><
 /opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/urw/times/ut
 mr8a.pfb></opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb>
-Output written on leaf_gbc1_community_npj_microgravity.pdf (9 pages, 3548549 by
+Output written on leaf_gbc1_community_npj_microgravity.pdf (9 pages, 3572484 by
 tes).
 PDF statistics:
- 248 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
+ 307 PDF objects out of 1000 (max. 8388607)
+ 245 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
  240176 words of extra memory for PDF output out of 266212 (max. 10000000)
 

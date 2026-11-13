@@ -8,14 +8,13 @@
 \bibcommenthead
 
 \bibitem{jeseritz2025leaf}
-\bibinfo{author}{Jeseritz, J.}, \bibinfo{author}{Barker, R.},
+\bibinfo{author}{Jeseritz, S.~J.}, \bibinfo{author}{Escobar, C.},
   \bibinfo{author}{Haveman, N.~J.}, \bibinfo{author}{Paul, A.-L.} \&
   \bibinfo{author}{Ferl, R.~J.}
-\newblock \bibinfo{title}{The lunar effects on agricultural flora ({LEAF})
-  payload for {Artemis III}: Science objectives, hardware architecture, and
-  operational concepts}.
-\newblock \emph{\bibinfo{journal}{npj Microgravity}}
-  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{12} (\bibinfo{year}{2025}).
+\newblock \bibinfo{title}{{LEAF} -- lunar effects on agricultural flora, an
+  {Artemis III} deployed instrument}.
+\newblock \bibinfo{howpublished}{53rd International Conference on Environmental
+  Systems (ICES), Paper ICES-2024-218} (\bibinfo{year}{2024}).
 
 \bibitem{paul2013fundamental}
 \bibinfo{author}{Paul, A.-L.}, \bibinfo{author}{Wheeler, R.~M.},
@@ -35,10 +34,32 @@
 
 \bibitem{monje2020hardware}
 \bibinfo{author}{Monje, O.} \emph{et~al.}
-\newblock \bibinfo{title}{Hardware validation of the advanced plant habitat on
-  the {ISS}}.
+\newblock \bibinfo{title}{Hardware validation of the {Advanced Plant Habitat}
+  on the {ISS}}.
 \newblock \emph{\bibinfo{journal}{Front. Plant Sci.}}
   \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{567} (\bibinfo{year}{2020}).
+
+\bibitem{richards2006}
+\bibinfo{author}{Richards, J.~T.} \emph{et~al.}
+\newblock \bibinfo{title}{Exposure of {Arabidopsis thaliana} to hypobaric
+  environments: implications for low-pressure bioregenerative life support
+  systems for human exploration missions and terraforming on {Mars}}.
+\newblock \emph{\bibinfo{journal}{Astrobiology}} \textbf{\bibinfo{volume}{6}},
+  \bibinfo{pages}{851--866} (\bibinfo{year}{2006}).
+
+\bibitem{zhang2020}
+\bibinfo{author}{Zhang, S.} \emph{et~al.}
+\newblock \bibinfo{title}{First measurements of the radiation dose on the lunar
+  surface}.
+\newblock \emph{\bibinfo{journal}{Sci. Adv.}} \textbf{\bibinfo{volume}{6}},
+  \bibinfo{pages}{eaaz1334} (\bibinfo{year}{2020}).
+
+\bibitem{george2024}
+\bibinfo{author}{George, S.~P.} \emph{et~al.}
+\newblock \bibinfo{title}{Space radiation measurements during the {Artemis I}
+  lunar mission}.
+\newblock \emph{\bibinfo{journal}{Nature}} \textbf{\bibinfo{volume}{634}},
+  \bibinfo{pages}{48--52} (\bibinfo{year}{2024}).
 
 \bibitem{porterfield2002biophysical}
 \bibinfo{author}{Porterfield, D.~M.}
@@ -74,17 +95,128 @@
   \textbf{\bibinfo{volume}{31}}, \bibinfo{pages}{177--182}
   (\bibinfo{year}{2003}).
 
+\bibitem{wheeler1996}
+\bibinfo{author}{Wheeler, R.~M.}, \bibinfo{author}{Peterson, B.~V.},
+  \bibinfo{author}{Sager, J.~C.} \& \bibinfo{author}{Knott, W.~M.}
+\newblock \bibinfo{title}{Ethylene production by plants in a closed
+  environment}.
+\newblock \emph{\bibinfo{journal}{Adv. Space Res.}}
+  \textbf{\bibinfo{volume}{18}}, \bibinfo{pages}{193--196}
+  (\bibinfo{year}{1996}).
+
+\bibitem{canaday2026}
+\bibinfo{author}{Canaday, E. L.~J.}, \bibinfo{author}{Meyers, A.},
+  \bibinfo{author}{Scinto-Madonich, N.~J.}, \bibinfo{author}{Wyatt, S.~E.} \&
+  \bibinfo{author}{Wolverton, C.}
+\newblock \bibinfo{title}{Physiological and transcriptomic assessment of
+  {Arabidopsis} identifies two distinct gravity signaling systems}.
+\newblock \emph{\bibinfo{journal}{Plant Physiol.}}
+  \textbf{\bibinfo{volume}{200}}, \bibinfo{pages}{kiag095}
+  (\bibinfo{year}{2026}).
+
+\bibitem{park2016}
+\bibinfo{author}{Park, M.~R.} \& \bibinfo{author}{Hasenstein, K.~H.}
+\newblock \bibinfo{title}{Oxygen dependency of germinating {Brassica} seeds}.
+\newblock \emph{\bibinfo{journal}{Life Sci. Space Res.}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{30--37} (\bibinfo{year}{2016}).
+
+\bibitem{zhou2017}
+\bibinfo{author}{Zhou, M.} \emph{et~al.}
+\newblock \bibinfo{title}{Dissecting low atmospheric pressure stress:
+  transcriptome responses to the components of hypobaria in {Arabidopsis}}.
+\newblock \emph{\bibinfo{journal}{Front. Plant Sci.}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{528} (\bibinfo{year}{2017}).
+
+\bibitem{vangenuchten1980}
+\bibinfo{author}{van Genuchten, M.~T.}
+\newblock \bibinfo{title}{A closed-form equation for predicting the hydraulic
+  conductivity of unsaturated soils}.
+\newblock \emph{\bibinfo{journal}{Soil Sci. Soc. Am. J.}}
+  \textbf{\bibinfo{volume}{44}}, \bibinfo{pages}{892--898}
+  (\bibinfo{year}{1980}).
+
+\bibitem{haveman2022utilizing}
+\bibinfo{author}{Haveman, N.~J.}, \bibinfo{author}{Callaham, J.},
+  \bibinfo{author}{Paul, A.-L.} \& \bibinfo{author}{Ferl, R.~J.}
+\newblock \bibinfo{title}{Preservation of plant biological payloads during
+  suborbital spaceflight}.
+\newblock \emph{\bibinfo{journal}{Gravit. Space Res.}}
+  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{15--24}
+  (\bibinfo{year}{2022}).
+
+\bibitem{bassel2014}
+\bibinfo{author}{Bassel, G.~W.} \emph{et~al.}
+\newblock \bibinfo{title}{Mechanical constraints imposed by {3D} cellular
+  geometry and arrangement modulate growth patterns in the {Arabidopsis}
+  embryo}.
+\newblock \emph{\bibinfo{journal}{Proc. Natl. Acad. Sci. USA}}
+  \textbf{\bibinfo{volume}{111}}, \bibinfo{pages}{8685--8690}
+  (\bibinfo{year}{2014}).
+
+\bibitem{lockhart1965}
+\bibinfo{author}{Lockhart, J.~A.}
+\newblock \bibinfo{title}{An analysis of irreversible plant cell elongation}.
+\newblock \emph{\bibinfo{journal}{J. Theor. Biol.}}
+  \textbf{\bibinfo{volume}{8}}, \bibinfo{pages}{264--275}
+  (\bibinfo{year}{1965}).
+
 \bibitem{abley2021}
 \bibinfo{author}{Abley, K.} \emph{et~al.}
-\newblock \bibinfo{title}{An alternative model of plant hormone interactions
-  during seed germination}.
+\newblock \bibinfo{title}{An {ABA-GA} bistable switch can account for natural
+  variation in the variability of {Arabidopsis} seed germination time}.
 \newblock \emph{\bibinfo{journal}{eLife}} \textbf{\bibinfo{volume}{10}},
   \bibinfo{pages}{e59485} (\bibinfo{year}{2021}).
 
+\bibitem{topham2017}
+\bibinfo{author}{Topham, A.~T.} \emph{et~al.}
+\newblock \bibinfo{title}{Temperature variability is integrated by a spatially
+  embedded decision-making center to break dormancy in {Arabidopsis} seeds}.
+\newblock \emph{\bibinfo{journal}{Proc. Natl. Acad. Sci. USA}}
+  \textbf{\bibinfo{volume}{114}}, \bibinfo{pages}{6629--6634}
+  (\bibinfo{year}{2017}).
+
+\bibitem{ballare2017}
+\bibinfo{author}{Ballar{\'e}, C.~L.} \& \bibinfo{author}{Pierik, R.}
+\newblock \bibinfo{title}{The shade-avoidance syndrome: multiple signals and
+  ecological consequences}.
+\newblock \emph{\bibinfo{journal}{Plant Cell Environ.}}
+  \textbf{\bibinfo{volume}{40}}, \bibinfo{pages}{2530--2543}
+  (\bibinfo{year}{2017}).
+
+\bibitem{binder2004}
+\bibinfo{author}{Binder, B.~M.} \emph{et~al.}
+\newblock \bibinfo{title}{Arabidopsis seedling growth response and recovery to
+  ethylene. a kinetic analysis}.
+\newblock \emph{\bibinfo{journal}{Plant Physiol.}}
+  \textbf{\bibinfo{volume}{136}}, \bibinfo{pages}{2913--2920}
+  (\bibinfo{year}{2004}).
+
+\bibitem{nagata2004}
+\bibinfo{author}{Nagata, T.}, \bibinfo{author}{Todoriki, S.} \&
+  \bibinfo{author}{Kikuchi, S.}
+\newblock \bibinfo{title}{Radial expansion of root cells and elongation of root
+  hairs of {Arabidopsis thaliana} induced by massive doses of gamma
+  irradiation}.
+\newblock \emph{\bibinfo{journal}{Plant Cell Physiol.}}
+  \textbf{\bibinfo{volume}{45}}, \bibinfo{pages}{1557--1565}
+  (\bibinfo{year}{2004}).
+
+\bibitem{beemster1998}
+\bibinfo{author}{Beemster, G. T.~S.} \& \bibinfo{author}{Baskin, T.~I.}
+\newblock \bibinfo{title}{Analysis of cell division and elongation underlying
+  the developmental acceleration of root growth in {Arabidopsis thaliana}}.
+\newblock \emph{\bibinfo{journal}{Plant Physiol.}}
+  \textbf{\bibinfo{volume}{116}}, \bibinfo{pages}{1515--1526}
+  (\bibinfo{year}{1998}).
+
 \bibitem{footitt2019}
-\bibinfo{author}{Footitt, S.} \& \bibinfo{author}{Finch-Savage, W.~E.}
-\newblock \bibinfo{title}{Dormancy cycling in {Arabidopsis} seeds}.
-\newblock \emph{\bibinfo{journal}{J. Exp. Bot.}} \textbf{\bibinfo{volume}{70}},
-  \bibinfo{pages}{4897--4909} (\bibinfo{year}{2019}).
+\bibinfo{author}{Footitt, S.}, \bibinfo{author}{Clewes, R.},
+  \bibinfo{author}{Feeney, M.}, \bibinfo{author}{Finch-Savage, W.~E.} \&
+  \bibinfo{author}{Frigerio, L.}
+\newblock \bibinfo{title}{Aquaporins influence seed dormancy and germination in
+  response to stress}.
+\newblock \emph{\bibinfo{journal}{Plant Cell Environ.}}
+  \textbf{\bibinfo{volume}{42}}, \bibinfo{pages}{2325--2339}
+  (\bibinfo{year}{2019}).
 
 \end{thebibliography}
