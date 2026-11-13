@@ -13,31 +13,32 @@
   \bibinfo{author}{Ferl, R.~J.}
 \newblock \bibinfo{title}{{LEAF} -- lunar effects on agricultural flora, an
   {Artemis III} deployed instrument}.
-\newblock \bibinfo{howpublished}{53rd International Conference on Environmental
-  Systems (ICES), Paper ICES-2024-218} (\bibinfo{year}{2024}).
+\newblock \bibinfo{howpublished}{54th International Conference on Environmental
+  Systems (ICES), Paper ICES-2025-507} (\bibinfo{year}{2025}).
 
 \bibitem{paul2013fundamental}
 \bibinfo{author}{Paul, A.-L.}, \bibinfo{author}{Wheeler, R.~M.},
   \bibinfo{author}{Levine, H.~G.} \& \bibinfo{author}{Ferl, R.~J.}
-\newblock \bibinfo{title}{Fundamental plant biology in spaceflight}.
-\newblock \emph{\bibinfo{journal}{Adv. Space Res.}}
-  \textbf{\bibinfo{volume}{51}}, \bibinfo{pages}{534--548}
-  (\bibinfo{year}{2013}).
+\newblock \bibinfo{title}{Fundamental plant biology enabled by the {Space
+  Shuttle}}.
+\newblock \emph{\bibinfo{journal}{Am. J. Bot.}} \textbf{\bibinfo{volume}{100}},
+  \bibinfo{pages}{226--234} (\bibinfo{year}{2013}).
 
 \bibitem{massa2016plant}
 \bibinfo{author}{Massa, G.~D.}, \bibinfo{author}{Wheeler, R.~M.},
-  \bibinfo{author}{Morrow, R.~C.} \& \bibinfo{author}{Shen, F.~T.}
-\newblock \bibinfo{title}{Growth systems for advanced plant research on the
-  {International Space Station}}.
-\newblock \emph{\bibinfo{journal}{Life Sci. Space Res.}}
-  \textbf{\bibinfo{volume}{9}}, \bibinfo{pages}{30--39} (\bibinfo{year}{2016}).
+  \bibinfo{author}{Morrow, R.~C.} \& \bibinfo{author}{Levine, H.~G.}
+\newblock \bibinfo{title}{Growth chambers on the {International Space Station}
+  for large plants}.
+\newblock \emph{\bibinfo{journal}{Acta Hortic.}}
+  \textbf{\bibinfo{volume}{1134}}, \bibinfo{pages}{215--222}
+  (\bibinfo{year}{2016}).
 
 \bibitem{monje2020hardware}
 \bibinfo{author}{Monje, O.} \emph{et~al.}
 \newblock \bibinfo{title}{Hardware validation of the {Advanced Plant Habitat}
-  on the {ISS}}.
+  on {ISS}: canopy photosynthesis in reduced gravity}.
 \newblock \emph{\bibinfo{journal}{Front. Plant Sci.}}
-  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{567} (\bibinfo{year}{2020}).
+  \textbf{\bibinfo{volume}{11}}, \bibinfo{pages}{673} (\bibinfo{year}{2020}).
 
 \bibitem{richards2006}
 \bibinfo{author}{Richards, J.~T.} \emph{et~al.}
@@ -87,10 +88,10 @@
 
 \bibitem{kitaya2003air}
 \bibinfo{author}{Kitaya, Y.}, \bibinfo{author}{Tsuruyama, J.},
-  \bibinfo{author}{Kawai, M.}, \bibinfo{author}{Shibuya, T.} \&
+  \bibinfo{author}{Shibuya, T.}, \bibinfo{author}{Yoshida, M.} \&
   \bibinfo{author}{Kiyota, M.}
-\newblock \bibinfo{title}{Effects of air current on transpiration and net
-  photosynthetic rates of plants in a closed plant culture system}.
+\newblock \bibinfo{title}{Effects of air current speed on gas exchange in plant
+  leaves and plant canopies}.
 \newblock \emph{\bibinfo{journal}{Adv. Space Res.}}
   \textbf{\bibinfo{volume}{31}}, \bibinfo{pages}{177--182}
   (\bibinfo{year}{2003}).
@@ -136,13 +137,11 @@
   (\bibinfo{year}{1980}).
 
 \bibitem{haveman2022utilizing}
-\bibinfo{author}{Haveman, N.~J.}, \bibinfo{author}{Callaham, J.},
-  \bibinfo{author}{Paul, A.-L.} \& \bibinfo{author}{Ferl, R.~J.}
-\newblock \bibinfo{title}{Preservation of plant biological payloads during
-  suborbital spaceflight}.
-\newblock \emph{\bibinfo{journal}{Gravit. Space Res.}}
-  \textbf{\bibinfo{volume}{10}}, \bibinfo{pages}{15--24}
-  (\bibinfo{year}{2022}).
+\bibinfo{author}{Haveman, N.~J.} \emph{et~al.}
+\newblock \bibinfo{title}{Utilizing the {KSC} fixation tube to conduct
+  human-tended plant biology experiments on a suborbital spaceflight}.
+\newblock \emph{\bibinfo{journal}{Life}} \textbf{\bibinfo{volume}{12}},
+  \bibinfo{pages}{1871} (\bibinfo{year}{2022}).
 
 \bibitem{bassel2014}
 \bibinfo{author}{Bassel, G.~W.} \emph{et~al.}
