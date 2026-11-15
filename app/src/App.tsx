@@ -8,6 +8,7 @@ import { PRESET_BY_ID } from "./model/presets";
 import type { FlowMode } from "./model/gbc1Field";
 import { Chart } from "./ui/Chart";
 import { DualComparePage } from "./ui/DualComparePage";
+import { IsoWorldPage } from "./ui/IsoWorldPage";
 import { OverviewPage, type PortalView } from "./ui/OverviewPage";
 import { PaperPage } from "./ui/PaperPage";
 import { TutorialPage } from "./ui/TutorialPage";
@@ -141,7 +142,7 @@ export function App() {
 
   const [activeView, setActiveView] = useState<PortalView>(() => {
     const hash = window.location.hash.replace(/^#\/?/, "");
-    if (hash === "simulator" || hash === "compare" || hash === "paper" || hash === "tutorial" || hash === "overview") {
+    if (hash === "simulator" || hash === "compare" || hash === "paper" || hash === "tutorial" || hash === "overview" || hash === "isoworld") {
       return hash;
     }
     return "overview";
@@ -407,6 +408,7 @@ export function App() {
           {(
             [
               { id: "overview", label: "Overview & Results" },
+              { id: "isoworld", label: "Isometric World" },
               { id: "simulator", label: "3D Digital Twin" },
               { id: "compare", label: "Dual Comparison & PDF" },
               { id: "paper", label: "Paper & PDF" },
@@ -463,6 +465,7 @@ export function App() {
       </header>
 
       {activeView === "overview" && <OverviewPage onNavigate={setActiveView} />}
+      {activeView === "isoworld" && <IsoWorldPage onNavigate={setActiveView} />}
       {activeView === "compare" && <DualComparePage theme={theme} />}
       {activeView === "paper" && <PaperPage />}
       {activeView === "tutorial" && <TutorialPage onNavigate={setActiveView} />}
