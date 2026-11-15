@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type PortalView = "overview" | "isoworld" | "simulator" | "compare" | "paper" | "tutorial";
+export type PortalView = "overview" | "simulator" | "compare" | "paper" | "tutorial";
 
 interface FigureItem {
   id: string;
