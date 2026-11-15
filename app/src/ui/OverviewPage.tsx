@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type PortalView = "overview" | "simulator" | "compare" | "paper" | "tutorial";
+export type PortalView = "overview" | "isoworld" | "simulator" | "compare" | "paper" | "tutorial";
 
 interface FigureItem {
   id: string;
@@ -119,7 +119,10 @@ export function OverviewPage({ onNavigate }: Props) {
           64 <em>Brassica rapa</em> and 100 <em>Arabidopsis thaliana</em> seedlings.
         </p>
         <div className="hero-actions">
-          <button className="cta-btn cta-primary" onClick={() => onNavigate("simulator")}>
+          <button className="cta-btn cta-primary" onClick={() => onNavigate("isoworld")}>
+            🏛️ Isometric Miniature World
+          </button>
+          <button className="cta-btn cta-secondary" onClick={() => onNavigate("simulator")}>
             🧬 Launch 3D Digital Twin
           </button>
           <button className="cta-btn cta-secondary" onClick={() => onNavigate("compare")}>
