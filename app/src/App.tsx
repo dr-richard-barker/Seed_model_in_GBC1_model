@@ -202,9 +202,16 @@ export function App() {
     crownHalos: true,
   });
 
-  // Simulation instance & version counter
+  // Simulation instance, version counter & chunked loading state
   const communityRef = useRef<GBC1CommunityTwin | null>(null);
   const [simTick, setSimTick] = useState<number>(0);
+  const [simLoading, setSimLoading] = useState<boolean>(false);
+  const [simLoadProgress, setSimLoadProgress] = useState<{ pct: number; stage: string; hour: number }>({
+    pct: 0,
+    stage: "Initializing 164-seed 3D cellular community…",
+    hour: 0,
+  });
+  const lastBuildKeyRef = useRef<string>("");
 
   // Build or advance the community simulation to `targetHour`
   const buildNewCommunity = (
@@ -232,65 +239,106 @@ export function App() {
     });
   };
 
-  // Rebuild simulation when boundary conditions change or when switching to simulator
+  // Build, advance, or rewind simulation with chunked yielding so the Loading graphic stays responsive
   useEffect(() => {
     if (activeView !== "simulator") return;
-    const comm = buildNewCommunity(
-      gravityG,
-      flowMlMin,
-      flowMode,
-      waterFillPct,
-      densityMultiplier,
-      tempC,
-      lightUmol,
-    );
-    comm.runTo(targetHour);
-    communityRef.current = comm;
-    if (selectedSeedId >= comm.specs.length) {
-      setSelectedSeedId(Math.floor(comm.specs.length / 2));
-    }
-    setSimTick((v) => v + 1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeView, gravityG, flowMlMin, flowMode, waterFillPct, densityMultiplier, tempC, lightUmol]);
 
-  // Advance or rewind when targetHour changes
-  useEffect(() => {
-    if (activeView !== "simulator") return;
-    const comm = communityRef.current;
-    if (!comm) {
-      const fresh = buildNewCommunity(
-        gravityG,
-        flowMlMin,
-        flowMode,
-        waterFillPct,
-        densityMultiplier,
-        tempC,
-        lightUmol,
-      );
-      fresh.runTo(targetHour);
-      communityRef.current = fresh;
-      setSimTick((v) => v + 1);
+    const buildKey = `${gravityG}|${flowMlMin}|${flowMode}|${waterFillPct}|${densityMultiplier}|${tempC}|${lightUmol}`;
+    const existing = communityRef.current;
+    const needsRebuild = !existing || lastBuildKeyRef.current !== buildKey || targetHour < existing.t - 1e-6;
+
+    // Fast-path: forward playback or small forward scrub on an already-built community
+    if (!needsRebuild && existing && targetHour - existing.t <= 12) {
+      if (targetHour > existing.t + 1e-6) {
+        existing.runTo(targetHour);
+        setSimTick((v) => v + 1);
+      }
+      setSimLoading(false);
       return;
     }
-    if (targetHour >= comm.t - 1e-6) {
-      comm.runTo(targetHour);
-      setSimTick((v) => v + 1);
-    } else {
-      const fresh = buildNewCommunity(
-        gravityG,
-        flowMlMin,
-        flowMode,
-        waterFillPct,
-        densityMultiplier,
-        tempC,
-        lightUmol,
-      );
-      fresh.runTo(targetHour);
-      communityRef.current = fresh;
-      setSimTick((v) => v + 1);
-    }
+
+    let cancelled = false;
+    let rafId = 0;
+    let timerId = 0;
+
+    const goalHour = targetHour;
+    setSimLoading(true);
+    setSimLoadProgress({
+      pct: needsRebuild ? 8 : 20,
+      stage: needsRebuild
+        ? "Initializing 164-seed 3D cellular community & 35 µm Nytex barrier…"
+        : "Stepping coupled CFD & cellular biomechanics…",
+      hour: needsRebuild ? 0 : (existing?.t ?? 0),
+    });
+
+    // Yield a paint frame first so the browser renders the graphical Loading overlay immediately
+    rafId = window.requestAnimationFrame(() => {
+      timerId = window.setTimeout(() => {
+        if (cancelled) return;
+
+        let comm = existing;
+        if (needsRebuild || !comm) {
+          comm = buildNewCommunity(
+            gravityG,
+            flowMlMin,
+            flowMode,
+            waterFillPct,
+            densityMultiplier,
+            tempC,
+            lightUmol,
+          );
+          lastBuildKeyRef.current = buildKey;
+        }
+
+        if (cancelled) return;
+        setSimLoadProgress({
+          pct: 22,
+          stage: "Solving 3D CFD airflow & van Genuchten foam hydrology…",
+          hour: comm.t,
+        });
+
+        const stepChunk = () => {
+          if (cancelled || !comm) return;
+          const nextH = Math.min(goalHour, comm.t + 12);
+          comm.runTo(nextH);
+
+          const frac = goalHour > 0 ? Math.min(1, comm.t / goalHour) : 1;
+          const pct = Math.round(22 + frac * 73);
+          setSimLoadProgress({
+            pct,
+            stage:
+              comm.t < goalHour - 1e-6
+                ? `Stepping 164 cellular twins (${comm.t.toFixed(0)} h / ${goalHour.toFixed(0)} h)…`
+                : "Uploading WebGL chamber & single-seed geometry…",
+            hour: comm.t,
+          });
+
+          if (comm.t < goalHour - 1e-6) {
+            timerId = window.setTimeout(stepChunk, 0);
+          } else {
+            communityRef.current = comm;
+            if (selectedSeedId >= comm.specs.length) {
+              setSelectedSeedId(Math.floor(comm.specs.length / 2));
+            }
+            setSimTick((v) => v + 1);
+            // Allow one paint frame for WebGL geometry upload before dismissing loader
+            rafId = window.requestAnimationFrame(() => {
+              if (!cancelled) setSimLoading(false);
+            });
+          }
+        };
+
+        timerId = window.setTimeout(stepChunk, 0);
+      }, 16);
+    });
+
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timerId);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeView, targetHour]);
+  }, [activeView, gravityG, flowMlMin, flowMode, waterFillPct, densityMultiplier, tempC, lightUmol, targetHour]);
 
   // Play timer
   useEffect(() => {
@@ -468,7 +516,58 @@ export function App() {
       {activeView === "tutorial" && <TutorialPage onNavigate={setActiveView} />}
 
       {activeView === "simulator" && (
-      <div className="workspace">
+      <div className="workspace" style={{ position: "relative" }}>
+        {simLoading && (
+          <div className="sim-loading-overlay" role="status" aria-live="polite">
+            <div className="sim-loading-card">
+              <div className="sim-loading-graphic" aria-hidden="true">
+                <svg viewBox="0 0 280 120" className="sim-loading-svg">
+                  {/* 3-Compartment GBC1 Cartridge Schematic */}
+                  <rect x="20" y="18" width="240" height="82" rx="10" className="sim-load-shell" />
+                  {/* Foam reservoir */}
+                  <rect x="28" y="72" width="224" height="20" rx="4" className="sim-load-foam" />
+                  {/* 35 um Nytex screen */}
+                  <line x1="28" y1="70" x2="252" y2="70" className="sim-load-nytex" />
+                  {/* 3 Compartments */}
+                  <rect x="30" y="26" width="64" height="42" rx="4" className="sim-load-bay" />
+                  <rect x="102" y="26" width="76" height="42" rx="4" className="sim-load-bay center" />
+                  <rect x="186" y="26" width="64" height="42" rx="4" className="sim-load-bay" />
+                  {/* Animated sweeping Push CFD streamline */}
+                  <path
+                    d="M 14 40 C 65 40, 95 62, 140 62 C 185 62, 215 40, 266 40"
+                    className="sim-load-flow"
+                  />
+                  {/* Animated seedlings */}
+                  <line x1="52" y1="69" x2="52" y2="48" className="sim-load-stem s1" />
+                  <line x1="72" y1="69" x2="72" y2="44" className="sim-load-stem s2" />
+                  <line x1="122" y1="69" x2="122" y2="52" className="sim-load-stem s2" />
+                  <line x1="140" y1="69" x2="140" y2="45" className="sim-load-stem s1" />
+                  <line x1="158" y1="69" x2="158" y2="50" className="sim-load-stem s3" />
+                  <line x1="208" y1="69" x2="208" y2="46" className="sim-load-stem s2" />
+                  <line x1="228" y1="69" x2="228" y2="49" className="sim-load-stem s3" />
+                  <text x="62" y="37" textAnchor="middle" className="sim-load-tag">CH 1 · 32</text>
+                  <text x="140" y="37" textAnchor="middle" className="sim-load-tag">CH 2 · 100</text>
+                  <text x="218" y="37" textAnchor="middle" className="sim-load-tag">CH 3 · 32</text>
+                </svg>
+              </div>
+              <div className="sim-loading-title-row">
+                <span className="sim-spinner" aria-hidden="true" />
+                <h3>Loading LEAF GBC1 3D Digital Twin…</h3>
+              </div>
+              <p className="sim-loading-stage">{simLoadProgress.stage}</p>
+              <div className="sim-progress-track">
+                <div
+                  className="sim-progress-fill"
+                  style={{ width: `${Math.max(5, simLoadProgress.pct)}%` }}
+                />
+              </div>
+              <div className="sim-loading-meta">
+                <span>{simLoadProgress.pct}%</span>
+                <span>Sim Time: {simLoadProgress.hour.toFixed(1)} h / {targetHour.toFixed(1)} h</span>
+              </div>
+            </div>
+          </div>
+        )}
         {/* LEFT SIDEBAR: SCENARIOS, HARDWARE & SOWING CONTROLS */}
         <aside className="sidebar-left">
           <div className="card">
